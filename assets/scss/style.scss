@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$primary: #302c98;
+$secondary: #eb2057;
+
+html,
+body {
+  font-size: 16px;
+}
+
+a {
+  &.router-link-active,
+  &.router-link-exact-active {
+    color: $secondary;
+  }
+
+  &.menu-item {
+    &.router-link-active,
+    &.router-link-exact-active {
+      @media (max-width: 767px) {
+        color: #ffff;
+        background-color: $primary;
+      }
+    }
+  }
+}
+
+.hero {
+  background: url("@/assets/img/home-bg.png") center no-repeat;
+  background-size: contain;
+  background-position-x: 2rem;
+  background-position-y: -6rem;
+  padding-top: 64px;
+  min-height: 100vh;
+
+  @media (min-width: 768px) {
+    background: none;
+  }
+
+  &-particle {
+    &-yellow {
+      width: 30px;
+      height: 30px;
+      left: 0;
+      top: 10%;
+      position: absolute;
+      z-index: -1;
+
+      @media (min-width: 1025px) {
+        position: absolute;
+        display: block;
+        width: 44px;
+        height: 44px;
+        left: 35%;
+        top: 8%;
+      }
+    }
+
+    &-blue {
+      width: 30px;
+      height: 30px;
+      bottom: 57%;
+      right: 10%;
+      position: absolute;
+      z-index: -1;
+
+      @media (min-width: 1025px) {
+        position: absolute;
+        display: block;
+        width: 44px;
+        height: 44px;
+        left: 44%;
+        top: 48%;
+      }
+    }
+
+    &-red {
+      width: 30px;
+      height: 30px;
+      bottom: 63%;
+      left: 10%;
+      position: absolute;
+      z-index: -1;
+
+      @media (min-width: 1025px) {
+        position: absolute;
+        display: block;
+        width: 44px;
+        height: 44px;
+        left: 25%;
+        bottom: 30%;
+      }
+    }
+  }
+}
+
+.caf-cta {
+  background-image: linear-gradient(180deg, transparent 40%, #000 0, transparent 0, $primary 0);
+}
+
+.page {
+  &-particle {
+    &-yellow {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 2rem;
+      left: 3rem;
+
+      @media (min-width: 1025px) {
+        width: 44px;
+        height: 44px;
+        left: 24rem;
+      }
+    }
+    &-red {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 15rem;
+      left: 1rem;
+
+      @media (min-width: 1025px) {
+        width: 44px;
+        height: 44px;
+        top: 338px;
+        left: 15rem;
+      }
+    }
+    &-blue {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 17rem;
+      right: 8rem;
+
+      @media (min-width: 1025px) {
+        width: 44px;
+        height: 44px;
+        top: 44rem;
+        left: 36rem;
+      }
+    }
+  }
+
+  &-contact {
+    &-particle {
+      &-yellow {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 2rem;
+        left: 3rem;
+        z-index: -1;
+
+        @media (min-width: 1025px) {
+          width: 44px;
+          height: 44px;
+          left: 24rem;
+        }
+      }
+
+      &-blue {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 22rem;
+        right: 8rem;
+        z-index: -1;
+
+        @media (min-width: 1025px) {
+          width: 44px;
+          height: 44px;
+          top: 44rem;
+          right: 20rem;
+        }
+      }
+
+      &-red {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 20rem;
+        left: 1rem;
+        z-index: -1;
+
+        @media (min-width: 1025px) {
+          width: 44px;
+          height: 44px;
+          top: 338px;
+          left: 15rem;
+        }
+      }
+    }
+  }
+}

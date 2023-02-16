@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "analyze": "nuxt build --analyze"
+  },
+  "devDependencies": {
+    "@nuxt/image-edge": "^1.0.0-27919678.2f5b64b",
+    "@nuxtjs/color-mode": "^3.2.0",
+    "@nuxtjs/tailwindcss": "^6.4.0",
+    "@vueuse/nuxt": "^9.12.0",
+    "nuxt": "^3.2.0"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.9",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "sass": "^1.58.1",
+    "tailwindcss": "^3.2.6",
+    "vue-remix-icons": "^2.0.3"
+  }
+}
