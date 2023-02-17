@@ -68,4 +68,8 @@ export default defineNuxtConfig({
   vite: {
     logLevel: 'info',
   },
+
+  build: {
+    transpile: ['@vuepic/vue-datepicker']
+  }
 })
