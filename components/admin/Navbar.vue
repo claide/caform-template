@@ -1,25 +1,18 @@
 <template>
   <Disclosure
     as="header"
-    class="bg-white shadow w-full dark:bg-dark dark:text-white"
+    class="shadow w-full bg-dark dark:text-white"
     v-slot="{ open }"
   >
-    <div class="mx-auto px-2 sm:px-0">
+    <div class="mx-auto px-2 lg:px-0">
       <div
         class="container mx-auto relative h-16 flex justify-between items-center"
       >
         <div class="relative z-10 px-2 flex lg:px-0">
           <div class="flex-shrink-0 flex items-center">
             <nuxt-img
-              v-if="colorMode.preference === 'light'"
               class="block w-[80px] sm:w-[120px]"
-              src="/img/caf-logo-black.svg"
-              sizes="sm:80px md:100w lg:120px"
-            />
-            <nuxt-img
-              v-else
-              class="block w-[80px] sm:w-[120px]"
-              src="/img/caf-logo-all-white.svg"
+              src="/img/logo-admin.svg"
               sizes="sm:80px md:100w lg:120px"
             />
           </div>
@@ -83,9 +76,9 @@
           :href="item.href"
           :class="[
             item.current
-              ? 'bg-gray-100 text-gray-900 dark:text-dark'
-              : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900',
-            'block rounded-md py-2 px-3 text-base font-medium dark:text-white',
+              ? 'bg-gray-100 text-gray-900'
+              : 'text-white hover:bg-gray-50 hover:text-gray-300',
+            'block rounded-md py-2 px-3 text-base font-medium ',
           ]"
           :aria-current="item.current ? 'page' : undefined"
           >{{ item.name }}</DisclosureButton

@@ -1,7 +1,7 @@
 <template>
   <div>
     <AdminNavbar />
-    <div class="container mx-auto px-2 sm:px-0">
+    <div class="container mx-auto px-2 lg:px-0">
       <slot />
     </div>
   </div>

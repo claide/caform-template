@@ -1,6 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div class="px-4 sm:px-6 lg:px-0">
+  <div class="px-2 lg:px-0">
     <div
       class="-mx-4 mt-8 shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg"
     >
@@ -11,11 +11,11 @@
           <tr>
             <th
               scope="col"
-              class="hidden py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 sm:table-cell"
+              class="hidden py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 lg:table-cell"
             ></th>
             <th
               scope="col"
-              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
+              class="hidden px-3 py-3.5 text-left text-sm font-semibold sm:table-cell"
             >
               Partner
             </th>
@@ -25,19 +25,19 @@
             </th>
             <th
               scope="col"
-              class="hidden px-3 py-3.5 text-left text-sm font-semibold sm:table-cell"
+              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
             >
               Invoice #
             </th>
             <th
               scope="col"
-              class="hidden px-3 py-3.5 text-left text-sm font-semibold sm:table-cell"
+              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
             >
               Currency
             </th>
             <th
               scope="col"
-              class="hidden md:table-cell px-3 py-3.5 text-left text-sm font-semibold"
+              class="hidden lg:table-cell px-3 py-3.5 text-left text-sm font-semibold"
             >
               Amount
             </th>
@@ -80,13 +80,16 @@
             </td>
             <td class="px-3 py-3 text-sm font-medium">
               {{ cost.applicant }}
-              <dl class="md:hidden font-normal">
-                <dt class="sr-only">Email</dt>
-                <dd class="mt-1 truncate text-xs text-gray-500">
+              <div class="hidden md:block text-gray-500 text-xs">
+                {{ cost.email }}
+              </div>
+              <dl class="lg:hidden font-normal">
+                <dt class="sr-only md:hidden">Email</dt>
+                <dd class="mt-1 truncate text-xs text-gray-500 md:hidden">
                   {{ cost.email }}
                 </dd>
-                <dt class="sr-only">Partner</dt>
-                <dd class="mt-1 truncate text-xs">
+                <dt class="sr-only md:hidden">Partner</dt>
+                <dd class="mt-1 truncate text-xs md:hidden">
                   Partner: {{ cost.partner }}
                 </dd>
                 <dt class="sr-only">Invoice #</dt>
@@ -101,8 +104,8 @@
                 <dd class="mt-1 truncate text-xs">
                   Payment Method: {{ cost.payment_method }}
                 </dd>
-                <dt class="sr-only">Status</dt>
-                <dd class="mt-1 truncate text-xs">
+                <dt class="sr-only md:hidden">Status</dt>
+                <dd class="mt-1 truncate text-xs md:hidden">
                   <span
                     :class="{
                       'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300':
@@ -120,16 +123,16 @@
                 </dd>
               </dl>
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 sm:table-cell">
+            <td class="hidden px-3 py-3 text-sm text-gray-500 lg:table-cell">
               {{ cost.invoice_number }}
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 sm:table-cell">
+            <td class="hidden px-3 py-3 text-sm text-gray-500 lg:table-cell">
               {{ cost.currency }}
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 sm:table-cell">
+            <td class="hidden px-3 py-3 text-sm text-gray-500 lg:table-cell">
               {{ cost.amount }}
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 sm:table-cell">
+            <td class="hidden px-3 py-3 text-sm text-gray-500 lg:table-cell">
               {{ cost.payment_method }}
             </td>
             <td class="hidden md:table-cell px-3 py-3 text-sm text-gray-500">
