@@ -131,10 +131,6 @@ const navigation = [
     name: "Partners",
     link: "/admin/partners",
   },
-  {
-    name: "Settings",
-    link: "/admin/settings",
-  },
 ];
 
 watchEffect(() => {
