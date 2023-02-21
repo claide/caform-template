@@ -27,9 +27,9 @@
           class="flex items-center w-full rounded-lg bg-primary px-2 py-3 text-left text-base font-medium text-white hover:bg-primary focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75"
           :class="{ 'rounded-b-none': open }"
         >
-          <RiArrowDownSLine
+          <ArrowDownCircleIcon
             :class="open ? 'rotate-180 transform' : ''"
-            class="h-5 w-5 text-white mr-2 fill-current"
+            class="h-5 w-5 text-white mr-2 stroke-current"
           />
           <span>{{ item.title }}</span>
           <span
@@ -72,7 +72,7 @@
 
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import { RiArrowDownSLine } from "vue-remix-icons";
+import { ArrowDownCircleIcon } from "@heroicons/vue/24/outline";
 
 const prices = ref([
   {

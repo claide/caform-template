@@ -36,13 +36,13 @@
               class="flex items-center w-full p-4 text-left text-base text-dark focus:outline-none border-b-2 border-b-primary"
             >
               <span class="font-bold">Is your software actually works?</span>
-              <RiAddCircleLine
+              <PlusCircleIcon
                 v-if="!open"
-                class="h-5 w-5 text-dark fill-current ml-auto"
+                class="h-5 w-5 text-dark stroke-current ml-auto"
               />
-              <RiIndeterminateCircleLine
+              <MinusCircleIcon
                 v-else
-                class="h-5 w-5 text-dark fill-current ml-auto"
+                class="h-5 w-5 text-dark stroke-current ml-auto"
               />
             </DisclosureButton>
             <transition
@@ -75,13 +75,13 @@
               class="flex items-center w-full p-4 text-left text-base text-dark focus:outline-none border-b-2 border-b-primary"
             >
               <span class="font-bold">How does we make money?</span>
-              <RiAddCircleLine
+              <PlusCircleIcon
                 v-if="!open"
-                class="h-5 w-5 text-dark fill-current ml-auto"
+                class="h-5 w-5 text-dark stroke-current ml-auto"
               />
-              <RiIndeterminateCircleLine
+              <MinusCircleIcon
                 v-else
-                class="h-5 w-5 text-dark fill-current ml-auto"
+                class="h-5 w-5 text-dark stroke-current ml-auto"
               />
             </DisclosureButton>
             <transition
@@ -116,13 +116,13 @@
               <span class="font-bold"
                 >Is my data secure when using Cost Application Form?</span
               >
-              <RiAddCircleLine
+              <PlusCircleIcon
                 v-if="!open"
-                class="h-5 w-5 text-dark fill-current ml-auto"
+                class="h-5 w-5 text-dark stroke-current ml-auto"
               />
-              <RiIndeterminateCircleLine
+              <MinusCircleIcon
                 v-else
-                class="h-5 w-5 text-dark fill-current ml-auto"
+                class="h-5 w-5 text-dark stroke-current ml-auto"
               />
             </DisclosureButton>
             <transition
@@ -155,13 +155,13 @@
               class="flex items-center w-full p-4 text-left text-base text-dark focus:outline-none border-b-2 border-b-primary"
             >
               <span class="font-bold">Do you provide customer support?</span>
-              <RiAddCircleLine
+              <PlusCircleIcon
                 v-if="!open"
-                class="h-5 w-5 text-dark fill-current ml-auto"
+                class="h-5 w-5 text-dark stroke-current ml-auto"
               />
-              <RiIndeterminateCircleLine
+              <MinusCircleIcon
                 v-else
-                class="h-5 w-5 text-dark fill-current ml-auto"
+                class="h-5 w-5 text-dark stroke-current ml-auto"
               />
             </DisclosureButton>
             <transition
@@ -197,7 +197,7 @@
 
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import { RiAddCircleLine, RiIndeterminateCircleLine } from "vue-remix-icons";
+import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/vue/24/outline";
 
 definePageMeta({
   colorMode: "light",

@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxt/image-edge',
+    '@pinia/nuxt',
   ],
 
   typescript: {
@@ -31,6 +32,14 @@ export default defineNuxtConfig({
         types: ['@pinia/nuxt', './type.d.ts'],
       },
     },
+  },
+
+  pinia: {
+    autoImports: [
+      // automatically imports `defineStore`
+      'defineStore', // import { defineStore } from 'pinia'
+      ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+    ],
   },
 
   colorMode: {
@@ -63,6 +72,13 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   },
 
   vite: {

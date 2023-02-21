@@ -16,12 +16,8 @@
             class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
           >
             <span class="sr-only">Open main menu</span>
-            <RiMenu2Fill
-              v-if="!open"
-              class="block h-6 w-6"
-              aria-hidden="true"
-            />
-            <RiCloseFill v-else class="block h-6 w-6" aria-hidden="true" />
+            <Bars3Icon v-if="!open" class="block h-6 w-6" />
+            <XMarkIcon v-else class="block h-6 w-6" />
           </DisclosureButton>
         </div>
         <div
@@ -103,7 +99,7 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/vue";
-import { RiMenu2Fill, RiCloseFill } from "vue-remix-icons";
+import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 
 const menu = ref([
   {
