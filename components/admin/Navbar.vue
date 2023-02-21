@@ -49,12 +49,12 @@
         aria-label="Global"
       >
         <div class="container mx-auto lg:py-2 lg:space-x-8">
-          <a
+          <nuxt-link
             v-for="item in navigation"
             :key="item.name"
-            :href="item.href"
+            :to="item.link"
             :class="[
-              item.current
+              item.link === currentPath
                 ? 'bg-gray-100 text-gray-900 dark:bg-[#1E1F27] dark:text-white'
                 : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900',
               'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium dark:hover:bg-[#1E1F27] dark:text-white',
@@ -62,26 +62,31 @@
             :aria-current="item.current ? 'page' : undefined"
           >
             {{ item.name }}
-          </a>
+          </nuxt-link>
         </div>
       </nav>
     </div>
 
-    <DisclosurePanel as="nav" class="lg:hidden" aria-label="Global">
+    <DisclosurePanel
+      v-slot="{ close }"
+      as="nav"
+      class="lg:hidden"
+      aria-label="Global"
+    >
       <div class="pt-2 pb-3 px-2 space-y-1">
-        <DisclosureButton
+        <nuxt-link
           v-for="item in navigation"
           :key="item.name"
-          as="a"
-          :href="item.href"
+          :to="item.link"
+          @click="close()"
           :class="[
-            item.current
+            item.link === currentPath
               ? 'bg-gray-100 text-gray-900'
               : 'text-white hover:bg-gray-50 hover:text-gray-300',
             'block rounded-md py-2 px-3 text-base font-medium ',
           ]"
           :aria-current="item.current ? 'page' : undefined"
-          >{{ item.name }}</DisclosureButton
+          >{{ item.name }}</nuxt-link
         >
       </div>
     </DisclosurePanel>
@@ -89,6 +94,8 @@
 </template>
 
 <script setup>
+import { useAdminPages } from "@/composables/admin-pages";
+
 import {
   Disclosure,
   DisclosureButton,
@@ -108,11 +115,29 @@ import {
 } from "@heroicons/vue/24/outline";
 
 const colorMode = useColorMode();
+const route = useRoute();
+const currentPath = ref(route);
 
 const navigation = [
-  { name: "Costs", href: "#", current: true },
-  { name: "Categories", href: "#", current: false },
-  { name: "Partners", href: "#", current: false },
-  { name: "Settings", href: "#", current: false },
+  {
+    name: "Costs",
+    link: "/admin",
+  },
+  {
+    name: "Categories",
+    link: "/admin/categories",
+  },
+  {
+    name: "Partners",
+    link: "/admin/partners",
+  },
+  {
+    name: "Settings",
+    link: "/admin/settings",
+  },
 ];
+
+watchEffect(() => {
+  currentPath.value = useAdminPages(route.path);
+});
 </script>
