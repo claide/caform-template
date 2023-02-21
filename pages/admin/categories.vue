@@ -5,33 +5,12 @@
         <h2
           class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight dark:text-white"
         >
-          Costs
+          Categories
         </h2>
-        <div
-          class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-4"
-        >
-          <div class="mt-2 flex items-center text-sm text-gray-500">
-            <div class="mt-1 w-full">
-              <AdminCostsStatusSelector
-                @update:model-value="onFilterUpdated($event, 'status')"
-              />
-            </div>
-          </div>
-          <div class="mt-2 flex items-center text-sm text-gray-500">
-            <div class="mt-1 w-full">
-              <AdminCostsPaymentSelector
-                @update:model-value="onFilterUpdated($event, 'payment')"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mt-5 flex lg:mt-0 lg:ml-4">
-        <AdminCostsMenuDropdown />
       </div>
     </div>
 
-    <AdminCostsTable />
+    <AdminCategoriesTable />
     <AdminPagination />
   </section>
 </template>
@@ -44,8 +23,4 @@ definePageMeta({
 });
 
 const costStore = useCostStore();
-
-const onFilterUpdated = (value, key) => {
-  console.log("value", value);
-};
 </script>

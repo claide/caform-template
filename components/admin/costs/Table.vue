@@ -7,7 +7,7 @@
       <table
         class="min-w-full text-sm divide-y divide-gray-300 text-dark dark:text-gray-400"
       >
-        <thead class="bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <thead class="bg-gray-50 dark:bg-[#3b3a4a] dark:text-gray-400">
           <tr>
             <th
               scope="col"
@@ -68,7 +68,7 @@
           <tr
             v-for="cost in costStore.costs"
             :key="cost.id"
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+            class="bg-white border-b dark:bg-[#232234] dark:border-gray-700"
           >
             <td
               class="hidden w-full max-w-0 py-3 pl-4 pr-3 text-sm text-gray-500 sm:w-auto sm:max-w-none sm:pl-6 lg:table-cell"

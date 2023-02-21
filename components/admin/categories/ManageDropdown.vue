@@ -53,12 +53,5 @@ import {
   DocumentArrowUpIcon,
 } from "@heroicons/vue/24/outline";
 
-const operationItems = [
-  "Mark as paid",
-  "Reject payment",
-  "Reject",
-  "Delete",
-  "View breakdowns",
-  "View invoices",
-];
+const operationItems = ["Edit", "Delete"];
 </script>
