@@ -5,9 +5,9 @@
       class="-mx-4 mt-8 shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg"
     >
       <table
-        class="min-w-full text-sm divide-y divide-gray-300 text-dark dark:text-gray-400"
+        class="min-w-full text-sm divide-y divide-[#2B333F] text-dark dark:text-gray-400"
       >
-        <thead class="bg-gray-50 dark:bg-[#3b3a4a] dark:text-gray-400">
+        <thead class="bg-gray-50 dark:bg-[#212737] dark:text-gray-400">
           <tr>
             <th
               scope="col"
@@ -38,33 +38,41 @@
           <tr
             v-for="partner in partnerStore.partners"
             :key="partner.id"
-            class="bg-white border-b dark:bg-[#232234] dark:border-gray-700"
+            class="bg-white border-b dark:bg-[#121A29] dark:border-gray-700"
           >
             <td
-              class="hidden w-full max-w-0 py-3 pl-4 pr-3 text-sm text-gray-500 sm:w-auto sm:max-w-none sm:pl-6 lg:table-cell"
+              class="hidden w-full max-w-0 py-3 pl-4 pr-3 text-sm text-gray-500 dark:text-[#818692] sm:w-auto sm:max-w-none sm:pl-6 lg:table-cell"
             >
               {{ partner.id }}
             </td>
             <td class="px-3 py-3 text-sm font-medium">
-              {{ partner.name }}
+              <span class="dark:text-white">{{ partner.name }}</span>
               <dl class="lg:hidden font-normal">
                 <dt class="sr-only md:hidden">Code</dt>
-                <dd class="mt-1 truncate text-xs text-gray-500 md:hidden">
+                <dd
+                  class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] md:hidden"
+                >
                   {{ partner.payment_method }}
                 </dd>
                 <dt class="sr-only md:hidden">Date created</dt>
-                <dd class="mt-1 truncate text-xs text-gray-500 md:hidden">
+                <dd
+                  class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] md:hidden"
+                >
                   {{ partner.date_created }}
                 </dd>
               </dl>
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 lg:table-cell">
+            <td
+              class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] lg:table-cell"
+            >
               {{ partner.payment_method }}
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 sm:table-cell">
+            <td
+              class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] sm:table-cell"
+            >
               {{ partner.date_created }}
             </td>
-            <td class="px-3 py-3 text-sm text-gray-500">
+            <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
               <AdminCategoriesManageDropdown />
             </td>
           </tr>

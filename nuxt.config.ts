@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-16',
       viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
+      titleTemplate: '%s - Cost Application Form',
       title: 'Cost Application Form',
       meta: [
         { name: 'description', content: 'Take control of your costs like a boss and unleash your costs administration potential' }

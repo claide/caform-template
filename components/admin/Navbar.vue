@@ -1,7 +1,7 @@
 <template>
   <Disclosure
     as="header"
-    class="shadow w-full bg-dark dark:text-white"
+    class="shadow w-full bg-[#04091B] dark:text-white"
     v-slot="{ open }"
   >
     <div class="mx-auto px-2 lg:px-0">
@@ -45,7 +45,7 @@
         </div>
       </div>
       <nav
-        class="hidden lg:flex bg-white lg:border-t lg:border-t-gray-200 dark:bg-[#000000] dark:border-0"
+        class="hidden lg:flex bg-white lg:border-t lg:border-t-gray-200 dark:bg-[#212737] dark:border-0"
         aria-label="Global"
       >
         <div class="container mx-auto lg:py-2 lg:space-x-8">
@@ -55,9 +55,9 @@
             :to="item.link"
             :class="[
               item.link === currentPath
-                ? 'bg-gray-100 text-gray-900 dark:bg-[#1E1F27] dark:text-white'
+                ? 'bg-gray-100 text-gray-900 dark:bg-[#121A29] dark:text-white'
                 : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900',
-              'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium dark:hover:bg-[#1E1F27] dark:text-white',
+              'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium dark:hover:bg-[#121A29] dark:text-white',
             ]"
             :aria-current="item.current ? 'page' : undefined"
           >
@@ -81,7 +81,7 @@
           @click="close()"
           :class="[
             item.link === currentPath
-              ? 'bg-gray-100 text-gray-900'
+              ? 'bg-[#121A29] text-gray-900'
               : 'text-white hover:bg-gray-50 hover:text-gray-300',
             'block rounded-md py-2 px-3 text-base font-medium ',
           ]"

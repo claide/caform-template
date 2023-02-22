@@ -3,7 +3,7 @@
     <Menu as="div" class="relative inline-block text-left w-full md:w-auto">
       <div>
         <MenuButton
-          class="inline-flex w-full justify-center rounded-full bg-primary px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          class="inline-flex w-full justify-center rounded-full bg-[#6158CD] px-4 py-3 text-sm font-medium text-white hover:bg-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           Export
           <ChevronDownIcon
@@ -22,7 +22,7 @@
         leave-to-class="transform scale-95 opacity-0"
       >
         <MenuItems
-          class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-[#232234] dark:border-gray-600"
+          class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-[#121A29] dark:border-gray-600"
         >
           <div class="px-1 py-1">
             <MenuItem v-slot="{ active }">

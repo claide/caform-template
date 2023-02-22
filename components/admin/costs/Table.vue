@@ -1,13 +1,12 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <div class="px-2 lg:px-0">
     <div
       class="-mx-4 mt-8 shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg"
     >
       <table
-        class="min-w-full text-sm divide-y divide-gray-300 text-dark dark:text-gray-400"
+        class="min-w-full text-sm divide-y divide-[#2B333F] text-dark dark:text-gray-400"
       >
-        <thead class="bg-gray-50 dark:bg-[#3b3a4a] dark:text-gray-400">
+        <thead class="bg-gray-50 dark:bg-[#212737] dark:text-gray-400">
           <tr>
             <th
               scope="col"
@@ -68,24 +67,30 @@
           <tr
             v-for="cost in costStore.costs"
             :key="cost.id"
-            class="bg-white border-b dark:bg-[#232234] dark:border-gray-700"
+            class="bg-white border-b dark:bg-[#121A29] dark:border-[#2B333F]"
           >
             <td
-              class="hidden w-full max-w-0 py-3 pl-4 pr-3 text-sm text-gray-500 sm:w-auto sm:max-w-none sm:pl-6 lg:table-cell"
+              class="hidden w-full max-w-0 py-3 pl-4 pr-3 text-sm text-gray-500 dark:text-[#818692] sm:w-auto sm:max-w-none sm:pl-6 lg:table-cell"
             >
               {{ cost.id }}
             </td>
-            <td class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500">
+            <td
+              class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]"
+            >
               {{ cost.partner }}
             </td>
             <td class="px-3 py-3 text-sm font-medium">
-              {{ cost.applicant }}
-              <div class="hidden md:block text-gray-500 text-xs">
+              <span class="dark:text-white">{{ cost.applicant }}</span>
+              <div
+                class="hidden md:block text-gray-500 dark:text-[#818692] text-xs"
+              >
                 {{ cost.email }}
               </div>
               <dl class="lg:hidden font-normal">
                 <dt class="sr-only md:hidden">Email</dt>
-                <dd class="mt-1 truncate text-xs text-gray-500 md:hidden">
+                <dd
+                  class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] md:hidden"
+                >
                   {{ cost.email }}
                 </dd>
                 <dt class="sr-only md:hidden">Partner</dt>
@@ -123,19 +128,29 @@
                 </dd>
               </dl>
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 lg:table-cell">
+            <td
+              class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] lg:table-cell"
+            >
               {{ cost.invoice_number }}
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 lg:table-cell">
+            <td
+              class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] lg:table-cell"
+            >
               {{ cost.currency }}
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 lg:table-cell">
+            <td
+              class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] lg:table-cell"
+            >
               {{ cost.amount }}
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 lg:table-cell">
+            <td
+              class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] lg:table-cell"
+            >
               {{ cost.payment_method }}
             </td>
-            <td class="hidden md:table-cell px-3 py-3 text-sm text-gray-500">
+            <td
+              class="hidden md:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]"
+            >
               <span
                 :class="{
                   'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300':
@@ -151,10 +166,12 @@
                 >{{ cost.status }}</span
               >
             </td>
-            <td class="hidden px-3 py-3 text-sm text-gray-500 sm:table-cell">
+            <td
+              class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] sm:table-cell"
+            >
               {{ cost.date_created }}
             </td>
-            <td class="px-3 py-3 text-sm text-gray-500">
+            <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
               <AdminCostsManageDropdown />
             </td>
           </tr>
