@@ -31,4 +31,8 @@ definePageMeta({
   colorMode: "light",
   layout: "empty",
 });
+
+useHead({
+  title: "New Cost",
+});
 </script>

@@ -43,4 +43,8 @@
 definePageMeta({
   colorMode: "light",
 });
+
+useHead({
+  title: "Contact Us",
+});
 </script>

@@ -22,5 +22,9 @@ definePageMeta({
   layout: "admin",
 });
 
+useHead({
+  title: "Partners",
+});
+
 const costStore = useCostStore();
 </script>

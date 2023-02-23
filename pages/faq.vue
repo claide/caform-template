@@ -202,4 +202,8 @@ import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/vue/24/outline";
 definePageMeta({
   colorMode: "light",
 });
+
+useHead({
+  title: "FAQ",
+});
 </script>

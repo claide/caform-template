@@ -43,6 +43,10 @@ definePageMeta({
   layout: "admin",
 });
 
+useHead({
+  title: "Costs",
+});
+
 const costStore = useCostStore();
 
 const onFilterUpdated = (value, key) => {

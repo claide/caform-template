@@ -20,7 +20,7 @@
       >
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1
-            class="text-xl font-bold leading-tight tracking-tight text-dark md:text-2xl dark:text-white"
+            class="text-xl font-medium leading-tight tracking-tight text-dark md:text-2xl dark:text-white"
           >
             Sign in to your account
           </h1>
@@ -36,5 +36,9 @@
 definePageMeta({
   colorMode: "light",
   layout: "empty",
+});
+
+useHead({
+  title: "Login",
 });
 </script>

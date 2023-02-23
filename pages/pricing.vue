@@ -37,4 +37,8 @@
 definePageMeta({
   colorMode: "light",
 });
+
+useHead({
+  title: "Pricing",
+});
 </script>

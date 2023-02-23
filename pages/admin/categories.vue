@@ -22,5 +22,9 @@ definePageMeta({
   layout: "admin",
 });
 
+useHead({
+  title: "Categories",
+});
+
 const costStore = useCostStore();
 </script>

@@ -129,6 +129,15 @@ definePageMeta({
   colorMode: "light",
 });
 
+useHead({
+  title: "Home",
+  ogTitle: "Cost Application Form",
+  description:
+    "Take control of your costs like a boss and unleash your costs administration potential",
+  ogDescription:
+    "Take control of your costs like a boss and unleash your costs administration potential",
+});
+
 const cafPoints = ref([
   {
     title: "Cost Application Form",

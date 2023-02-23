@@ -6,7 +6,7 @@
   >
     <div class="mx-auto px-2 lg:px-0">
       <div
-        class="container mx-auto relative h-16 flex justify-between items-center"
+        class="container mx-auto relative py-2 md:py-3 flex justify-between items-center"
       >
         <div class="relative z-10 px-2 flex lg:px-0">
           <div class="flex-shrink-0 flex items-center">
