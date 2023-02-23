@@ -19,12 +19,14 @@
           src="/img/404-error.png"
           sizes="sm:200px md:100w lg:380px"
           class="mx-auto mb-12 md:mb-20"
+          format="webp"
         />
         <nuxt-img
           v-else
           src="/img/401-error.png"
           sizes="sm:200px md:100w lg:380px"
           class="mx-auto mb-12 md:mb-20"
+          format="webp"
         />
         <div class="text-2xl md:text-4xl font-medium text-center mb-6">
           The page you were looking for cannot be found.

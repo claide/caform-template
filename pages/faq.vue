@@ -1,18 +1,21 @@
 <template>
   <div class="relative mt-10 md:mt-[5rem] page">
-    <img
-      src="~assets/img/particle-yellow.png"
+    <nuxt-img
+      src="/img/particle-yellow.png"
       alt="header particles"
+      format="webp"
       class="page-particle-yellow"
     />
-    <img
-      src="~assets/img/particle-blue.png"
+    <nuxt-img
+      src="/img/particle-blue.png"
       alt="header particles"
+      format="webp"
       class="page-particle-blue"
     />
-    <img
-      src="~assets/img/particle-red.png"
+    <nuxt-img
+      src="/img/particle-red.png"
       alt="header particles"
+      format="webp"
       class="page-particle-red"
     />
     <section class="px-4 py-16 lg:py-24">

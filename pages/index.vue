@@ -1,9 +1,9 @@
 <template>
   <div class="mt-0 md:mt-[34px]">
     <section class="relative hero">
-      <img
+      <nuxt-img
         class="hidden md:block w-full md:w-2/4 h-[32rem] md:h-screen"
-        :src="heroImg"
+        src="/img/home-bg.png"
         :style="{
           top: `-112px`,
           right: 0,
@@ -11,20 +11,24 @@
           backgroundSize: `contain`,
           zIndex: -1,
         }"
+        format="webp"
       />
-      <img
-        src="~assets/img/particle-yellow.png"
+      <nuxt-img
+        src="/img/particle-yellow.png"
         alt="header particles"
+        format="webp"
         class="hero-particle-yellow"
       />
-      <img
-        src="~assets/img/particle-blue.png"
+      <nuxt-img
+        src="/img/particle-blue.png"
         alt="header particles"
+        format="webp"
         class="hero-particle-blue"
       />
-      <img
-        src="~assets/img/particle-red.png"
+      <nuxt-img
+        src="/img/particle-red.png"
         alt="header particles"
+        format="webp"
         class="hero-particle-red"
       />
       <div
@@ -66,6 +70,7 @@
             sizes="sm:100vw md:100vw lg:704px"
             width="704"
             height="404"
+            format="webp"
           />
         </div>
 
@@ -107,6 +112,7 @@
             class="mx-auto mb-8"
             :src="item.img"
             sizes="sm:113px md:127px lg:137px"
+            format="webp"
           />
           <h3 class="text-primary font-bold text-2xl mb-8">
             {{ item.title }}
@@ -123,8 +129,6 @@
 </template>
 
 <script setup>
-import heroImg from "@/assets/img/home-bg.png";
-
 definePageMeta({
   colorMode: "light",
 });

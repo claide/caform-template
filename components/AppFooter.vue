@@ -9,6 +9,7 @@
               sizes="sm:100vw md:100w lg:120px"
               width="120"
               height="48"
+              format="webp"
             />
           </nuxt-link>
         </div>
