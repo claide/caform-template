@@ -20,7 +20,7 @@
           <div class="mt-2 flex items-center text-sm text-gray-500">
             <div class="mt-1 w-full">
               <AdminCostsPaymentSelector
-                @update:model-value="onFilterUpdated($event, 'payment')"
+                @update:model-value="onFilterUpdated($event, 'payment_method')"
               />
             </div>
           </div>
@@ -55,7 +55,8 @@ useHead({
 
 const costStore = useCostStore();
 
-const onFilterUpdated = (value, key) => {
-  console.log("value", value);
+const onFilterUpdated = async (value, key) => {
+  costStore.filters[key] = value
+  await costStore.getCosts()
 };
 </script>
