@@ -11,12 +11,17 @@
     </div>
 
     <AdminPartnersTable />
-    <AdminPagination />
+    <AdminPagination
+      v-model="partnerStore.partners.meta.current_page"
+      :from="partnerStore.partners.meta.from"
+      :to="partnerStore.partners.meta.to"
+      :total="partnerStore.partners.meta.total"
+    />
   </section>
 </template>
 
 <script setup>
-import { useCostStore } from "@/store/cost";
+import { usePartnerStore } from "@/store/partners";
 
 definePageMeta({
   layout: "admin",
@@ -27,5 +32,5 @@ useHead({
   title: "Partners",
 });
 
-const costStore = useCostStore();
+const partnerStore = usePartnerStore();
 </script>

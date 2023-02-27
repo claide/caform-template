@@ -42,7 +42,7 @@
         </thead>
         <tbody>
           <tr
-            v-for="category in categoryStore.categories"
+            v-for="category in categoryStore.categories.data"
             :key="category.id"
             class="bg-white border-b dark:bg-[#121A29] dark:border-[#2B333F]"
           >
@@ -70,12 +70,17 @@
             <td
               class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] lg:table-cell"
             >
-              {{ category.parent }}
+              <span v-if="category.parent">
+                {{ category.parent.code }}
+                <span v-if="category.parent.code && category.parent.name">
+                  - </span>
+                {{ category.parent.name }}
+              </span>
             </td>
             <td
               class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] sm:table-cell"
             >
-              {{ category.date_created }}
+              {{ category.createdAt }}
             </td>
             <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
               <AdminCategoriesManageDropdown />

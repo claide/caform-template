@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 
+import CostCategory from '@/models/CostCategory'
+
 export const useCategoryStore = defineStore('category', {
   state: () => ({
     categories: {
@@ -10,11 +12,7 @@ export const useCategoryStore = defineStore('category', {
 
   actions: {
     async getCategories () {
-      this.categories = await fetch('https://my.api.mockaroo.com/cost_categories.json?key=2a320bd0')
-        .then((response) => response.json())
-        .catch((err) => console.log('err', err))
-
-      return this.categories
+      this.categories = await CostCategory.get()
     }
   }
 })

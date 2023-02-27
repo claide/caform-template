@@ -36,7 +36,7 @@
         </thead>
         <tbody>
           <tr
-            v-for="partner in partnerStore.partners"
+            v-for="partner in partnerStore.partners.data"
             :key="partner.id"
             class="bg-white border-b dark:bg-[#121A29] dark:border-gray-700"
           >
@@ -52,25 +52,25 @@
                 <dd
                   class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] md:hidden"
                 >
-                  {{ partner.payment_method }}
+                  {{ partner.paymentMethodText }}
                 </dd>
                 <dt class="sr-only md:hidden">Date created</dt>
                 <dd
                   class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] md:hidden"
                 >
-                  {{ partner.date_created }}
+                  {{ partner.createdAt }}
                 </dd>
               </dl>
             </td>
             <td
               class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] lg:table-cell"
             >
-              {{ partner.payment_method }}
+              {{ partner.paymentMethodText }}
             </td>
             <td
               class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] sm:table-cell"
             >
-              {{ partner.date_created }}
+              {{ partner.createdAt }}
             </td>
             <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
               <AdminCategoriesManageDropdown />

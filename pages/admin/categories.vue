@@ -11,12 +11,17 @@
     </div>
 
     <AdminCategoriesTable />
-    <AdminPagination />
+    <AdminPagination
+      v-model="categoryStore.categories.meta.current_page"
+      :from="categoryStore.categories.meta.from"
+      :to="categoryStore.categories.meta.to"
+      :total="categoryStore.categories.meta.total"
+    />
   </section>
 </template>
 
 <script setup>
-import { useCostStore } from "@/store/cost";
+import { useCategoryStore } from "@/store/categories";
 
 definePageMeta({
   layout: "admin",
@@ -27,5 +32,5 @@ useHead({
   title: "Categories",
 });
 
-const costStore = useCostStore();
+const categoryStore = useCategoryStore();
 </script>
