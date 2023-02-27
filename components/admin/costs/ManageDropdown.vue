@@ -24,21 +24,21 @@
           class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-[#121A29] dark:border-gray-600 z-10"
         >
           <div class="px-1 py-1">
-            <MenuItem
-              v-for="(item, index) in operationItems"
-              v-slot="{ active }"
-            >
-              <button
-                :class="[
-                  active
-                    ? 'bg-[#EBEAF4] text-primary dark:bg-black'
-                    : 'text-dark',
-                  'group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark',
-                ]"
-              >
-                {{ item }}
-              </button>
-            </MenuItem>
+            <template v-for="(item, index) in operationItems">
+              <MenuItem v-slot="{ active }" v-if="item.show" :key="index">
+                <button
+                  @click="item.action"
+                  :class="[
+                    active
+                      ? 'bg-[#EBEAF4] text-primary dark:bg-black'
+                      : 'text-dark',
+                    'group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark',
+                  ]"
+                >
+                  {{ item.text }}
+                </button>
+              </MenuItem>
+            </template>
           </div>
         </MenuItems>
       </transition>
@@ -52,13 +52,24 @@ import {
   ChevronDownIcon,
   DocumentArrowUpIcon,
 } from "@heroicons/vue/24/outline";
+import Cost from "@/models/Cost";
 
-const operationItems = [
-  "Mark as paid",
-  "Reject payment",
-  "Reject",
-  "Delete",
-  "View breakdowns",
-  "View invoices",
-];
+const props = defineProps({
+  cost: {
+    type: Cost,
+    required: true,
+  },
+});
+
+const operationItems = computed(() => {
+  return [
+    { text: "Mark as Paid", action: null, show: props.cost.status == 2 },
+    { text: "Reject payment", action: null, show: props.cost.status == 2 },
+    { text: "Approve", action: null, show: props.cost.status !== 2 && props.cost.status !== 4 },
+    { text: "Reject", action: null, show: props.cost.status !== 3 && props.cost.status !== 4 },
+    { text: "View breakdowns", action: null, show: true },
+    { text: "View invoices", action: null, show: true },
+    { text: "Delete", action: null, show: true },
+  ];
+});
 </script>

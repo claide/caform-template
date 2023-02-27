@@ -32,7 +32,12 @@
     </div>
 
     <AdminCostsTable />
-    <AdminPagination />
+    <AdminPagination
+      v-model="costStore.costs.meta.current_page"
+      :from="costStore.costs.meta.from"
+      :to="costStore.costs.meta.to"
+      :total="costStore.costs.meta.total"
+    />
   </section>
 </template>
 
@@ -41,6 +46,7 @@ import { useCostStore } from "@/store/cost";
 
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 
 useHead({

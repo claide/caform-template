@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a
+    <!-- <a
       href="#!"
       class="p-3 font-medium text-sm leading-snug rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-full flex justify-center items-center bg-[#4386F4] hover:bg-[#1C6DF2] text-white text-center relative"
     >
@@ -20,27 +20,45 @@
       class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
     >
       <p class="text-center font-medium mx-4 mb-0 text-dark">or</p>
-    </div>
-    <form class="space-y-4 md:space-y-6" action="#">
+    </div> -->
+    <Form
+      :validation-schema="schema"
+      class="space-y-4 md:space-y-6"
+      @submit="login"
+    >
       <div>
-        <input
+        <Field
+          id="email"
+          name="email"
           type="email"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary mb-4"
           placeholder="Enter your email"
         />
       </div>
       <div>
-        <input
+        <Field
+          id="password"
+          name="password"
           type="password"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary mb-4"
           placeholder="Enter your password"
         />
       </div>
+      <div>
+        <Field
+          id="token"
+          name="token"
+          type="text"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary mb-4"
+          placeholder="Token"
+        />
+      </div>
       <div class="flex items-center justify-between">
         <div class="flex items-start">
-          <div class="flex items-center h-5">
-            <input
+          <!-- <div class="flex items-center h-5">
+            <Field
               id="remember"
+              name="remember"
               aria-describedby="remember"
               type="checkbox"
               class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
@@ -51,7 +69,7 @@
             <label for="remember" class="text-gray-500 dark:text-gray-300"
               >Remember me</label
             >
-          </div>
+          </div> -->
         </div>
         <nuxt-link
           to="forgot-password"
@@ -74,8 +92,28 @@
           >Sign up</nuxt-link
         >
       </p>
-    </form>
+    </Form>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useAuthStore } from "@/store/auth";
+import { Form, Field } from "vee-validate";
+import * as yup from "yup";
+
+const authStore = useAuthStore();
+const schema = yup.object({
+  email: yup.string().required().email(),
+  password: yup.string().required().min(6),
+  token: yup.string().required()
+});
+
+const login = async (values) => {
+  try {
+    await authStore.login(values);
+    return navigateTo("/");
+  } catch (e) {
+    console.log(e);
+  }
+};
+</script>

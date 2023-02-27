@@ -127,6 +127,7 @@ import heroImg from "@/assets/img/home-bg.png";
 
 definePageMeta({
   colorMode: "light",
+  middleware: "guest"
 });
 
 useHead({

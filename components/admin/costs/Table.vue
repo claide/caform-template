@@ -65,7 +65,7 @@
         </thead>
         <tbody>
           <tr
-            v-for="cost in costStore.costs"
+            v-for="cost in costStore.costs.data"
             :key="cost.id"
             class="bg-white border-b dark:bg-[#121A29] dark:border-[#2B333F]"
           >
@@ -77,7 +77,7 @@
             <td
               class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]"
             >
-              {{ cost.partner }}
+              <span v-if="cost.partner">Partner: {{ cost.partner.name }}</span>
             </td>
             <td class="px-3 py-3 text-sm font-medium">
               <span class="dark:text-white">{{ cost.applicant }}</span>
@@ -95,7 +95,7 @@
                 </dd>
                 <dt class="sr-only md:hidden">Partner</dt>
                 <dd class="mt-1 truncate text-xs md:hidden">
-                  Partner: {{ cost.partner }}
+                  <span v-if="cost.partner">Partner: {{ cost.partner.name }}</span>
                 </dd>
                 <dt class="sr-only">Invoice #</dt>
                 <dd class="mt-1 truncate text-xs">
@@ -107,23 +107,14 @@
                 </dd>
                 <dt class="sr-only">Payment method</dt>
                 <dd class="mt-1 truncate text-xs">
-                  Payment Method: {{ cost.payment_method }}
+                  Payment Method: {{ cost.paymentMethodText }}
                 </dd>
                 <dt class="sr-only md:hidden">Status</dt>
                 <dd class="mt-1 truncate text-xs md:hidden">
                   <span
-                    :class="{
-                      'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300':
-                        cost.status === 'Paid',
-                      'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300':
-                        cost.status === 'Pending',
-                      'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300':
-                        cost.status === 'Approved',
-                      'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300':
-                        cost.status === 'Unpaid',
-                    }"
+                    :class="cost.statusColor"
                     class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded"
-                    >{{ cost.status }}</span
+                    >{{ cost.statusText }}</span
                   >
                 </dd>
               </dl>
@@ -146,33 +137,24 @@
             <td
               class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] lg:table-cell"
             >
-              {{ cost.payment_method }}
+              {{ cost.paymentMethodText }}
             </td>
             <td
               class="hidden md:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]"
             >
               <span
-                :class="{
-                  'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300':
-                    cost.status === 'Paid',
-                  'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300':
-                    cost.status === 'Pending',
-                  'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300':
-                    cost.status === 'Approved',
-                  'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300':
-                    cost.status === 'Unpaid',
-                }"
+                :class="cost.statusColor"
                 class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded"
-                >{{ cost.status }}</span
+                >{{ cost.statusText }}</span
               >
             </td>
             <td
               class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] sm:table-cell"
             >
-              {{ cost.date_created }}
+              {{ cost.createdAt }}
             </td>
             <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
-              <AdminCostsManageDropdown />
+              <AdminCostsManageDropdown :cost="cost" />
             </td>
           </tr>
         </tbody>

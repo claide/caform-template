@@ -88,5 +88,17 @@ export default defineNuxtConfig({
 
   build: {
     transpile: ['@vuepic/vue-datepicker']
-  }
+  },
+
+  runtimeConfig: {
+    public: {
+      apiBase: '' // can be overridden by NUXT_PUBLIC_API_BASE environment variable
+    }
+  },
+
+  plugins: [
+    '@/plugins/auth',
+    '@/plugins/dayjs',
+    '@/plugins/vue-api-query'
+  ]
 })

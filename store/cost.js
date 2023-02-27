@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import Cost from '@/models/Cost'
 
 export const useCostStore = defineStore('cost', {
   state: () => ({
@@ -10,11 +10,7 @@ export const useCostStore = defineStore('cost', {
 
   actions: {
     async getCosts () {
-      this.costs = await fetch('https://my.api.mockaroo.com/costs.json?key=2a320bd0')
-        .then((response) => response.json())
-        .catch((err) => console.log('err', err))
-
-      return this.costs
+      this.costs = await Cost.include('partner').get()
     }
   }
 })

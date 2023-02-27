@@ -20,6 +20,7 @@ import { useCostStore } from "@/store/cost";
 
 definePageMeta({
   layout: "admin",
+  middleware: ["auth"],
 });
 
 useHead({
