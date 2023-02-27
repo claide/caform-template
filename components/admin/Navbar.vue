@@ -33,6 +33,7 @@
             <AppColorModePicker />
           </div>
           <button
+            @click="logout"
             type="button"
             class="flex-shrink-0 bg-white rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
@@ -95,6 +96,7 @@
 
 <script setup>
 import { useAdminPages } from "@/composables/admin-pages";
+import { useAuthStore } from "@/store/auth";
 
 import {
   Disclosure,
@@ -117,6 +119,7 @@ import {
 const colorMode = useColorMode();
 const route = useRoute();
 const currentPath = ref(route);
+const authStore = useAuthStore();
 
 const navigation = [
   {
@@ -132,6 +135,13 @@ const navigation = [
     link: "/admin/partners",
   },
 ];
+
+const logout = async () => {
+  try {
+    await authStore.logout()
+    return navigateTo('/login')
+  } catch {}
+}
 
 watchEffect(() => {
   currentPath.value = useAdminPages(route.path);
