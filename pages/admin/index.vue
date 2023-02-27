@@ -33,7 +33,9 @@
 
     <AdminCostsTable />
     <AdminPagination
+      @update:modelValue="onPageChanged"
       v-model="costStore.costs.meta.current_page"
+      :pages="costStore.costs.meta.last_page"
       :from="costStore.costs.meta.from"
       :to="costStore.costs.meta.to"
       :total="costStore.costs.meta.total"
@@ -58,5 +60,9 @@ const costStore = useCostStore();
 const onFilterUpdated = async (value, key) => {
   costStore.filters[key] = value
   await costStore.getCosts()
+};
+
+const onPageChanged = (page) => {
+  costStore.setMeta({ current_page: page });
 };
 </script>

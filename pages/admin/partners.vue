@@ -12,7 +12,9 @@
 
     <AdminPartnersTable />
     <AdminPagination
+      @update:modelValue="onPageChanged"
       v-model="partnerStore.partners.meta.current_page"
+      :pages="partnerStore.partners.meta.last_page"
       :from="partnerStore.partners.meta.from"
       :to="partnerStore.partners.meta.to"
       :total="partnerStore.partners.meta.total"
@@ -33,4 +35,8 @@ useHead({
 });
 
 const partnerStore = usePartnerStore();
+
+const onPageChanged = (page) => {
+  partnerStore.setMeta({ current_page: page });
+};
 </script>

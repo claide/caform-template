@@ -12,7 +12,9 @@
 
     <AdminCategoriesTable />
     <AdminPagination
+      @update:modelValue="onPageChanged"
       v-model="categoryStore.categories.meta.current_page"
+      :pages="categoryStore.categories.meta.last_page"
       :from="categoryStore.categories.meta.from"
       :to="categoryStore.categories.meta.to"
       :total="categoryStore.categories.meta.total"
@@ -33,4 +35,8 @@ useHead({
 });
 
 const categoryStore = useCategoryStore();
+
+const onPageChanged = (page) => {
+  categoryStore.setMeta({ current_page: page });
+};
 </script>

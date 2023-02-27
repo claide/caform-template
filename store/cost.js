@@ -27,6 +27,13 @@ export const useCostStore = defineStore('cost', {
           page: this.costs.meta.current_page
         })
         .get()
+    },
+    async setMeta (meta = {}) {
+      this.costs.meta = {
+        ...this.costs.meta,
+        ...meta
+      }
+      await this.getCosts()
     }
   }
 })
