@@ -23,7 +23,7 @@
     </div> -->
     <Form
       :validation-schema="schema"
-      class="space-y-4 md:space-y-6"
+      class="space-y-4 md:space-y-5"
       @submit="login"
     >
       <div>
@@ -31,30 +31,39 @@
           id="email"
           name="email"
           type="email"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary mb-4"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
           placeholder="Enter your email"
         />
-        <ErrorMessage name="email" />
+        <ErrorMessage
+          class="text-red-700 text-sm leading-normal"
+          name="email"
+        />
       </div>
       <div>
         <Field
           id="password"
           name="password"
           type="password"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary mb-4"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
           placeholder="Enter your password"
         />
-        <ErrorMessage name="password" />
+        <ErrorMessage
+          class="text-red-700 text-sm leading-normal"
+          name="password"
+        />
       </div>
       <div>
         <Field
           id="token"
           name="token"
           type="text"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary mb-4"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
           placeholder="Token"
         />
-        <ErrorMessage name="token" />
+        <ErrorMessage
+          class="text-red-700 text-sm leading-normal"
+          name="token"
+        />
       </div>
       <div class="flex items-center justify-between">
         <div class="flex items-start">
@@ -106,9 +115,9 @@ import * as yup from "yup";
 
 const authStore = useAuthStore();
 const schema = yup.object({
-  email: yup.string().required().label('Email').email(),
-  password: yup.string().required().label('Password').min(6),
-  token: yup.string().label('Token').required()
+  email: yup.string().required().label("Email").email(),
+  password: yup.string().required().label("Password").min(6),
+  token: yup.string().label("Token").required(),
 });
 
 const login = async (values) => {
