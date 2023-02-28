@@ -14,7 +14,7 @@
                 name="title"
                 class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
               />
-              <ErrorMessage name="title" />
+              <ErrorMessage class="text-red-700 text-sm" name="title" />
             </div>
           </div>
 
@@ -41,7 +41,10 @@
                   {{ category.code }}
                 </option>
               </Field>
-              <ErrorMessage name="cost_category_id" />
+              <ErrorMessage
+                class="text-red-700 text-sm"
+                name="cost_category_id"
+              />
             </div>
           </div>
 
@@ -50,18 +53,17 @@
               Date period
             </label>
             <div class="mt-1">
-              <Field v-model="date" name="date" v-slot="{ field }">
+              <Field v-model="date" type="text" name="date" v-slot="{ field }">
                 <VueDatePicker
-                  ref="datePicker"
+                  v-model="date"
                   range
                   teleport-center
-                  teleport="#datepicker"
                   v-bind="field"
                   :enableTimePicker="false"
                 >
                 </VueDatePicker>
               </Field>
-              <ErrorMessage name="date" />
+              <ErrorMessage class="text-red-700 text-sm" name="date" />
             </div>
           </div>
 
@@ -75,7 +77,7 @@
                 name="amount"
                 class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
               />
-              <ErrorMessage name="amount" />
+              <ErrorMessage class="text-red-700 text-sm" name="amount" />
             </div>
           </div>
         </div>
@@ -131,9 +133,10 @@ const show = (opened = true) => {
 
 const submit = handleSubmit((values) => {
   values.currency = "GBP";
+
   if (values.date) {
-    values["period_from"] = dayjs(values.date[0]).format('YYYY-MM-DD');
-    values["period_to"] = dayjs(values.date[1]).format('YYYY-MM-DD');
+    values["period_from"] = dayjs(values.date[0]).format("YYYY-MM-DD");
+    values["period_to"] = dayjs(values.date[1]).format("YYYY-MM-DD");
     delete values.date;
   }
   emit("submitted", values);

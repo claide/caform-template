@@ -16,7 +16,7 @@
             v-model="applicantName"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
-          <ErrorMessage name="applicant_name" />
+          <ErrorMessage class="text-red-700 text-sm" name="applicant_name" />
         </div>
       </div>
 
@@ -32,7 +32,7 @@
             v-model="email"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
-          <ErrorMessage name="email" />
+          <ErrorMessage class="text-red-700 text-sm" name="email" />
         </div>
       </div>
 
@@ -48,7 +48,7 @@
             v-model="invoiceNumber"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
-          <ErrorMessage name="invoice_number" />
+          <ErrorMessage class="text-red-700 text-sm" name="invoice_number" />
         </div>
       </div>
 
@@ -72,7 +72,7 @@
               {{ currency }}
             </option>
           </select>
-          <ErrorMessage name="currency" />
+          <ErrorMessage class="text-red-700 text-sm" name="currency" />
         </div>
       </div>
 
@@ -96,7 +96,7 @@
               {{ partner.name }}
             </option>
           </select>
-          <ErrorMessage name="cost_partner_id" />
+          <ErrorMessage class="text-red-700 text-sm" name="cost_partner_id" />
         </div>
       </div>
 
@@ -123,7 +123,7 @@
               {{ method.label }}
             </option>
           </select>
-          <ErrorMessage name="payment_method" />
+          <ErrorMessage class="text-red-700 text-sm" name="payment_method" />
         </div>
       </div>
 
@@ -277,6 +277,8 @@
           Add new
         </button>
       </div>
+
+      <CostBreakdown v-if="breakdowns.length > 0" :breakdowns="breakdowns" />
     </div>
     <button
       type="submit"
@@ -285,7 +287,10 @@
       Send
     </button>
 
-    <ModalsBreakdownModal @submitted="onBreakdownSubmitted" ref="addBreakdown" />
+    <ModalsBreakdownModal
+      @submitted="onBreakdownSubmitted"
+      ref="addBreakdown"
+    />
   </form>
 </template>
 
@@ -317,7 +322,7 @@ const { handleSubmit, setErrors } = useForm({
     currency: "USD",
     payment_info: {},
     invoice_file: [],
-    breakdowns: []
+    breakdowns: [],
   },
   validationSchema: schema,
 });
@@ -326,6 +331,7 @@ const { value: applicantName } = useField("applicant_name");
 const { value: email } = useField("email");
 const { value: invoiceNumber } = useField("invoice_number");
 const { value: paymentMethod } = useField("payment_method");
+const { value: currency } = useField("currency");
 const { value: paymentInfo } = useField("payment_info");
 const { value: invoiceFiles } = useField("invoice_file");
 const { value: costPartnerId } = useField("cost_partner_id");
@@ -354,8 +360,8 @@ const showPaymentField = (selectedPaymentMethod, paymentMethods = []) => {
 };
 
 const onBreakdownSubmitted = (breakdown) => {
-  breakdowns.value.push(breakdown)
-}
+  breakdowns.value.push(breakdown);
+};
 
 const submitCost = handleSubmit(async (values) => {
   try {
