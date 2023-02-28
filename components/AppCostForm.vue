@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <form @submit.prevent="submitCost">
     <div class="space-y-4 sm:space-y-5">
       <div>
         <label
@@ -11,9 +11,12 @@
         <div class="mt-1">
           <input
             type="text"
-            name="applicant-name"
+            id="applicant_name"
+            name="applicant_name"
+            v-model="applicantName"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
+          <ErrorMessage name="applicant_name" />
         </div>
       </div>
 
@@ -23,10 +26,13 @@
         </label>
         <div class="mt-1">
           <input
+            id="email"
             type="email"
             name="email"
+            v-model="email"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
+          <ErrorMessage name="email" />
         </div>
       </div>
 
@@ -36,10 +42,13 @@
         </label>
         <div class="mt-1">
           <input
+            id="invoice_number"
             type="text"
-            name="invoice"
+            name="invoice_number"
+            v-model="invoiceNumber"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
+          <ErrorMessage name="invoice_number" />
         </div>
       </div>
 
@@ -49,13 +58,21 @@
         </label>
         <div class="mt-1">
           <select
+            id="currency"
+            as="select"
             name="currency"
+            v-model="currency"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           >
-            <option>USD</option>
-            <option>GBP</option>
-            <option>EUR</option>
+            <option
+              v-for="currency in currencies"
+              :value="currency"
+              :key="currency"
+            >
+              {{ currency }}
+            </option>
           </select>
+          <ErrorMessage name="currency" />
         </div>
       </div>
 
@@ -65,13 +82,21 @@
         </label>
         <div class="mt-1">
           <select
-            name="partner"
+            as="select"
+            id="cost_partner_id"
+            name="cost_partner_id"
+            v-model="costPartnerId"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           >
-            <option>Adwords</option>
-            <option>Nexclic</option>
-            <option>Compado</option>
+            <option
+              v-for="partner in partners"
+              :value="partner.id"
+              :key="partner.id"
+            >
+              {{ partner.name }}
+            </option>
           </select>
+          <ErrorMessage name="cost_partner_id" />
         </div>
       </div>
 
@@ -84,13 +109,21 @@
         </label>
         <div class="mt-1">
           <select
-            name="payment-method"
+            as="select"
+            id="payment_method"
+            name="payment_method"
+            v-model="paymentMethod"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           >
-            <option>Wiretransfer</option>
-            <option>Bitsafe</option>
-            <option>SEPA</option>
+            <option
+              v-for="method in paymentMethods"
+              :value="method.value"
+              :key="method.value"
+            >
+              {{ method.label }}
+            </option>
           </select>
+          <ErrorMessage name="payment_method" />
         </div>
       </div>
 
@@ -107,7 +140,7 @@
         </p>
       </div>
 
-      <div class="mt-6">
+      <div class="mt-6" v-if="showPaymentField(paymentMethod, [1, 2, 3])">
         <label
           for="beneficiary"
           class="block text-sm font-medium text-gray-700"
@@ -117,58 +150,63 @@
         <div class="mt-1">
           <input
             type="text"
-            name="beneficiary"
+            name="payment_info.name"
+            v-model="paymentInfo.name"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
         </div>
       </div>
 
-      <div>
+      <div v-if="showPaymentField(paymentMethod, [1])">
         <label for="street" class="block text-sm font-medium text-gray-700">
           Street
         </label>
         <div class="mt-1">
           <input
             type="text"
-            name="street"
+            name="payment_info.street"
+            v-model="paymentInfo.street"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
         </div>
       </div>
 
-      <div>
+      <div v-if="showPaymentField(paymentMethod, [1])">
         <label for="city" class="block text-sm font-medium text-gray-700">
           City
         </label>
         <div class="mt-1">
           <input
             type="text"
-            name="city"
+            name="payment_info.city"
+            v-model="paymentInfo.city"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
         </div>
       </div>
 
-      <div>
+      <div v-if="showPaymentField(paymentMethod, [1])">
         <label for="postal" class="block text-sm font-medium text-gray-700">
           Postal code
         </label>
         <div class="mt-1">
           <input
             type="text"
-            name="postal"
+            name="payment_info.postal_code"
+            v-model="paymentInfo.postal_code"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
         </div>
       </div>
 
-      <div>
+      <div v-if="showPaymentField(paymentMethod, [1])">
         <label for="country" class="block text-sm font-medium text-gray-700">
           Country
         </label>
         <div class="mt-1">
           <select
-            name="country"
+            name="payment_info.country_code"
+            v-model="paymentInfo.country_code"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           >
             <option
@@ -182,50 +220,53 @@
         </div>
       </div>
 
-      <div>
+      <div v-if="showPaymentField(paymentMethod, [1, 2, 3])">
         <label for="account" class="block text-sm font-medium text-gray-700">
           IBAN account number
         </label>
         <div class="mt-1">
           <input
             type="text"
-            name="account"
+            name="payment_info.iban_account_number"
+            v-model="paymentInfo.iban_account_number"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
         </div>
       </div>
-      <div>
+      <div v-if="showPaymentField(paymentMethod, [1])">
         <label for="swift-code" class="block text-sm font-medium text-gray-700">
           Swift code
         </label>
         <div class="mt-1">
           <input
             type="text"
-            name="swift-code"
+            name="payment_info.swift_code"
+            v-model="paymentInfo.swift_code"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
         </div>
       </div>
-      <div>
+      <div v-if="showPaymentField(paymentMethod, [1, 2, 3])">
         <label for="notes" class="block text-sm font-medium text-gray-700">
           Notes
         </label>
         <div class="mt-1">
           <textarea
             rows="5"
-            name="notes"
+            name="payment_info.notes"
+            v-model="paymentInfo.notes"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />
         </div>
       </div>
 
-      <AppFileUploader :files="files" @remove-file="removeFile">
+      <AppFileUploader :files="invoiceFiles" @remove-file="removeFile">
         Attach invoice
       </AppFileUploader>
 
       <div
         class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-6 after:flex-1 after:border-t after:border-gray-300 after:mt-6"
-      ></div>
+      />
 
       <div class="flex justify-between items-ceter w-full">
         <h3 class="text-lg font-medium text-gray-900">Breakdowns</h3>
@@ -238,27 +279,93 @@
       </div>
     </div>
     <button
+      type="submit"
       class="bg-primary hover:bg-indigo-700 text-white text-base font-medium py-3 px-6 rounded-full mr-3 w-full block mt-6"
     >
       Send
     </button>
 
-    <ModalsBreakdownModal ref="addBreakdown" />
-  </div>
+    <ModalsBreakdownModal @submitted="onBreakdownSubmitted" ref="addBreakdown" />
+  </form>
 </template>
 
 <script setup>
 import allCountries from "@/utils/countries";
+import { useForm, useField, ErrorMessage } from "vee-validate";
+import * as yup from "yup";
+import { usePartnerStore } from "@/store/partners";
+import { useCostStore } from "@/store/cost";
+import includes from "lodash/includes";
 
+const partnerStore = usePartnerStore();
+const costStore = useCostStore();
 const countries = ref(allCountries);
-const files = ref([]);
 const addBreakdown = ref(null);
 
+const schema = yup.object({
+  applicant_name: yup.string().label("Applicant name").required(),
+  email: yup.string().required().label("Email").email(),
+  invoice_number: yup.string().label("Invoice number").required(),
+  currency: yup.string().label("Currency").required(),
+  cost_partner_id: yup.number().label("Partner").required(),
+  payment_method: yup.number().label("Payment method").required(),
+});
+
+const { handleSubmit, setErrors } = useForm({
+  initialValues: {
+    payment_method: 1,
+    currency: "USD",
+    payment_info: {},
+    invoice_file: [],
+    breakdowns: []
+  },
+  validationSchema: schema,
+});
+
+const { value: applicantName } = useField("applicant_name");
+const { value: email } = useField("email");
+const { value: invoiceNumber } = useField("invoice_number");
+const { value: paymentMethod } = useField("payment_method");
+const { value: paymentInfo } = useField("payment_info");
+const { value: invoiceFiles } = useField("invoice_file");
+const { value: costPartnerId } = useField("cost_partner_id");
+const { value: breakdowns } = useField("breakdowns");
+
+const partners = computed(() => {
+  return partnerStore.partners.data;
+});
+const currencies = ["USD", "GBP", "EUR"];
+const paymentMethods = [
+  { label: "Wiretransfer", value: 1 },
+  { label: "Bitsafe", value: 2 },
+  { label: "SEPA", value: 3 },
+];
+
 const removeFile = (index) => {
-  files.value.splice(index, 1);
+  invoiceFiles.value.splice(index, 1);
 };
 
 const addNewBreakdown = () => {
   addBreakdown.value.show();
 };
+
+const showPaymentField = (selectedPaymentMethod, paymentMethods = []) => {
+  return includes(paymentMethods, selectedPaymentMethod);
+};
+
+const onBreakdownSubmitted = (breakdown) => {
+  breakdowns.value.push(breakdown)
+}
+
+const submitCost = handleSubmit(async (values) => {
+  try {
+    await costStore.createCost(values);
+  } catch (e) {
+    setErrors(e.errors);
+  }
+});
+
+onMounted(() => {
+  partnerStore.getPartners();
+});
 </script>

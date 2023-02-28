@@ -1,98 +1,147 @@
 <template>
   <AppModal ref="modal">
     <template #title>Add cost breakdown</template>
-    <div class="px-6 pb-6">
-      <div class="space-y-4">
-        <div>
-          <label for="title" class="block text-sm font-medium text-gray-700">
-            Title
-          </label>
-          <div class="mt-1">
-            <input
-              type="text"
-              name="title"
-              class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
-            />
+    <form @submit="submit">
+      <div class="px-6 pb-6">
+        <div class="space-y-4">
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-700">
+              Title
+            </label>
+            <div class="mt-1">
+              <Field
+                type="text"
+                name="title"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
+              />
+              <ErrorMessage name="title" />
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label for="category" class="block text-sm font-medium text-gray-700">
-            Category
-          </label>
-          <div class="mt-1">
-            <select
-              name="category"
-              class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
+          <div>
+            <label
+              for="category"
+              class="block text-sm font-medium text-gray-700"
             >
-              <option>USD</option>
-              <option>GBP</option>
-              <option>EUR</option>
-            </select>
+              Category
+            </label>
+            <div class="mt-1">
+              <Field
+                as="select"
+                name="cost_category_id"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
+              >
+                <option
+                  :key="category.id"
+                  v-for="category in categoryStore.categories.data"
+                  :value="category.id"
+                >
+                  {{ category.name }}
+                  <span v-if="category.code && category.name"> - </span>
+                  {{ category.code }}
+                </option>
+              </Field>
+              <ErrorMessage name="cost_category_id" />
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label for="period" class="block text-sm font-medium text-gray-700">
-            Date period
-          </label>
-          <div class="mt-1">
-            <VueDatePicker
-              ref="datePicker"
-              range
-              teleport-center
-              teleport="#datepicker"
-              v-model="date"
-              :enableTimePicker="false"
-            ></VueDatePicker>
+          <div>
+            <label for="period" class="block text-sm font-medium text-gray-700">
+              Date period
+            </label>
+            <div class="mt-1">
+              <Field v-model="date" name="date" v-slot="{ field }">
+                <VueDatePicker
+                  ref="datePicker"
+                  range
+                  teleport-center
+                  teleport="#datepicker"
+                  v-bind="field"
+                  :enableTimePicker="false"
+                >
+                </VueDatePicker>
+              </Field>
+              <ErrorMessage name="date" />
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label for="amount" class="block text-sm font-medium text-gray-700">
-            Amount
-          </label>
-          <div class="mt-1">
-            <input
-              type="text"
-              name="amount"
-              class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
-            />
+          <div>
+            <label for="amount" class="block text-sm font-medium text-gray-700">
+              Amount
+            </label>
+            <div class="mt-1">
+              <Field
+                type="text"
+                name="amount"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
+              />
+              <ErrorMessage name="amount" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="bg-gray-200 px-4 py-3 sm:py-4 sm:flex sm:flex-row-reverse sm:px-6"
-    >
-      <button
-        type="button"
-        class="inline-flex w-full justify-center rounded-full border border-transparent bg-primary px-4 py-2 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-2 sm:w-auto sm:text-sm"
-        @click="show(false)"
+      <div
+        class="bg-gray-200 px-4 py-3 sm:py-4 sm:flex sm:flex-row-reverse sm:px-6"
       >
-        Add breakdown
-      </button>
-      <button
-        type="button"
-        class="mt-3 inline-flex w-full justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-        @click="show(false)"
-      >
-        Cancel
-      </button>
-    </div>
+        <button
+          type="submit"
+          class="inline-flex w-full justify-center rounded-full border border-transparent bg-primary px-4 py-2 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-2 sm:w-auto sm:text-sm"
+          @click="submit"
+        >
+          Add breakdown
+        </button>
+        <button
+          type="button"
+          class="mt-3 inline-flex w-full justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+          @click="show(false)"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
   </AppModal>
 </template>
 
 <script setup>
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
+import { Form, Field, ErrorMessage, useField, useForm } from "vee-validate";
+import { useCategoryStore } from "@/store/categories";
+import * as yup from "yup";
 
 const modal = ref(null);
-const date = ref();
+const emit = defineEmits(["submitted"]);
+const categoryStore = useCategoryStore();
+const { value: date } = useField("date");
+
+const validationSchema = yup.object({
+  title: yup.string().label("Title").required(),
+  cost_category_id: yup.number().label("Cost category ID").required(),
+  amount: yup.number().label("Amount").required(),
+});
+
+const { handleSubmit } = useForm({
+  validationSchema,
+});
 
 const show = (opened = true) => {
   modal.value.show(opened);
 };
+
+const submit = handleSubmit((values) => {
+  values.currency = "GBP";
+  if (values.date) {
+    values["period_from"] = values.date[0];
+    values["period_to"] = values.date[1];
+    delete values.date;
+  }
+  emit("submitted", values);
+  show(false);
+});
+
+onMounted(async () => {
+  await categoryStore.getCategories();
+});
 
 defineExpose({
   show,

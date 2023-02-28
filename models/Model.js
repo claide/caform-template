@@ -1,15 +1,15 @@
 import { Model as BaseModel } from 'vue-api-query'
-import _ from 'lodash'
+import mapValues from 'lodash/mapValues'
 import { useAuthStore } from '@/store/auth'
 
 export default class Model extends BaseModel {
   // Define a base url for a REST API
-  baseURL () {
+  baseURL() {
     return ''
   }
 
   // Implement a default request method
-  async request (config) {
+  async request(config) {
     const auth = useAuthStore()
 
     const data = await this.$http(config.url, {
@@ -23,12 +23,12 @@ export default class Model extends BaseModel {
     return { data }
   }
 
-  getBody (config) {
+  getBody(config) {
     if (config.data instanceof FormData) {
       return config.data
     }
     if (config.data) {
-      return _.mapValues(config.data)
+      return mapValues(config.data)
     }
   }
 }

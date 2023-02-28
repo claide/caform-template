@@ -1,4 +1,5 @@
 import Cost from '@/models/Cost'
+import ApplicantCost from '@/models/ApplicantCost'
 
 export const useCostStore = defineStore('cost', {
   state: () => ({
@@ -28,12 +29,16 @@ export const useCostStore = defineStore('cost', {
         })
         .get()
     },
-    async setMeta (meta = {}) {
+    async setMeta(meta = {}) {
       this.costs.meta = {
         ...this.costs.meta,
         ...meta
       }
-      await this.getCosts()
+      return await this.getCosts()
+    },
+    async createCost(form) {
+      const cost = new ApplicantCost(form)
+      return await cost.save()
     }
   }
 })

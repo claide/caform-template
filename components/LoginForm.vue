@@ -34,6 +34,7 @@
           class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary mb-4"
           placeholder="Enter your email"
         />
+        <ErrorMessage name="email" />
       </div>
       <div>
         <Field
@@ -43,6 +44,7 @@
           class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary mb-4"
           placeholder="Enter your password"
         />
+        <ErrorMessage name="password" />
       </div>
       <div>
         <Field
@@ -52,6 +54,7 @@
           class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded focus:ring-primary focus:border-primary block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary mb-4"
           placeholder="Token"
         />
+        <ErrorMessage name="token" />
       </div>
       <div class="flex items-center justify-between">
         <div class="flex items-start">
@@ -98,14 +101,14 @@
 
 <script setup>
 import { useAuthStore } from "@/store/auth";
-import { Form, Field } from "vee-validate";
+import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 
 const authStore = useAuthStore();
 const schema = yup.object({
-  email: yup.string().required().email(),
-  password: yup.string().required().min(6),
-  token: yup.string().required()
+  email: yup.string().required().label('Email').email(),
+  password: yup.string().required().label('Password').min(6),
+  token: yup.string().label('Token').required()
 });
 
 const login = async (values) => {
