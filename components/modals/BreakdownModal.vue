@@ -108,6 +108,7 @@ import "@vuepic/vue-datepicker/dist/main.css";
 import { Form, Field, ErrorMessage, useField, useForm } from "vee-validate";
 import { useCategoryStore } from "@/store/categories";
 import * as yup from "yup";
+import dayjs from "dayjs";
 
 const modal = ref(null);
 const emit = defineEmits(["submitted"]);
@@ -131,8 +132,8 @@ const show = (opened = true) => {
 const submit = handleSubmit((values) => {
   values.currency = "GBP";
   if (values.date) {
-    values["period_from"] = values.date[0];
-    values["period_to"] = values.date[1];
+    values["period_from"] = dayjs(values.date[0]).format('YYYY-MM-DD');
+    values["period_to"] = dayjs(values.date[1]).format('YYYY-MM-DD');
     delete values.date;
   }
   emit("submitted", values);
