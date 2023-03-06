@@ -53,7 +53,7 @@
             >Contact sales</nuxt-link
           >
         </div>
-        <div class="lg:col-span-5 lg:flex mx-[-16px] md:mx-0">
+        <div id="registration" class="lg:col-span-5 lg:flex mx-[-16px] md:mx-0">
           <Registration />
         </div>
       </div>

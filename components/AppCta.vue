@@ -9,12 +9,34 @@
         >
           Start collecting cost applications
         </div>
-        <nuxt-link
-          to="/"
+        <a
+          href="javascript:;"
+          @click="goToRegistration('#registration')"
           class="rounded-full bg-secondary text-white font-medium text-base py-4 px-6 inline-block md:ml-auto"
-          >Create account</nuxt-link
+          >Create account</a
         >
       </div>
     </div>
   </section>
 </template>
+
+<script setup>
+import { useRouter, createRouter } from "vue-router";
+
+const route = useRouter();
+
+const goToRegistration = (anchor) => {
+  if (route.currentRoute.value.name === "index") {
+    const el = document.querySelector(anchor);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  } else {
+    route.push({ path: "/" });
+    const el = document.querySelector(anchor);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+};
+</script>
