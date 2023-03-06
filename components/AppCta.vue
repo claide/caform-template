@@ -10,7 +10,7 @@
           Start collecting cost applications
         </div>
         <nuxt-link
-          to="/register"
+          to="/"
           class="rounded-full bg-secondary text-white font-medium text-base py-4 px-6 inline-block md:ml-auto"
           >Create account</nuxt-link
         >

@@ -1,7 +1,7 @@
 <template>
   <div class="mt-4 flex items-center justify-between">
     <div class="hidden sm:block">
-      <span class="text-sm text-gray-700">
+      <span class="text-sm text-gray-700 dark:text-slate-400">
         Showing
         {{ " " }}
         <span class="font-medium">{{ props.from }}</span>

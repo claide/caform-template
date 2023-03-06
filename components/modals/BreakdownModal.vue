@@ -86,7 +86,7 @@
       >
         <button
           type="submit"
-          class="inline-flex w-full justify-center rounded-full border border-transparent bg-primary px-4 py-2 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-2 sm:w-auto sm:text-sm"
+          class="inline-flex w-full justify-center rounded-full border border-transparent bg-primary px-4 py-2 text-base font-medium text-white hover:bg-[#5045ca] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-2 sm:w-auto sm:text-sm"
           @click="submit"
         >
           Add breakdown

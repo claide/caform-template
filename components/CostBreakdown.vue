@@ -1,9 +1,9 @@
 <template>
   <div class="relative overflow-x-auto">
     <table
-      class="min-w-full text-sm divide-y divide-[#2B333F] text-dark dark:text-gray-400"
+      class="min-w-full text-sm divide-y divide-[#2B333F] text-dark dark:text-slate-400"
     >
-      <thead class="bg-gray-50 dark:bg-[#212737] dark:text-gray-400">
+      <thead class="bg-gray-50 dark:bg-[#212737] dark:text-slate-400">
         <tr>
           <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">
             Category

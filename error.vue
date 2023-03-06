@@ -6,7 +6,15 @@
         class="flex items-center mb-10 text-2xl font-semibold text-dark dark:text-white"
       >
         <nuxt-img
+          v-if="colorMode === 'light'"
           src="/img/caf-logo-black.svg"
+          sizes="sm:80px md:100w lg:120px"
+          width="120"
+          height="48"
+        />
+        <nuxt-img
+          v-else
+          src="/img/logo-admin.svg"
           sizes="sm:80px md:100w lg:120px"
           width="120"
           height="48"
@@ -50,6 +58,7 @@ const props = defineProps({
   error: Object,
 });
 
+const colorMode = useColorMode();
 const errorCode = ref(props.error);
 
 const handleError = () => clearError({ redirect: "/" });

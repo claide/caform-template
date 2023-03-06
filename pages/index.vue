@@ -44,7 +44,7 @@
 
           <nuxt-link
             to="/register"
-            class="bg-primary hover:bg-indigo-700 text-white text-base font-medium py-4 px-6 rounded-full mr-3 hidden md:inline-block"
+            class="bg-primary hover:bg-[#5045ca] text-white text-base font-medium py-4 px-6 rounded-full mr-3 hidden md:inline-block"
             >Get started</nuxt-link
           >
           <nuxt-link
@@ -91,7 +91,7 @@
 
           <nuxt-link
             to="/features"
-            class="bg-primary hover:bg-indigo-700 text-white text-base font-medium py-4 px-6 rounded-full mr-3 inline-block"
+            class="bg-primary hover:bg-[#5045ca] text-white text-base font-medium py-4 px-6 rounded-full mr-3 inline-block"
             >Read more features</nuxt-link
           >
         </div>
@@ -131,7 +131,7 @@
 <script setup>
 definePageMeta({
   colorMode: "light",
-  middleware: "guest"
+  middleware: "guest",
 });
 
 useHead({

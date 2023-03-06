@@ -282,7 +282,7 @@
     </div>
     <button
       type="submit"
-      class="bg-primary hover:bg-indigo-700 text-white text-base font-medium py-3 px-6 rounded-full mr-3 w-full block mt-6"
+      class="bg-primary hover:bg-[#5045ca] text-white text-base font-medium py-3 px-6 rounded-full mr-3 w-full block mt-6"
     >
       Send
     </button>

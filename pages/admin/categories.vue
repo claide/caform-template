@@ -8,6 +8,15 @@
           Categories
         </h2>
       </div>
+      <div class="mt-5 flex lg:mt-0 lg:ml-4 px-2 lg:px-0">
+        <button
+          @click="addNewCategory"
+          class="bg-[#6158CD] px-4 py-3 rounded-full text-sm font-medium hover:bg-[#5045ca] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 flex items-center text-white"
+        >
+          <PlusIcon class="w-5 h-5 mr-1" />
+          Add new
+        </button>
+      </div>
     </div>
 
     <AdminCategoriesTable />
@@ -19,10 +28,13 @@
       :to="categoryStore.categories.meta.to"
       :total="categoryStore.categories.meta.total"
     />
+
+    <ModalsCategoryModal ref="addCategory" />
   </section>
 </template>
 
 <script setup>
+import { PlusIcon } from "@heroicons/vue/24/outline";
 import { useCategoryStore } from "@/store/categories";
 
 definePageMeta({
@@ -35,8 +47,13 @@ useHead({
 });
 
 const categoryStore = useCategoryStore();
+const addCategory = ref(null);
 
 const onPageChanged = (page) => {
   categoryStore.setMeta({ current_page: page });
+};
+
+const addNewCategory = () => {
+  addCategory.value.show();
 };
 </script>

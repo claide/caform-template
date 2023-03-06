@@ -31,9 +31,9 @@
             >
               <DialogTitle
                 as="h3"
-                class="text-lg font-medium leading-6 flex items-center justify-between mb-6 px-6 pt-6"
+                class="text-lg font-medium leading-6 flex items-center justify-between mb-6 px-6 pt-6 text-dark"
               >
-                <slot name="title" class="text-dark">Popup</slot>
+                <slot name="title" class="">Popup</slot>
                 <button
                   type="button"
                   class="bg-white rounded-md text-slate-400 hover:text-slate-500 focus:outline-none"
