@@ -8,6 +8,15 @@
           Partners
         </h2>
       </div>
+      <div class="mt-5 flex lg:mt-0 lg:ml-4 px-2 lg:px-0">
+        <button
+          @click="addNewPartner"
+          class="bg-[#6158CD] px-4 py-3 rounded-full text-sm font-medium hover:bg-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 flex items-center"
+        >
+          <PlusIcon class="w-5 h-5 mr-1" />
+          Add new
+        </button>
+      </div>
     </div>
 
     <AdminPartnersTable />
@@ -19,10 +28,12 @@
       :to="partnerStore.partners.meta.to"
       :total="partnerStore.partners.meta.total"
     />
+    <ModalsPartnerModal ref="addPartner" />
   </section>
 </template>
 
 <script setup>
+import { PlusIcon } from "@heroicons/vue/24/outline";
 import { usePartnerStore } from "@/store/partners";
 
 definePageMeta({
@@ -35,8 +46,13 @@ useHead({
 });
 
 const partnerStore = usePartnerStore();
+const addPartner = ref(null);
 
 const onPageChanged = (page) => {
   partnerStore.setMeta({ current_page: page });
+};
+
+const addNewPartner = () => {
+  addPartner.value.show();
 };
 </script>
