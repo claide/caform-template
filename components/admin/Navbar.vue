@@ -21,7 +21,7 @@
           <AppColorModePicker />
           <!-- Mobile menu button -->
           <DisclosureButton
-            class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            class="rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
           >
             <span class="sr-only">Open menu</span>
             <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
@@ -35,7 +35,7 @@
           <button
             @click="logout"
             type="button"
-            class="flex-shrink-0 bg-white rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="flex-shrink-0 bg-white rounded-full p-1 text-slate-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             <span class="sr-only">Logout</span>
             <ArrowLeftOnRectangleIcon
@@ -138,10 +138,10 @@ const navigation = [
 
 const logout = async () => {
   try {
-    await authStore.logout()
-    return navigateTo('/login')
+    await authStore.logout();
+    return navigateTo("/login");
   } catch {}
-}
+};
 
 watchEffect(() => {
   currentPath.value = useAdminPages(route.path);

@@ -12,7 +12,7 @@
       type="button"
       :aria-label="`Go to page ${page}`"
       :class="{
-        'bg-indigo-600 text-white hover:bg-indigo-600 hover:text-white':
+        'bg-indigo-600 text-white hover:bg-[#5045ca] hover:text-white':
           isActive,
       }"
       @click="clickHandler"

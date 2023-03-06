@@ -92,11 +92,11 @@
       </div>
       <button
         type="submit"
-        class="w-full text-white bg-primary hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-base px-5 py-4 text-center"
+        class="w-full text-white bg-[#6158CD] hover:bg-[#5045ca] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-base px-5 py-4 text-center"
       >
         Sign in
       </button>
-      <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+      <p class="text-sm font-light text-gray-500 dark:text-slate-400">
         Don’t have an account yet?
         <nuxt-link
           to="/"

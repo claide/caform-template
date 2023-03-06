@@ -3,7 +3,7 @@
     <Menu as="div" class="relative inline-block text-left w-full md:w-auto">
       <div>
         <MenuButton
-          class="inline-flex w-full justify-center rounded-full bg-[#6158CD] px-4 py-3 text-sm font-medium text-white hover:bg-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          class="inline-flex w-full justify-center rounded-full bg-[#6158CD] px-4 py-3 text-sm font-medium text-white hover:bg-[#5045ca] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           Export
           <ChevronDownIcon

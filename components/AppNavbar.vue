@@ -13,7 +13,7 @@
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
           <DisclosureButton
-            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
           >
             <span class="sr-only">Open main menu</span>
             <Bars3Icon v-if="!open" class="block h-6 w-6" />
@@ -46,7 +46,7 @@
               </nuxt-link>
               <nuxt-link
                 to="/login"
-                class="bg-black hover:bg-indigo-700 text-white block text-base py-4 px-7 rounded-full"
+                class="bg-black hover:bg-[#5045ca] text-white block text-base py-4 px-7 rounded-full"
                 >Login</nuxt-link
               >
             </div>

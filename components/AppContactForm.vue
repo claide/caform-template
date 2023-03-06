@@ -27,7 +27,7 @@
 
       <button
         type="submit"
-        class="w-full max-w-[290px] sm:max-w[272px] mx-auto block text-white bg-primary hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-base px-5 py-4 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-8"
+        class="w-full max-w-[290px] sm:max-w[272px] mx-auto block text-white bg-primary hover:bg-[#5045ca] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-base px-5 py-4 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-8"
       >
         Send
       </button>

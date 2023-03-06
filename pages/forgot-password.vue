@@ -1,22 +1,19 @@
 <template>
-  <section>
-    <div class="flex flex-col items-center px-6 py-8 mx-auto md:h-screen">
-      <nuxt-link
-        to="/"
-        class="flex items-center mb-10 text-2xl font-semibold text-dark dark:text-white"
-      >
-        <nuxt-img
-          src="/img/caf-logo-black.svg"
-          sizes="sm:80px md:100w lg:120px"
-          width="120"
-          height="48"
-        />
-      </nuxt-link>
-
-      <div
-        class="w-full bg-white rounded-xl border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
-      >
-        <div class="p-6 sm:p-8">
+  <section class="py-5 lg:py-20">
+    <div class="flex flex-col justify-center items-center px-6 py-8 lg:py-0">
+      <div class="w-full md:mt-0 sm:max-w-md xl:p-0">
+        <nuxt-link
+          to="/"
+          class="flex items-center mb-10 text-2xl font-semibold text-dark dark:text-white"
+        >
+          <nuxt-img
+            src="/img/caf-logo-black.svg"
+            sizes="sm:80px md:100w lg:120px"
+            width="120"
+            height="48"
+          />
+        </nuxt-link>
+        <div>
           <h1
             class="text-xl font-medium leading-tight tracking-tight text-dark md:text-2xl dark:text-white mb-6"
           >
@@ -38,7 +35,7 @@
 
               <button
                 type="submit"
-                class="w-full text-white bg-primary hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-base px-5 py-4 text-center"
+                class="w-full text-white bg-[#6158CD] hover:bg-[#5045ca] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-base px-5 py-4 text-center"
               >
                 Send Reset Instructions
               </button>

@@ -11,7 +11,7 @@
       <div class="mt-5 flex lg:mt-0 lg:ml-4 px-2 lg:px-0">
         <button
           @click="addNewCategory"
-          class="bg-[#6158CD] px-4 py-3 rounded-full text-sm font-medium hover:bg-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 flex items-center text-white"
+          class="bg-[#6158CD] px-4 py-3 rounded-full text-sm font-medium hover:bg-[#5045ca] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 flex items-center text-white"
         >
           <PlusIcon class="w-5 h-5 mr-1" />
           Add new
