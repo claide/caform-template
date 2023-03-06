@@ -271,7 +271,7 @@
       <div class="flex justify-between items-ceter w-full">
         <h3 class="text-lg font-medium text-gray-900">Breakdowns</h3>
         <button
-          @click="addNewBreakdown"
+          @click.prevent="addNewBreakdown"
           class="border border-gray-300 py-1 px-2 rounded text-sm"
         >
           Add new
@@ -316,7 +316,7 @@ const schema = yup.object({
   payment_method: yup.number().label("Payment method").required(),
 });
 
-const { handleSubmit, setErrors } = useForm({
+const costForm = useForm({
   initialValues: {
     payment_method: 1,
     currency: "USD",
@@ -326,6 +326,7 @@ const { handleSubmit, setErrors } = useForm({
   },
   validationSchema: schema,
 });
+const { handleSubmit, setErrors, resetForm } = costForm
 
 const { value: applicantName } = useField("applicant_name");
 const { value: email } = useField("email");
@@ -366,6 +367,7 @@ const onBreakdownSubmitted = (breakdown) => {
 const submitCost = handleSubmit(async (values) => {
   try {
     await costStore.createCost(values);
+    resetForm()
   } catch (e) {
     setErrors(e.errors);
   }

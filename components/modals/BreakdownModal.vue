@@ -9,9 +9,10 @@
               Title
             </label>
             <div class="mt-1">
-              <Field
+              <input
                 type="text"
                 name="title"
+                v-model="title"
                 class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
               />
               <ErrorMessage class="text-red-700 text-sm" name="title" />
@@ -26,8 +27,8 @@
               Category
             </label>
             <div class="mt-1">
-              <Field
-                as="select"
+              <select
+                v-model="costCategoryId"
                 name="cost_category_id"
                 class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
               >
@@ -40,7 +41,7 @@
                   <span v-if="category.code && category.name"> - </span>
                   {{ category.code }}
                 </option>
-              </Field>
+              </select>
               <ErrorMessage
                 class="text-red-700 text-sm"
                 name="cost_category_id"
@@ -53,16 +54,13 @@
               Date period
             </label>
             <div class="mt-1">
-              <Field v-model="date" type="text" name="date" v-slot="{ field }">
-                <VueDatePicker
-                  v-model="date"
-                  range
-                  teleport-center
-                  v-bind="field"
-                  :enableTimePicker="false"
-                >
-                </VueDatePicker>
-              </Field>
+              <VueDatePicker
+                v-model="date"
+                range
+                teleport-center
+                :enableTimePicker="false"
+              >
+              </VueDatePicker>
               <ErrorMessage class="text-red-700 text-sm" name="date" />
             </div>
           </div>
@@ -72,9 +70,10 @@
               Amount
             </label>
             <div class="mt-1">
-              <Field
+              <input
                 type="text"
                 name="amount"
+                v-model="amount"
                 class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded"
               />
               <ErrorMessage class="text-red-700 text-sm" name="amount" />
@@ -115,7 +114,6 @@ import dayjs from "dayjs";
 const modal = ref(null);
 const emit = defineEmits(["submitted"]);
 const categoryStore = useCategoryStore();
-const { value: date } = useField("date");
 
 const validationSchema = yup.object({
   title: yup.string().label("Title").required(),
@@ -126,6 +124,11 @@ const validationSchema = yup.object({
 const { handleSubmit } = useForm({
   validationSchema,
 });
+
+const { value: title } = useField("title");
+const { value: costCategoryId } = useField("cost_category_id");
+const { value: amount } = useField("amount");
+const { value: date } = useField("date");
 
 const show = (opened = true) => {
   modal.value.show(opened);
