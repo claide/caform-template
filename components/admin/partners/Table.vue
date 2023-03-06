@@ -5,7 +5,7 @@
       class="-mx-4 mt-8 shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg"
     >
       <table
-        class="min-w-full text-sm divide-y divide-[#2B333F] text-dark dark:text-gray-400"
+        class="min-w-full text-sm divide-y dark:divide-[#2B333F] text-dark dark:text-gray-400"
       >
         <thead class="bg-gray-50 dark:bg-[#212737] dark:text-gray-400">
           <tr>

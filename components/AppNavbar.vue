@@ -1,7 +1,7 @@
 <template>
   <Disclosure
     as="nav"
-    class="fixed border-gray-200 z-10 w-full top-0 transition delay-100"
+    class="fixed border-gray-200 z-10 w-full top-0 transition delay-100 navbar"
     :class="[!topOfPage ? 'bg-white md:py-3' : 'md:bg-transparent md:py-6']"
     v-slot="{ open }"
   >

@@ -19,11 +19,6 @@ html {
 }
 
 a {
-  &.router-link-active,
-  &.router-link-exact-active {
-    color: $secondary;
-  }
-
   &.menu-item {
     &.router-link-active,
     &.router-link-exact-active {
@@ -31,6 +26,15 @@ a {
         color: #ffff;
         background-color: $primary;
       }
+    }
+  }
+}
+
+.navbar {
+  a {
+    &.router-link-active,
+    &.router-link-exact-active {
+      color: $secondary;
     }
   }
 }
