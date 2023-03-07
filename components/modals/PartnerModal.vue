@@ -60,7 +60,7 @@
                 type="text"
                 name="payment_info.name"
                 v-model="paymentInfo.name"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               />
             </div>
           </div>
@@ -74,7 +74,7 @@
                 type="text"
                 name="payment_info.street"
                 v-model="paymentInfo.street"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               />
             </div>
           </div>
@@ -88,7 +88,7 @@
                 type="text"
                 name="payment_info.city"
                 v-model="paymentInfo.city"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               />
             </div>
           </div>
@@ -102,7 +102,7 @@
                 type="text"
                 name="payment_info.postal_code"
                 v-model="paymentInfo.postal_code"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               />
             </div>
           </div>
@@ -118,7 +118,7 @@
               <select
                 name="payment_info.country_code"
                 v-model="paymentInfo.country_code"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               >
                 <option
                   v-for="(country, code) in allCountries"
@@ -143,7 +143,7 @@
                 type="text"
                 name="payment_info.iban_account_number"
                 v-model="paymentInfo.iban_account_number"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               />
             </div>
           </div>
@@ -159,7 +159,7 @@
                 type="text"
                 name="payment_info.swift_code"
                 v-model="paymentInfo.swift_code"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               />
             </div>
           </div>
@@ -172,7 +172,7 @@
                 rows="5"
                 name="payment_info.notes"
                 v-model="paymentInfo.notes"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               />
             </div>
           </div>
@@ -241,7 +241,7 @@ const onSubmit = handleSubmit(async (values) => {
     await partnerStore.getPartners();
     show(false);
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 });
 

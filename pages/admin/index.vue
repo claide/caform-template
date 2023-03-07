@@ -36,6 +36,7 @@
 
     <AdminCostsTable />
     <AdminPagination
+      v-if="costStore.costs.data.length != 0"
       @update:modelValue="onPageChanged"
       v-model="costStore.costs.meta.current_page"
       :pages="costStore.costs.meta.last_page"

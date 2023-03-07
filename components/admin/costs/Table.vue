@@ -1,6 +1,19 @@
 <template>
   <div class="px-2 lg:px-0">
+    <div v-if="costStore.costs.data.length === 0">
+      <AppEmptyState>
+        <template #title>
+          <h3
+            name="title"
+            class="mt-2 text-lg font-medium text-dark dark:text-slate-400"
+          >
+            No costs found
+          </h3>
+        </template>
+      </AppEmptyState>
+    </div>
     <div
+      v-else
       class="-mx-4 mt-8 shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg"
     >
       <table
@@ -77,10 +90,10 @@
             <td
               class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]"
             >
-              <span v-if="cost.partner">Partner: {{ cost.partner.name }}</span>
+              <span v-if="cost.partner">{{ cost.partner.name }}</span>
             </td>
             <td class="px-3 py-3 text-sm font-medium">
-              <span class="dark:text-white">{{ cost.applicant }}</span>
+              <span class="dark:text-white">{{ cost.applicant_name }}</span>
               <div
                 class="hidden md:block text-gray-500 dark:text-[#818692] text-xs"
               >
@@ -146,7 +159,7 @@
             >
               <span
                 :class="cost.statusColor"
-                class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded"
+                class="text-xs font-medium px-2.5 py-0.5 rounded"
                 >{{ cost.statusText }}</span
               >
             </td>

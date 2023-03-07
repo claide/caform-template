@@ -6,14 +6,14 @@
         class="flex items-center mb-10 text-2xl font-semibold text-dark dark:text-white"
       >
         <nuxt-img
-          v-if="colorMode === 'light'"
+          v-show="colorMode === 'light'"
           src="/img/caf-logo-black.svg"
           sizes="sm:80px md:100w lg:120px"
           width="120"
           height="48"
         />
         <nuxt-img
-          v-else
+          v-show="colorMode != 'light'"
           src="/img/logo-admin.svg"
           sizes="sm:80px md:100w lg:120px"
           width="120"
@@ -23,14 +23,14 @@
 
       <div class="w-full mx-auto sm:max-w-md md:max-w-6xl mt-2">
         <nuxt-img
-          v-if="errorCode.statusCode === 404"
+          v-show="errorCode.statusCode === 404"
           src="/img/404-error.png"
           sizes="sm:200px md:100w lg:380px"
           class="mx-auto mb-12 md:mb-20"
           format="webp"
         />
         <nuxt-img
-          v-else
+          v-show="errorCode.statusCode != 404"
           src="/img/401-error.png"
           sizes="sm:200px md:100w lg:380px"
           class="mx-auto mb-12 md:mb-20"
@@ -49,6 +49,7 @@
     </div>
   </section>
 </template>
+
 <script setup>
 definePageMeta({
   layout: "empty",

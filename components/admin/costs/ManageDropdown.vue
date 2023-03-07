@@ -56,7 +56,7 @@ import Cost from "@/models/Cost";
 
 const props = defineProps({
   cost: {
-    type: Cost,
+    type: Object,
     required: true,
   },
 });
