@@ -27,8 +27,10 @@
             <MenuItem
               v-for="(item, index) in operationItems"
               v-slot="{ active }"
+              :key="index"
             >
               <button
+                @click="item.action"
                 :class="[
                   active
                     ? 'bg-[#EBEAF4] text-primary dark:bg-black'
@@ -36,7 +38,7 @@
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark',
                 ]"
               >
-                {{ item }}
+                {{ item.title }}
               </button>
             </MenuItem>
           </div>
@@ -53,5 +55,27 @@ import {
   DocumentArrowUpIcon,
 } from "@heroicons/vue/24/outline";
 
-const operationItems = ["Edit", "Delete"];
+const props = defineProps({
+  category: {
+    type: Object,
+    default() {
+      return {};
+    },
+  },
+});
+
+const emit = defineEmits(["edit", "deleteCategory"]);
+
+const edit = () => {
+  emit("edit", props.category);
+};
+
+const deleteCategory = () => {
+  emit("deleteCategory", props.category);
+};
+
+const operationItems = [
+  { title: "Edit", action: edit },
+  { title: "Delete", action: deleteCategory },
+];
 </script>

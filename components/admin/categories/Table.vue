@@ -83,19 +83,44 @@
               {{ category.createdAt }}
             </td>
             <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
-              <AdminCategoriesManageDropdown />
+              <AdminCategoriesManageDropdown
+                @edit="onCategoryEdit"
+                @deleteCategory="onCategoryDelete"
+                :category="category"
+              />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <ConfirmModal ref="confirmModal" />
   </div>
 </template>
 
 <script setup>
 import { useCategoryStore } from "@/store/categories";
+import ConfirmModal from "@/components/modals/ConfirmModal";
 
 const categoryStore = useCategoryStore();
+const confirmModal = ref(null);
+
+const onCategoryEdit = (category) => {
+  console.log(category);
+};
+
+const onCategoryDelete = async (category) => {
+  const confirmed = await confirmModal.value.show(
+    "Are you sure to delete this category?"
+  );
+
+  if (confirmed) {
+    try {
+      await category.delete();
+      await categoryStore.getCategories();
+    } catch {}
+  }
+};
 
 onMounted(() => {
   categoryStore.getCategories();

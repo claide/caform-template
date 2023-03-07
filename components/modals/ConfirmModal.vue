@@ -53,7 +53,7 @@ const show = (message, customOptions = {}) => {
     ...options,
     ...customOptions,
     message,
-  }
+  };
   modal.value.show();
 
   return new Promise((resolve) => {
