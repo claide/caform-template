@@ -158,6 +158,7 @@
             <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
               <AdminCostsManageDropdown
                 @viewBreakdowns="onViewBreakdowns"
+                @viewInvoices="onViewInvoces"
                 @deleteCost="onDeleteCost"
                 @manageCost="onManageCost"
                 :cost="cost"
@@ -169,20 +170,28 @@
     </div>
 
     <BreakdownListModal :cost="selectedCost" ref="breakdownModal" />
+    <InvoiceListModal :cost="selectedCost" ref="invoiceListModal" />
   </div>
 </template>
 
 <script setup>
 import { useCostStore } from "@/store/cost";
 import BreakdownListModal from "@/components/modals/BreakdownListModal";
+import InvoiceListModal from "@/components/modals/InvoiceListModal";
 
 const costStore = useCostStore();
 const breakdownModal = ref(null);
+const invoiceListModal = ref(null);
 const selectedCost = ref(null);
 
 const onViewBreakdowns = (cost) => {
   selectedCost.value = cost;
   breakdownModal.value.show();
+};
+
+const onViewInvoces = (cost) => {
+  selectedCost.value = cost;
+  invoiceListModal.value.show();
 };
 
 const onDeleteCost = async (cost) => {

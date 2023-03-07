@@ -95,7 +95,11 @@ const operationItems = computed(() => {
       action: viewBreakdowns,
       show: props.cost.breakdowns.length,
     },
-    { text: "View invoices", action: viewInvoices, show: true },
+    {
+      text: "View invoices",
+      action: viewInvoices,
+      show: props.cost.invoice_files.length,
+    },
     { text: "Delete", action: deleteCost, show: true },
   ];
 });
