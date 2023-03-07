@@ -61,15 +61,29 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(["viewBreakdowns"]);
+
 const operationItems = computed(() => {
   return [
     { text: "Mark as Paid", action: null, show: props.cost.status == 2 },
     { text: "Reject payment", action: null, show: props.cost.status == 2 },
-    { text: "Approve", action: null, show: props.cost.status !== 2 && props.cost.status !== 4 },
-    { text: "Reject", action: null, show: props.cost.status !== 3 && props.cost.status !== 4 },
-    { text: "View breakdowns", action: null, show: true },
+    {
+      text: "Approve",
+      action: null,
+      show: props.cost.status !== 2 && props.cost.status !== 4,
+    },
+    {
+      text: "Reject",
+      action: null,
+      show: props.cost.status !== 3 && props.cost.status !== 4,
+    },
+    { text: "View breakdowns", action: viewBreakdowns, show: props.cost.breakdowns.length },
     { text: "View invoices", action: null, show: true },
     { text: "Delete", action: null, show: true },
   ];
 });
+
+const viewBreakdowns = () => {
+  emit("viewBreakdowns", props.cost);
+};
 </script>

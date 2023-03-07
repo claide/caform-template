@@ -156,19 +156,32 @@
               {{ cost.createdAt }}
             </td>
             <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
-              <AdminCostsManageDropdown :cost="cost" />
+              <AdminCostsManageDropdown
+                @viewBreakdowns="onViewBreakdowns"
+                :cost="cost"
+              />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <BreakdownListModal :cost="selectedCost" ref="breakdownModal" />
   </div>
 </template>
 
 <script setup>
 import { useCostStore } from "@/store/cost";
+import BreakdownListModal from "@/components/modals/BreakdownListModal";
 
 const costStore = useCostStore();
+const breakdownModal = ref(null);
+const selectedCost = ref(null);
+
+const onViewBreakdowns = (cost) => {
+  selectedCost.value = cost;
+  breakdownModal.value.show();
+};
 
 onMounted(() => {
   costStore.getCosts();

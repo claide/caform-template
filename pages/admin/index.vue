@@ -27,7 +27,10 @@
         </div>
       </div>
       <div class="mt-5 flex lg:mt-0 lg:ml-4">
-        <AdminCostsMenuDropdown />
+        <AdminCostsMenuDropdown
+          @exportPayments="exportPayment"
+          @exportInvoices="exportInvoices"
+        />
       </div>
     </div>
 
@@ -58,8 +61,22 @@ useHead({
 const costStore = useCostStore();
 
 const onFilterUpdated = async (value, key) => {
-  costStore.filters[key] = value
-  await costStore.getCosts()
+  costStore.filters[key] = value;
+  await costStore.getCosts();
+};
+
+const exportPayment = async () => {
+  const { data } = await useBaseFetch("/cost/costs/generate-export-payment", {
+    method: "POST",
+  });
+  window.location.replace(useCostExport(data.url, costStore.filters));
+};
+
+const exportInvoices = async () => {
+  const { data } = await useBaseFetch("/cost/costs/generate-zip-download", {
+    method: "POST",
+  });
+  window.location.replace(useCostExport(data.url, costStore.filters));
 };
 
 const onPageChanged = (page) => {
