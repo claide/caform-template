@@ -33,6 +33,7 @@
                     : 'text-dark',
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark',
                 ]"
+                @click="emit('exportInvoices')"
               >
                 <DocumentArrowUpIcon
                   :active="active"
@@ -44,6 +45,7 @@
             </MenuItem>
             <MenuItem v-slot="{ active }">
               <button
+                @click="emit('exportPayments')"
                 :class="[
                   active
                     ? 'bg-[#EBEAF4] text-primary dark:bg-black'
@@ -72,4 +74,6 @@ import {
   ChevronDownIcon,
   DocumentArrowUpIcon,
 } from "@heroicons/vue/24/outline";
+
+const emit = defineEmits(['exportPayments', 'exportInvoices'])
 </script>

@@ -61,15 +61,74 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits([
+  "viewBreakdowns",
+  "deleteCost",
+  "manageCost",
+  "viewInvoices",
+]);
+
 const operationItems = computed(() => {
   return [
-    { text: "Mark as Paid", action: null, show: props.cost.status == 2 },
-    { text: "Reject payment", action: null, show: props.cost.status == 2 },
-    { text: "Approve", action: null, show: props.cost.status !== 2 && props.cost.status !== 4 },
-    { text: "Reject", action: null, show: props.cost.status !== 3 && props.cost.status !== 4 },
-    { text: "View breakdowns", action: null, show: true },
-    { text: "View invoices", action: null, show: true },
-    { text: "Delete", action: null, show: true },
+    {
+      text: "Mark as Paid",
+      action: markAsPaid,
+      show: props.cost.status == 2,
+    },
+    {
+      text: "Reject payment",
+      action: rejectPayment,
+      show: props.cost.status == 2,
+    },
+    {
+      text: "Approve",
+      action: approveCost,
+      show: props.cost.status !== 2 && props.cost.status !== 4,
+    },
+    {
+      text: "Reject",
+      action: rejectCost,
+      show: props.cost.status !== 3 && props.cost.status !== 4,
+    },
+    {
+      text: "View breakdowns",
+      action: viewBreakdowns,
+      show: props.cost.breakdowns.length,
+    },
+    {
+      text: "View invoices",
+      action: viewInvoices,
+      show: props.cost.invoice_files.length,
+    },
+    { text: "Delete", action: deleteCost, show: true },
   ];
 });
+
+const viewBreakdowns = () => {
+  emit("viewBreakdowns", props.cost);
+};
+
+const viewInvoices = () => {
+  emit("viewInvoices", props.cost);
+};
+
+const deleteCost = () => {
+  emit("deleteCost", props.cost);
+};
+
+const markAsPaid = () => {
+  emit("manageCost", props.cost, 4);
+};
+
+const rejectPayment = () => {
+  emit("manageCost", props.cost, 5);
+};
+
+const approveCost = () => {
+  emit("manageCost", props.cost, 2);
+};
+
+const rejectCost = () => {
+  emit("manageCost", props.cost, 3);
+};
 </script>
