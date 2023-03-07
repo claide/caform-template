@@ -158,6 +158,8 @@
             <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
               <AdminCostsManageDropdown
                 @viewBreakdowns="onViewBreakdowns"
+                @deleteCost="onDeleteCost"
+                @manageCost="onManageCost"
                 :cost="cost"
               />
             </td>
@@ -181,6 +183,25 @@ const selectedCost = ref(null);
 const onViewBreakdowns = (cost) => {
   selectedCost.value = cost;
   breakdownModal.value.show();
+};
+
+const onDeleteCost = async (cost) => {
+  try {
+    await cost.delete();
+    costStore.getCosts();
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const onManageCost = async (cost, status) => {
+  try {
+    await useBaseFetch(`/cost/costs/${cost.id}/manage`, {
+      method: "POST",
+      body: { status },
+    });
+    await costStore.getCosts();
+  } catch {}
 };
 
 onMounted(() => {
