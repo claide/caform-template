@@ -85,8 +85,8 @@
             <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
               <AdminCategoriesManageDropdown
                 @edit="onCategoryEdit"
-                @deleteCategory="onCategoryDelete"
-                :category="category"
+                @remove="onCategoryDelete"
+                :item="category"
               />
             </td>
           </tr>

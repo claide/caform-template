@@ -56,7 +56,7 @@ import {
 } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
-  category: {
+  item: {
     type: Object,
     default() {
       return {};
@@ -64,18 +64,18 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["edit", "deleteCategory"]);
+const emit = defineEmits(["edit", "remove"]);
 
 const edit = () => {
-  emit("edit", props.category);
+  emit("edit", props.item);
 };
 
-const deleteCategory = () => {
-  emit("deleteCategory", props.category);
+const remove = () => {
+  emit("remove", props.item);
 };
 
 const operationItems = [
   { title: "Edit", action: edit },
-  { title: "Delete", action: deleteCategory },
+  { title: "Delete", action: remove },
 ];
 </script>

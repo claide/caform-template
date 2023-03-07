@@ -73,19 +73,44 @@
               {{ partner.createdAt }}
             </td>
             <td class="px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">
-              <AdminCategoriesManageDropdown />
+              <AdminCategoriesManageDropdown
+                @edit="onPartnerEdit"
+                @remove="onPartnerDelete"
+                :item="partner"
+              />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <ConfirmModal ref="confirmModal" />
   </div>
 </template>
 
 <script setup>
 import { usePartnerStore } from "@/store/partners";
+import ConfirmModal from "@/components/modals/ConfirmModal";
 
 const partnerStore = usePartnerStore();
+const confirmModal = ref(null);
+
+const onPartnerEdit = (partner) => {
+  console.log(partner);
+};
+
+const onPartnerDelete = async (partner) => {
+  const confirmed = await confirmModal.value.show(
+    "Are you sure to delete this partner?"
+  );
+
+  if (confirmed) {
+    try {
+      await partner.delete();
+      await partnerStore.getPartners();
+    } catch {}
+  }
+};
 
 onMounted(() => {
   partnerStore.getPartners();
