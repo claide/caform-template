@@ -171,6 +171,7 @@
 
     <BreakdownListModal :cost="selectedCost" ref="breakdownModal" />
     <InvoiceListModal :cost="selectedCost" ref="invoiceListModal" />
+    <ConfirmModal ref="confirmModal" />
   </div>
 </template>
 
@@ -178,10 +179,12 @@
 import { useCostStore } from "@/store/cost";
 import BreakdownListModal from "@/components/modals/BreakdownListModal";
 import InvoiceListModal from "@/components/modals/InvoiceListModal";
+import ConfirmModal from "@/components/modals/ConfirmModal";
 
 const costStore = useCostStore();
 const breakdownModal = ref(null);
 const invoiceListModal = ref(null);
+const confirmModal = ref(null);
 const selectedCost = ref(null);
 
 const onViewBreakdowns = (cost) => {
@@ -196,21 +199,31 @@ const onViewInvoces = (cost) => {
 
 const onDeleteCost = async (cost) => {
   try {
-    await cost.delete();
-    costStore.getCosts();
-  } catch (e) {
-    console.log(e);
-  }
+    const confirmed = await confirmModal.value.show(
+      "Are you sure to delete this cost?"
+    );
+
+    if (confirmed) {
+      await cost.delete();
+      costStore.getCosts();
+    }
+  } catch {}
 };
 
 const onManageCost = async (cost, status) => {
-  try {
-    await useBaseFetch(`/cost/costs/${cost.id}/manage`, {
-      method: "POST",
-      body: { status },
-    });
-    await costStore.getCosts();
-  } catch {}
+  const confirmed = await confirmModal.value.show(
+    "Are you sure to update the status of this cost?"
+  );
+
+  if (confirmed) {
+    try {
+      await useBaseFetch(`/cost/costs/${cost.id}/manage`, {
+        method: "POST",
+        body: { status },
+      });
+      await costStore.getCosts();
+    } catch {}
+  }
 };
 
 onMounted(() => {

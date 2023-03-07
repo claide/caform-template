@@ -30,10 +30,11 @@
               class="w-full max-w-md transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all"
             >
               <DialogTitle
+                v-if="props.showTitle"
                 as="h3"
                 class="text-lg font-medium leading-6 flex items-center justify-between mb-6 px-6 pt-6 text-dark"
               >
-                <slot name="title" class="">Popup</slot>
+                <slot name="title" class=""></slot>
                 <button
                   type="button"
                   class="bg-white rounded-md text-slate-400 hover:text-slate-500 focus:outline-none"
@@ -67,6 +68,12 @@ import {
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 
 const isOpen = ref(false);
+const props = defineProps({
+  showTitle: {
+    type: Boolean,
+    default: true
+  }
+})
 
 const show = (opened = true) => {
   isOpen.value = opened;
