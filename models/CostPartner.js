@@ -13,6 +13,8 @@ export default class CostPartner extends Model {
       return 'Bitsafe'
     } else if (this.payment_method === 3) {
       return 'SEPA'
+    } else if (this.payment_method === 4) {
+      return 'ACH'
     }
   }
 

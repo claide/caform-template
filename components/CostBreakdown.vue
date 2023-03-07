@@ -50,13 +50,13 @@
           <td class="p-2 text-sm font-medium align-middle">
             <div class="flex items-center">
               <button
-                @click="updateBreakdown(item)"
+                @click.prevent="updateBreakdown(item)"
                 class="p-1 inline-flex border rounded-full text-purple-700 border-purple-700 mr-1"
               >
                 <PencilIcon class="h-3 w-3" />
               </button>
               <button
-                @click="deleteBreakdown(index)"
+                @click.prevent="deleteBreakdown(index)"
                 class="p-1 inline-flex border rounded-full text-red-700 border-red-700"
               >
                 <XMarkIcon class="h-3 w-3" />
@@ -79,11 +79,13 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(["edit"]);
+
 const deleteBreakdown = (index) => {
   props.breakdowns.splice(index, 1);
 };
 
 const updateBreakdown = (item) => {
-  console.log("breakdown", item);
+  emit('edit', item)
 };
 </script>

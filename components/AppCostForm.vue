@@ -278,7 +278,11 @@
         </button>
       </div>
 
-      <CostBreakdown v-if="breakdowns.length > 0" :breakdowns="breakdowns" />
+      <CostBreakdown
+        @edit="onBreakdownEdit"
+        v-if="breakdowns.length > 0"
+        :breakdowns="breakdowns"
+      />
     </div>
     <button
       type="submit"
@@ -289,6 +293,8 @@
 
     <ModalsBreakdownModal
       @submitted="onBreakdownSubmitted"
+      @updated="onBreakdownUpdated"
+      :breakdown="selectedBreakdown"
       ref="addBreakdown"
     />
   </form>
@@ -306,6 +312,7 @@ const partnerStore = usePartnerStore();
 const costStore = useCostStore();
 const countries = ref(allCountries);
 const addBreakdown = ref(null);
+const selectedBreakdown = ref(null);
 
 const schema = yup.object({
   applicant_name: yup.string().label("Applicant name").required(),
@@ -326,7 +333,7 @@ const costForm = useForm({
   },
   validationSchema: schema,
 });
-const { handleSubmit, setErrors, resetForm } = costForm
+const { handleSubmit, setErrors, resetForm } = costForm;
 
 const { value: applicantName } = useField("applicant_name");
 const { value: email } = useField("email");
@@ -346,6 +353,7 @@ const paymentMethods = [
   { label: "Wiretransfer", value: 1 },
   { label: "Bitsafe", value: 2 },
   { label: "SEPA", value: 3 },
+  { label: "ACH", value: 4 },
 ];
 
 const removeFile = (index) => {
@@ -353,6 +361,11 @@ const removeFile = (index) => {
 };
 
 const addNewBreakdown = () => {
+  addBreakdown.value.show();
+};
+
+const onBreakdownEdit = (breakdown) => {
+  selectedBreakdown.value = breakdown;
   addBreakdown.value.show();
 };
 
@@ -364,10 +377,14 @@ const onBreakdownSubmitted = (breakdown) => {
   breakdowns.value.push(breakdown);
 };
 
+const onBreakdownUpdated = (breakdown) => {
+  selectedBreakdown.value = breakdown;
+};
+
 const submitCost = handleSubmit(async (values) => {
   try {
     await costStore.createCost(values);
-    resetForm()
+    resetForm();
   } catch (e) {
     setErrors(e.errors);
   }

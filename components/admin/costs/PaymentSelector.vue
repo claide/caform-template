@@ -86,6 +86,7 @@ const paymentMethods = [
   { name: "Wiretransfer", value: 1 },
   { name: "Bitsafe", value: 2 },
   { name: "SEPA", value: 3 },
+  { name: "ACH", value: 4 },
 ];
 
 const selectedItem = ref(props.modelValue);

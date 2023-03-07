@@ -89,7 +89,8 @@
           class="inline-flex w-full justify-center rounded-full border border-transparent bg-primary px-4 py-2 text-base font-medium text-white hover:bg-[#5045ca] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-2 sm:w-auto sm:text-sm"
           @click="submit"
         >
-          Add breakdown
+          <span v-if="isEditing">Update breakdown</span>
+          <span v-else>Add breakdown</span>
         </button>
         <button
           type="button"
@@ -112,8 +113,15 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 
 const modal = ref(null);
-const emit = defineEmits(["submitted"]);
+const emit = defineEmits(["submitted", "updated"]);
+const isEditing = ref(false);
 const categoryStore = useCategoryStore();
+const props = defineProps({
+  breakdown: {
+    type: Object,
+    default: () => {},
+  },
+});
 
 const validationSchema = yup.object({
   title: yup.string().label("Title").required(),
@@ -121,7 +129,7 @@ const validationSchema = yup.object({
   amount: yup.number().label("Amount").required(),
 });
 
-const { handleSubmit } = useForm({
+const { handleSubmit, resetForm } = useForm({
   validationSchema,
 });
 
@@ -142,13 +150,28 @@ const submit = handleSubmit((values) => {
     values["period_to"] = dayjs(values.date[1]).format("YYYY-MM-DD");
     delete values.date;
   }
-  emit("submitted", values);
+  resetForm();
+  if (isEditing.value) {
+    emit("updated", values);
+  } else {
+    emit("submitted", values);
+  }
+  isEditing.value = false;
   show(false);
 });
 
 onMounted(async () => {
   await categoryStore.getCategories();
 });
+
+watch(
+  () => props.breakdown,
+  (values) => {
+    isEditing.value = true;
+    values.date = [values.period_from, values.period_to];
+    resetForm({ values });
+  }
+);
 
 defineExpose({
   show,

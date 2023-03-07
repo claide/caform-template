@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 
 export default class Cost extends Model {
   // Set the resource route of the model
-  resource () {
+  resource() {
     return 'cost/costs'
   }
 
@@ -49,6 +49,8 @@ export default class Cost extends Model {
       return 'Bitsafe'
     } else if (this.payment_method === 3) {
       return 'SEPA'
+    } else if (this.payment_method === 4) {
+      return 'ACH'
     }
   }
 }

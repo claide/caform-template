@@ -9,7 +9,7 @@ export const useCategoryStore = defineStore('category', {
   }),
 
   actions: {
-    async getCategories () {
+    async getCategories() {
       this.categories = await CostCategory
         .params({
           limit: 30,
@@ -17,7 +17,11 @@ export const useCategoryStore = defineStore('category', {
         })
         .get()
     },
-    async setMeta (meta = {}) {
+    async updateOrCreateCategory(form) {
+      const category = new CostCategory(form)
+      return await category.save()
+    },
+    async setMeta(meta = {}) {
       this.categories.meta = {
         ...this.categories.meta,
         ...meta

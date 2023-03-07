@@ -9,9 +9,10 @@
               Code
             </label>
             <div class="mt-1">
-              <Field
+              <input
                 type="text"
                 name="code"
+                v-model="code"
                 class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               />
               <ErrorMessage class="text-red-700 text-sm" name="code" />
@@ -23,9 +24,10 @@
               Name
             </label>
             <div class="mt-1">
-              <Field
+              <input
                 type="text"
                 name="name"
+                v-model="name"
                 class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
               />
               <ErrorMessage class="text-red-700 text-sm" name="name" />
@@ -36,23 +38,20 @@
             <label for="parent" class="block text-sm font-medium text-gray-700">
               Parent
             </label>
-            <Field
-              as="select"
-              name="cost_category_id"
+            <select
+              name="parent_id"
+              v-model="parentId"
               class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
             >
               <option
-                v-for="(option, index) in categoryStore.categories.data"
+                v-for="option in categoryStore.categories.data"
                 :key="option.id"
                 :value="option.id"
               >
                 {{ option.name }}
               </option>
-            </Field>
-            <ErrorMessage
-              class="text-red-700 text-sm"
-              name="cost_category_id"
-            />
+            </select>
+            <ErrorMessage class="text-red-700 text-sm" name="parent_id" />
           </div>
         </div>
       </div>
@@ -69,7 +68,7 @@
         <button
           type="button"
           class="mt-3 inline-flex w-full justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-          @click="show(false)"
+          @click.prevent="show(false)"
         >
           Cancel
         </button>
@@ -79,7 +78,7 @@
 </template>
 
 <script setup>
-import { Field, ErrorMessage, useForm } from "vee-validate";
+import { ErrorMessage, useForm, useField } from "vee-validate";
 import { useCategoryStore } from "@/store/categories";
 import * as yup from "yup";
 
@@ -89,8 +88,8 @@ const categoryStore = useCategoryStore();
 
 const validationSchema = yup.object({
   code: yup.string().label("Code").required(),
-  name: yup.string().label("Name").required(),
-  cost_category_id: yup.number().label("Parent").required(),
+  name: yup.string().label("Name"),
+  parent_id: yup.number().label("Parent"),
 });
 
 const show = (opened = true) => {
@@ -101,10 +100,16 @@ const { handleSubmit } = useForm({
   validationSchema,
 });
 
-const onSubmit = handleSubmit((values) => {
-  console.log("values", values);
-  emit("submitted", values);
-  show(false);
+const { value: code } = useField("code");
+const { value: name } = useField("name");
+const { value: parentId } = useField("parentId");
+
+const onSubmit = handleSubmit(async (values) => {
+  try {
+    await categoryStore.updateOrCreateCategory(values);
+    await categoryStore.getCategories();
+    show(false);
+  } catch {}
 });
 
 onMounted(async () => {

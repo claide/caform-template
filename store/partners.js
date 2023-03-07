@@ -17,6 +17,10 @@ export const usePartnerStore = defineStore('partner', {
         })
         .get()
     },
+    async updateOrCreatePartner(form) {
+      const partner = new Partner(form);
+      return await partner.save()
+    },
     async setMeta(meta = {}) {
       this.partners.meta = {
         ...this.partners.meta,
