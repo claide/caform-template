@@ -174,6 +174,7 @@
                 @viewInvoices="onViewInvoces"
                 @deleteCost="onDeleteCost"
                 @manageCost="onManageCost"
+                @requestAdjustment="onRequestAdjustment"
                 :cost="cost"
               />
             </td>
@@ -184,6 +185,7 @@
 
     <BreakdownListModal :cost="selectedCost" ref="breakdownModal" />
     <InvoiceListModal :cost="selectedCost" ref="invoiceListModal" />
+    <RequestAdjustmentModal :cost="selectedCost" ref="requestAdjustmentModal" />
     <ConfirmModal ref="confirmModal" />
   </div>
 </template>
@@ -192,13 +194,16 @@
 import { useCostStore } from "@/store/cost";
 import BreakdownListModal from "@/components/modals/BreakdownListModal";
 import InvoiceListModal from "@/components/modals/InvoiceListModal";
+import RequestAdjustmentModal from "@/components/modals/RequestAdjustmentModal";
 import ConfirmModal from "@/components/modals/ConfirmModal";
+import AppEmptyState from "@/components/AppEmptyState";
 
 const costStore = useCostStore();
 const breakdownModal = ref(null);
 const invoiceListModal = ref(null);
 const confirmModal = ref(null);
 const selectedCost = ref(null);
+const requestAdjustmentModal = ref(null);
 
 const onViewBreakdowns = (cost) => {
   selectedCost.value = cost;
@@ -237,6 +242,11 @@ const onManageCost = async (cost, status) => {
       await costStore.getCosts();
     } catch {}
   }
+};
+
+const onRequestAdjustment = (cost) => {
+  selectedCost.value = cost;
+  requestAdjustmentModal.value.show();
 };
 
 onMounted(() => {

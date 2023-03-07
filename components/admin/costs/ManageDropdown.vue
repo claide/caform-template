@@ -66,6 +66,7 @@ const emit = defineEmits([
   "deleteCost",
   "manageCost",
   "viewInvoices",
+  "requestAdjustment",
 ]);
 
 const operationItems = computed(() => {
@@ -89,6 +90,11 @@ const operationItems = computed(() => {
       text: "Reject",
       action: rejectCost,
       show: props.cost.status !== 3 && props.cost.status !== 4,
+    },
+    {
+      text: "Request Adjustment",
+      action: requestAdjustment,
+      show: props.cost.status !== 4,
     },
     {
       text: "View breakdowns",
@@ -130,5 +136,9 @@ const approveCost = () => {
 
 const rejectCost = () => {
   emit("manageCost", props.cost, 3);
+};
+
+const requestAdjustment = () => {
+  emit("requestAdjustment", props.cost);
 };
 </script>
