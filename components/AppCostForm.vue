@@ -274,6 +274,7 @@
           @click.prevent="addNewBreakdown"
           class="border border-gray-300 py-1 px-2 rounded text-sm"
         >
+          <AppSpinner v-if="isSubmitting" />
           Add new
         </button>
       </div>
@@ -313,6 +314,7 @@ const costStore = useCostStore();
 const countries = ref(allCountries);
 const addBreakdown = ref(null);
 const selectedBreakdown = ref(null);
+const isSubmitting = ref(false);
 
 const schema = yup.object({
   applicant_name: yup.string().label("Applicant name").required(),
@@ -382,11 +384,14 @@ const onBreakdownUpdated = (breakdown) => {
 };
 
 const submitCost = handleSubmit(async (values) => {
+  isSubmitting.value = true;
   try {
     await costStore.createCost(values);
     resetForm();
+    isSubmitting.value = false;
   } catch (e) {
     setErrors(e.errors);
+    isSubmitting.value = false;
   }
 });
 

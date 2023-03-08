@@ -92,8 +92,9 @@
       </div>
       <button
         type="submit"
-        class="w-full text-white bg-[#6158CD] hover:bg-[#5045ca] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-base px-5 py-4 text-center"
+        class="w-full text-white bg-[#6158CD] hover:bg-[#5045ca] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-base px-5 py-4 text-center inline-flex items-center align-middle justify-center"
       >
+        <AppSpinner v-if="isSubmitting" />
         Sign in
       </button>
       <p class="text-sm font-light text-gray-500 dark:text-slate-400">
@@ -120,12 +121,17 @@ const schema = yup.object({
   token: yup.string().label("Token").required(),
 });
 
+const isSubmitting = ref(false);
+
 const login = async (values) => {
+  isSubmitting.value = true;
   try {
     await authStore.login(values);
+    isSubmitting.value = false;
     return navigateTo("/");
   } catch (e) {
     console.log(e);
+    isSubmitting.value = false;
   }
 };
 </script>

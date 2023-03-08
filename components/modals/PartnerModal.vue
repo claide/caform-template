@@ -185,6 +185,7 @@
           type="submit"
           class="inline-flex w-full justify-center rounded-full border border-transparent bg-[#6158CD] px-4 py-2 text-base font-medium text-white hover:bg-[#5045ca] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-2 sm:w-auto sm:text-sm"
         >
+          <AppSpinner v-if="isSubmitting" />
           Add partner
         </button>
         <button
@@ -208,6 +209,7 @@ import { usePartnerStore } from "@/store/partners";
 
 const modal = ref(null);
 const partnerStore = usePartnerStore();
+const isSubmitting = ref(false);
 const paymentMethods = [
   { label: "Wiretransfer", value: 1 },
   { label: "Bitsafe", value: 2 },
@@ -236,11 +238,14 @@ const showPaymentField = (selectedPaymentMethod, paymentMethods = []) => {
 };
 
 const onSubmit = handleSubmit(async (values) => {
+  isSubmitting.value = true;
   try {
     await partnerStore.updateOrCreatePartner(values);
     await partnerStore.getPartners();
+    isSubmitting.value = false;
     show(false);
   } catch (e) {
+    isSubmitting.value = false;
     console.log(e);
   }
 });

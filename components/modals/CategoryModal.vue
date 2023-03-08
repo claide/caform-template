@@ -63,6 +63,7 @@
           type="submit"
           class="inline-flex w-full justify-center rounded-full border border-transparent bg-[#6158CD] px-4 py-2 text-base font-medium text-white hover:bg-[#5045ca] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-2 sm:w-auto sm:text-sm"
         >
+          <AppSpinner v-if="isSubmitting" />
           Add category
         </button>
         <button
@@ -85,6 +86,7 @@ import * as yup from "yup";
 const modal = ref(null);
 const emit = defineEmits(["submitted"]);
 const categoryStore = useCategoryStore();
+const isSubmitting = ref(false);
 
 const validationSchema = yup.object({
   code: yup.string().label("Code").required(),
@@ -105,11 +107,15 @@ const { value: name } = useField("name");
 const { value: parentId } = useField("parentId");
 
 const onSubmit = handleSubmit(async (values) => {
+  isSubmitting.value = true;
   try {
     await categoryStore.updateOrCreateCategory(values);
     await categoryStore.getCategories();
+    isSubmitting.value = false;
     show(false);
-  } catch {}
+  } catch {
+    isSubmitting.value = false;
+  }
 });
 
 onMounted(async () => {
