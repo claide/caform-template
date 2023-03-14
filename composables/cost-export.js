@@ -9,5 +9,9 @@ export const useCostExport = (url, filters = {}) => {
     requestUrl = requestUrl + `&filter[payment_method]=${filters.payment_method}`
   }
 
+  if (filters.period) {
+    requestUrl = requestUrl + `&filter[period]=${filters.period}`
+  }
+
   return requestUrl
 }
