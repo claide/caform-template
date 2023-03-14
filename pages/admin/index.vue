@@ -24,6 +24,19 @@
               />
             </div>
           </div>
+          <div class="mt-2 flex items-center text-sm text-gray-500">
+            <div class="mt-1 w-full">
+              <VueDatePicker
+                v-model="dateFilter"
+                @update:model-value="onPeriodUpdated"
+                range
+                teleport-center
+                :enableTimePicker="false"
+                placeholder="Select period"
+              >
+              </VueDatePicker>
+            </div>
+          </div>
         </div>
       </div>
       <div class="mt-5 flex lg:mt-0 lg:ml-4">
@@ -49,6 +62,9 @@
 
 <script setup>
 import { useCostStore } from "@/store/cost";
+import VueDatePicker from "@vuepic/vue-datepicker";
+import dayjs from "dayjs";
+import isEmpty from "lodash/isEmpty";
 
 definePageMeta({
   layout: "admin",
@@ -60,6 +76,21 @@ useHead({
 });
 
 const costStore = useCostStore();
+const dateFilter = ref(null);
+
+const onPeriodUpdated = (value) => {
+  dateFilter.value = value;
+
+  if (isEmpty(value)) {
+    onFilterUpdated("", "period");
+  } else {
+    const dates = [
+      dayjs(value[0]).format("YYYY-MM-DD"),
+      dayjs(value[1]).format("YYYY-MM-DD"),
+    ];
+    onFilterUpdated(dates.toString(), "period");
+  }
+};
 
 const onFilterUpdated = async (value, key) => {
   costStore.filters[key] = value;

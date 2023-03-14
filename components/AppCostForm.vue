@@ -441,7 +441,7 @@ onMounted(() => {
 watch(
   () => props.cost,
   (values) => {
-    values.invoice_file = values.invoice_files || [];
+    values.invoice_file = values.invoice_files;
     resetForm({ values });
   }
 );

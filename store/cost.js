@@ -5,7 +5,8 @@ export const useCostStore = defineStore('cost', {
   state: () => ({
     filters: {
       status: '',
-      payment_method: ''
+      payment_method: '',
+      period: ''
     },
     cost: null,
     costs: {
@@ -23,6 +24,7 @@ export const useCostStore = defineStore('cost', {
       )
         .orderBy('-created_at')
         .where('status', this.filters.status)
+        .where('period', this.filters.period)
         .where('payment_method', this.filters.payment_method)
         .params({
           limit: 30,

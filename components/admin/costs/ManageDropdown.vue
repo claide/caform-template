@@ -82,6 +82,11 @@ const operationItems = computed(() => {
       show: props.cost.status == 2,
     },
     {
+      text: "Mark as Pending",
+      action: markAsPending,
+      show: props.cost.status != 1 && props.cost.status != 4,
+    },
+    {
       text: "Approve",
       action: approveCost,
       show: props.cost.status !== 2 && props.cost.status !== 4,
@@ -136,6 +141,10 @@ const approveCost = () => {
 
 const rejectCost = () => {
   emit("manageCost", props.cost, 3);
+};
+
+const markAsPending = () => {
+  emit("manageCost", props.cost, 1);
 };
 
 const requestAdjustment = () => {
