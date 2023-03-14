@@ -123,7 +123,7 @@ const { value: name } = useField("name");
 const { value: parentId } = useField("parentId");
 
 const isEditing = computed(() => {
-  return props.category;
+  return props.category.id;
 });
 
 const onSubmit = handleSubmit(async (values) => {

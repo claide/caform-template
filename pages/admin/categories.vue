@@ -55,6 +55,7 @@ const onPageChanged = (page) => {
 };
 
 const addNewCategory = () => {
+  selectedCategory.value = {};
   addCategory.value.show();
 };
 

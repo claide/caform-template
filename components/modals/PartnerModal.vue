@@ -233,7 +233,7 @@ const props = defineProps({
 });
 
 const isEditing = computed(() => {
-  return props.partner;
+  return props.partner.id;
 });
 
 const validationSchema = yup.object({

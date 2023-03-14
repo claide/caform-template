@@ -54,7 +54,7 @@ const onPageChanged = (page) => {
 };
 
 const addNewPartner = () => {
-  selectedPartner.value = null;
+  selectedPartner.value = { payment_info: {} };
   addPartner.value.show();
 };
 
