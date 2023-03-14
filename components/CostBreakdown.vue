@@ -50,7 +50,7 @@
           <td class="p-2 text-sm font-medium align-middle">
             <div class="flex items-center">
               <button
-                @click.prevent="updateBreakdown(item)"
+                @click.prevent="updateBreakdown(item, index)"
                 class="p-1 inline-flex border rounded-full text-purple-700 border-purple-700 mr-1"
               >
                 <PencilIcon class="h-3 w-3" />
@@ -85,7 +85,7 @@ const deleteBreakdown = (index) => {
   props.breakdowns.splice(index, 1);
 };
 
-const updateBreakdown = (item) => {
-  emit('edit', item)
+const updateBreakdown = (item, index) => {
+  emit('edit', item, index)
 };
 </script>

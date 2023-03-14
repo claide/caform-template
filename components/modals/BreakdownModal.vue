@@ -112,6 +112,7 @@ import { useCategoryStore } from "@/store/categories";
 import * as yup from "yup";
 import dayjs from "dayjs";
 import find from "lodash/find";
+import isEmpty from "lodash/isEmpty";
 
 const modal = ref(null);
 const emit = defineEmits(["submitted", "updated"]);
@@ -173,8 +174,12 @@ onMounted(async () => {
 watch(
   () => props.breakdown,
   (values) => {
-    isEditing.value = true;
-    values.date = [values.period_from, values.period_to];
+    if (!isEmpty(values)) {
+      isEditing.value = true;
+      values.date = [values.period_from, values.period_to];
+    } else {
+      isEditing.value = false;
+    }
     resetForm({ values });
   }
 );

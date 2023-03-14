@@ -329,6 +329,7 @@ const costStore = useCostStore();
 const countries = ref(allCountries);
 const addBreakdown = ref(null);
 const selectedBreakdown = ref(null);
+const selectedBreakdownIndex = ref(null);
 const isSubmitting = ref(false);
 
 const props = defineProps({
@@ -387,11 +388,14 @@ const removeFile = (index) => {
 };
 
 const addNewBreakdown = () => {
+  selectedBreakdown.value = {};
+  selectedBreakdownIndex.value = null;
   addBreakdown.value.show();
 };
 
-const onBreakdownEdit = (breakdown) => {
+const onBreakdownEdit = (breakdown, index) => {
   selectedBreakdown.value = breakdown;
+  selectedBreakdownIndex.value = index;
   addBreakdown.value.show();
 };
 
@@ -414,8 +418,8 @@ const onBreakdownSubmitted = (breakdown) => {
   breakdowns.value.push(breakdown);
 };
 
-const onBreakdownUpdated = (breakdown) => {
-  selectedBreakdown.value = breakdown;
+const onBreakdownUpdated = (value) => {
+  breakdowns.value.splice(selectedBreakdownIndex.value, 1, value);
 };
 
 const submitCost = handleSubmit(async (values) => {
