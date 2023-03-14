@@ -27,7 +27,7 @@
         :key="file.name"
         class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-indigo-800 bg-indigo-100 rounded dark:bg-indigo-900 dark:text-indigo-300"
       >
-        {{ file.name }}
+        {{ file.name || file.file_name }}
         <button
           @click="removeFile(index)"
           class="nline-flex items-center p-0.5 ml-2 text-sm text-indigo-400 bg-transparent rounded-sm hover:bg-indigo-200 hover:text-indigo-900 dark:hover:bg-indigo-800 dark:hover:text-indigo-300"
