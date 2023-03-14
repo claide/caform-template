@@ -111,6 +111,7 @@ import { Form, Field, ErrorMessage, useField, useForm } from "vee-validate";
 import { useCategoryStore } from "@/store/categories";
 import * as yup from "yup";
 import dayjs from "dayjs";
+import find from "lodash/find";
 
 const modal = ref(null);
 const emit = defineEmits(["submitted", "updated"]);
@@ -143,11 +144,16 @@ const show = (opened = true) => {
 };
 
 const submit = handleSubmit((values) => {
+  const category = find(categoryStore.categories.data, (category) => {
+    return category.id === values.cost_category_id;
+  });
+
   values.currency = "GBP";
+  values.category_text = `${category.code || ""} ${category.name || ""}`;
 
   if (values.date) {
-    values["period_from"] = dayjs(values.date[0]).format("YYYY-MM-DD");
-    values["period_to"] = dayjs(values.date[1]).format("YYYY-MM-DD");
+    values.period_from = dayjs(values.date[0]).format("YYYY-MM-DD");
+    values.period_to = dayjs(values.date[1]).format("YYYY-MM-DD");
     delete values.date;
   }
   resetForm();

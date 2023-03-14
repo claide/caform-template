@@ -82,10 +82,10 @@
         </label>
         <div class="mt-1">
           <select
-            as="select"
             id="cost_partner_id"
             name="cost_partner_id"
             v-model="costPartnerId"
+            @change="onPartnerChanged"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           >
             <option
@@ -140,7 +140,7 @@
         </p>
       </div>
 
-      <div class="mt-6" v-if="showPaymentField(paymentMethod, [1, 2, 3])">
+      <div class="mt-6" v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])">
         <label
           for="beneficiary"
           class="block text-sm font-medium text-gray-700"
@@ -220,7 +220,7 @@
         </div>
       </div>
 
-      <div v-if="showPaymentField(paymentMethod, [1, 2, 3])">
+      <div v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])">
         <label for="account" class="block text-sm font-medium text-gray-700">
           IBAN account number
         </label>
@@ -246,7 +246,21 @@
           />
         </div>
       </div>
-      <div v-if="showPaymentField(paymentMethod, [1, 2, 3])">
+
+      <div v-if="showPaymentField(paymentMethod, [4])">
+        <label for="swift-code" class="block text-sm font-medium text-gray-700">
+          ABA Routing Code
+        </label>
+        <div class="mt-1">
+          <input
+            type="text"
+            name="payment_info.aba_routing_code"
+            v-model="paymentInfo.aba_routing_code"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
+          />
+        </div>
+      </div>
+      <div v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])">
         <label for="notes" class="block text-sm font-medium text-gray-700">
           Notes
         </label>
@@ -308,6 +322,7 @@ import * as yup from "yup";
 import { usePartnerStore } from "@/store/partners";
 import { useCostStore } from "@/store/cost";
 import includes from "lodash/includes";
+import find from "lodash/find";
 
 const partnerStore = usePartnerStore();
 const costStore = useCostStore();
@@ -315,6 +330,15 @@ const countries = ref(allCountries);
 const addBreakdown = ref(null);
 const selectedBreakdown = ref(null);
 const isSubmitting = ref(false);
+
+const props = defineProps({
+  cost: {
+    type: Object,
+    default() {
+      return {};
+    },
+  },
+});
 
 const schema = yup.object({
   applicant_name: yup.string().label("Applicant name").required(),
@@ -371,6 +395,17 @@ const onBreakdownEdit = (breakdown) => {
   addBreakdown.value.show();
 };
 
+const onPartnerChanged = () => {
+  const partner = find(partners.value, (partner) => {
+    return partner.id === costPartnerId.value;
+  });
+
+  if (partner && partner.payment_method) {
+    paymentMethod.value = partner.payment_method;
+    paymentInfo.value = partner.payment_info;
+  }
+};
+
 const showPaymentField = (selectedPaymentMethod, paymentMethods = []) => {
   return includes(paymentMethods, selectedPaymentMethod);
 };
@@ -386,7 +421,7 @@ const onBreakdownUpdated = (breakdown) => {
 const submitCost = handleSubmit(async (values) => {
   isSubmitting.value = true;
   try {
-    await costStore.createCost(values);
+    await costStore.updateOrCreateCost(values);
     resetForm();
     isSubmitting.value = false;
   } catch (e) {
@@ -398,4 +433,12 @@ const submitCost = handleSubmit(async (values) => {
 onMounted(() => {
   partnerStore.getPartners();
 });
+
+watch(
+  () => props.cost,
+  (values) => {
+    values.invoice_file = values.invoice_files || [];
+    resetForm({ values });
+  }
+);
 </script>

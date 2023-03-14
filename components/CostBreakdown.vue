@@ -33,7 +33,7 @@
           class="bg-white border-b dark:bg-[#121A29] dark:border-[#2B333F]"
         >
           <td class="p-2 text-sm font-medium">
-            {{ item.cost_category_id }}
+            {{ item.category_text }}
           </td>
           <td class="p-2 text-sm font-medium">
             {{ item.title }}

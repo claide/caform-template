@@ -7,6 +7,7 @@ export const useCostStore = defineStore('cost', {
       status: '',
       payment_method: ''
     },
+    cost: null,
     costs: {
       data: [],
       meta: {}
@@ -29,6 +30,11 @@ export const useCostStore = defineStore('cost', {
         })
         .get()
     },
+    async getCostInformation (id) {
+      const { data } = await ApplicantCost.find(id);
+      data.id = id
+      this.cost = data
+    },
     async setMeta(meta = {}) {
       this.costs.meta = {
         ...this.costs.meta,
@@ -36,7 +42,7 @@ export const useCostStore = defineStore('cost', {
       }
       return await this.getCosts()
     },
-    async createCost(form) {
+    async updateOrCreateCost(form) {
       const cost = new ApplicantCost(form)
       return await cost.save()
     }

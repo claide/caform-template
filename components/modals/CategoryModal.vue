@@ -120,7 +120,7 @@ const { handleSubmit, resetForm } = useForm({
 
 const { value: code } = useField("code");
 const { value: name } = useField("name");
-const { value: parentId } = useField("parentId");
+const { value: parentId } = useField("parent_id");
 
 const isEditing = computed(() => {
   return props.category.id;
