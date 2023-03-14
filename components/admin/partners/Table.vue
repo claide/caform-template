@@ -94,9 +94,10 @@ import ConfirmModal from "@/components/modals/ConfirmModal";
 
 const partnerStore = usePartnerStore();
 const confirmModal = ref(null);
+const emit = defineEmits(["edit"]);
 
 const onPartnerEdit = (partner) => {
-  console.log(partner);
+  emit("edit", partner);
 };
 
 const onPartnerDelete = async (partner) => {

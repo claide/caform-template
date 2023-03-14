@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <AdminCategoriesTable />
+    <AdminCategoriesTable @edit="onCategoryEdit" />
     <AdminPagination
       @update:modelValue="onPageChanged"
       v-model="categoryStore.categories.meta.current_page"
@@ -29,7 +29,7 @@
       :total="categoryStore.categories.meta.total"
     />
 
-    <ModalsCategoryModal ref="addCategory" />
+    <ModalsCategoryModal :category="selectedCategory" ref="addCategory" />
   </section>
 </template>
 
@@ -48,12 +48,18 @@ useHead({
 
 const categoryStore = useCategoryStore();
 const addCategory = ref(null);
+const selectedCategory = ref(null);
 
 const onPageChanged = (page) => {
   categoryStore.setMeta({ current_page: page });
 };
 
 const addNewCategory = () => {
+  addCategory.value.show();
+};
+
+const onCategoryEdit = (category) => {
+  selectedCategory.value = category;
   addCategory.value.show();
 };
 </script>

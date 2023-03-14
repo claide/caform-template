@@ -1,6 +1,10 @@
 <template>
   <AppModal ref="modal">
-    <template #title>Add new cost category</template>
+    <template #title>
+      <span v-if="isEditing">Update category</span>
+      <span v-else>Add new cost category</span>
+    </template>
+
     <form @submit="onSubmit">
       <div class="px-6 pb-6">
         <div class="space-y-4">
@@ -48,6 +52,8 @@
                 :key="option.id"
                 :value="option.id"
               >
+                {{ option.code }}
+                <span v-if="option.code && option.name"> - </span>
                 {{ option.name }}
               </option>
             </select>
@@ -64,7 +70,8 @@
           class="inline-flex w-full justify-center rounded-full border border-transparent bg-[#6158CD] px-4 py-2 text-base font-medium text-white hover:bg-[#5045ca] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-2 sm:w-auto sm:text-sm"
         >
           <AppSpinner v-if="isSubmitting" />
-          Add category
+          <span v-if="isEditing">Update category</span>
+          <span v-else>Add category</span>
         </button>
         <button
           type="button"
@@ -88,23 +95,36 @@ const emit = defineEmits(["submitted"]);
 const categoryStore = useCategoryStore();
 const isSubmitting = ref(false);
 
+const props = defineProps({
+  category: {
+    type: Object,
+    default() {
+      return {};
+    },
+  },
+});
+
 const validationSchema = yup.object({
   code: yup.string().label("Code").required(),
   name: yup.string().label("Name"),
-  parent_id: yup.number().label("Parent"),
+  parent_id: yup.number().nullable().label("Parent"),
 });
 
 const show = (opened = true) => {
   modal.value.show(opened);
 };
 
-const { handleSubmit } = useForm({
+const { handleSubmit, resetForm } = useForm({
   validationSchema,
 });
 
 const { value: code } = useField("code");
 const { value: name } = useField("name");
 const { value: parentId } = useField("parentId");
+
+const isEditing = computed(() => {
+  return props.category;
+});
 
 const onSubmit = handleSubmit(async (values) => {
   isSubmitting.value = true;
@@ -121,6 +141,13 @@ const onSubmit = handleSubmit(async (values) => {
 onMounted(async () => {
   await categoryStore.getCategories();
 });
+
+watch(
+  () => props.category,
+  (values) => {
+    resetForm({ values });
+  }
+);
 
 defineExpose({
   show,

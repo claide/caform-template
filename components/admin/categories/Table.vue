@@ -105,8 +105,10 @@ import ConfirmModal from "@/components/modals/ConfirmModal";
 const categoryStore = useCategoryStore();
 const confirmModal = ref(null);
 
+const emit = defineEmits(["edit"]);
+
 const onCategoryEdit = (category) => {
-  console.log(category);
+  emit("edit", category);
 };
 
 const onCategoryDelete = async (category) => {

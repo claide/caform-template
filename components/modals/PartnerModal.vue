@@ -1,6 +1,9 @@
 <template>
   <AppModal ref="modal">
-    <template #title>Add new cost partner</template>
+    <template #title>
+      <span v-if="isEditing">Update {{ props.partner.name }}</span>
+      <span v-else>Add new cost partner</span>
+    </template>
     <form @submit="onSubmit">
       <div class="px-6 pb-6">
         <div class="space-y-4">
@@ -186,7 +189,8 @@
           class="inline-flex w-full justify-center rounded-full border border-transparent bg-[#6158CD] px-4 py-2 text-base font-medium text-white hover:bg-[#5045ca] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-2 sm:w-auto sm:text-sm"
         >
           <AppSpinner v-if="isSubmitting" />
-          Add partner
+          <span v-if="isEditing">Update partner</span>
+          <span v-else>Add partner</span>
         </button>
         <button
           type="button"
@@ -217,12 +221,27 @@ const paymentMethods = [
   { label: "ACH", value: 4 },
 ];
 
+const props = defineProps({
+  partner: {
+    type: Object,
+    default() {
+      return {
+        payment_info: {},
+      };
+    },
+  },
+});
+
+const isEditing = computed(() => {
+  return props.partner;
+});
+
 const validationSchema = yup.object({
   name: yup.string().label("Name").required(),
   payment_method: yup.number().label("Payment method").required(),
 });
 
-const { handleSubmit } = useForm({
+const { handleSubmit, resetForm } = useForm({
   validationSchema,
   initialValues: {
     payment_info: {},
@@ -246,13 +265,19 @@ const onSubmit = handleSubmit(async (values) => {
     show(false);
   } catch (e) {
     isSubmitting.value = false;
-    console.log(e);
   }
 });
 
 const show = (opened = true) => {
   modal.value.show(opened);
 };
+
+watch(
+  () => props.partner,
+  (values) => {
+    resetForm({ values });
+  }
+);
 
 defineExpose({
   show,

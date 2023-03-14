@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <AdminPartnersTable />
+    <AdminPartnersTable @edit="onPartnerEdit" />
     <AdminPagination
       @update:modelValue="onPageChanged"
       v-model="partnerStore.partners.meta.current_page"
@@ -28,7 +28,7 @@
       :to="partnerStore.partners.meta.to"
       :total="partnerStore.partners.meta.total"
     />
-    <ModalsPartnerModal ref="addPartner" />
+    <ModalsPartnerModal :partner="selectedPartner" ref="addPartner" />
   </section>
 </template>
 
@@ -47,12 +47,19 @@ useHead({
 
 const partnerStore = usePartnerStore();
 const addPartner = ref(null);
+const selectedPartner = ref(null);
 
 const onPageChanged = (page) => {
   partnerStore.setMeta({ current_page: page });
 };
 
 const addNewPartner = () => {
+  selectedPartner.value = null;
+  addPartner.value.show();
+};
+
+const onPartnerEdit = (partner) => {
+  selectedPartner.value = partner;
   addPartner.value.show();
 };
 </script>
