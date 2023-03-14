@@ -43,8 +43,11 @@ export const useCostStore = defineStore('cost', {
       return await this.getCosts()
     },
     async updateOrCreateCost(form) {
+      if (form.id) {
+        form._method = 'PUT';
+      }
       const cost = new ApplicantCost(form)
-      return await cost.save()
+      return await cost.config({ method: 'POST' }).save()
     }
   }
 })
