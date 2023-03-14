@@ -1,7 +1,12 @@
 {
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
-  "include": [
-    "components.d.ts",
-  ]
+  "compilerOptions": {
+    "strict": true,
+    "skipLibCheck": true,
+    "types": [
+      "@vueuse/nuxt",
+      "@pinia/nuxt",
+    ]
+  }
 }

@@ -26,15 +26,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
   ],
 
-  typescript: {
-    tsConfig: {
-      compilerOptions: {
-        strict: true,
-        types: ['@pinia/nuxt', './type.d.ts'],
-      },
-    },
-  },
-
   pinia: {
     autoImports: [
       // automatically imports `defineStore`
