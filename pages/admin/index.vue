@@ -8,7 +8,7 @@
           Costs
         </h2>
         <div
-          class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-4"
+          class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-4 lg:items-baseline"
         >
           <div class="mt-2 flex items-center text-sm text-gray-500">
             <div class="mt-1 w-full">
@@ -25,14 +25,15 @@
             </div>
           </div>
           <div class="mt-2 flex items-center text-sm text-gray-500">
-            <div class="mt-1 w-full">
+            <div class="mt-1 w-full md:w-60 lg:w-72">
               <VueDatePicker
                 v-model="dateFilter"
                 @update:model-value="onPeriodUpdated"
                 range
-                teleport-center
                 :enableTimePicker="false"
                 placeholder="Select period"
+                calendar-cell-class-name="rounded-full"
+                :dark="colorMode.preference != 'light'"
               >
               </VueDatePicker>
             </div>
@@ -63,6 +64,7 @@
 <script setup>
 import { useCostStore } from "@/store/cost";
 import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 import dayjs from "dayjs";
 import isEmpty from "lodash/isEmpty";
 
@@ -75,6 +77,7 @@ useHead({
   title: "Costs",
 });
 
+const colorMode = useColorMode();
 const costStore = useCostStore();
 const dateFilter = ref(null);
 
