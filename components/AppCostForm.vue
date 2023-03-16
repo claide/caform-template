@@ -323,6 +323,8 @@ import { usePartnerStore } from "@/store/partners";
 import { useCostStore } from "@/store/cost";
 import includes from "lodash/includes";
 import find from "lodash/find";
+const { $toast } = useNuxtApp();
+import CloseIcon from "@/components/CloseIcon";
 
 const partnerStore = usePartnerStore();
 const costStore = useCostStore();
@@ -426,6 +428,10 @@ const submitCost = handleSubmit(async (values) => {
   isSubmitting.value = true;
   try {
     await costStore.updateOrCreateCost(values);
+    // show toast success
+    $toast.success("Cost application sent successfully!", {
+      closeButton: CloseIcon,
+    });
     resetForm();
     isSubmitting.value = false;
   } catch (e) {
