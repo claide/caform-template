@@ -265,9 +265,9 @@
           Notes
         </label>
         <div class="mt-1">
-          <textarea
-            rows="5"
+          <input
             name="payment_info.notes"
+            type="text"
             v-model="paymentInfo.notes"
             class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
           />

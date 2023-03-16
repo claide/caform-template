@@ -51,7 +51,10 @@
             </div>
           </div>
 
-          <div class="mt-6" v-if="showPaymentField(paymentMethod, [1, 2, 3])">
+          <div
+            class="mt-6"
+            v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])"
+          >
             <label
               for="beneficiary"
               class="block text-sm font-medium text-gray-700"
@@ -134,7 +137,7 @@
             </div>
           </div>
 
-          <div v-if="showPaymentField(paymentMethod, [1, 2, 3])">
+          <div v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])">
             <label
               for="account"
               class="block text-sm font-medium text-gray-700"
@@ -166,13 +169,29 @@
               />
             </div>
           </div>
-          <div v-if="showPaymentField(paymentMethod, [1, 2, 3])">
+          <div v-if="showPaymentField(paymentMethod, [4])">
+            <label
+              for="aba-routing-code"
+              class="block text-sm font-medium text-gray-700"
+            >
+              ABA Routing Code
+            </label>
+            <div class="mt-1">
+              <input
+                type="text"
+                name="payment_info.aba_routing_code"
+                v-model="paymentInfo.aba_routing_code"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+              />
+            </div>
+          </div>
+          <div v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])">
             <label for="notes" class="block text-sm font-medium text-gray-700">
               Notes
             </label>
             <div class="mt-1">
-              <textarea
-                rows="5"
+              <input
+                type="text"
                 name="payment_info.notes"
                 v-model="paymentInfo.notes"
                 class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"

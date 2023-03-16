@@ -44,6 +44,7 @@
         <AdminCostsMenuDropdown
           @exportPayments="exportPayment"
           @exportInvoices="exportInvoices"
+          @exportCosts="exportCosts"
         />
       </div>
     </div>
@@ -109,6 +110,13 @@ const exportPayment = async () => {
 
 const exportInvoices = async () => {
   const { data } = await useBaseFetch("/cost/costs/generate-zip-download", {
+    method: "POST",
+  });
+  window.location.replace(useCostExport(data.url, costStore.filters));
+};
+
+const exportCosts = async () => {
+  const { data } = await useBaseFetch("/cost/costs/generate-export", {
     method: "POST",
   });
   window.location.replace(useCostExport(data.url, costStore.filters));
