@@ -91,6 +91,7 @@ export default defineNuxtConfig({
   plugins: [
     '@/plugins/auth',
     '@/plugins/dayjs',
-    '@/plugins/vue-api-query'
+    '@/plugins/vue-api-query',
+    '@/plugins/subdomain',
   ]
 })
