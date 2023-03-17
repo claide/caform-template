@@ -30,7 +30,7 @@
                   : 'text-dark',
                 'group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark',
               ]"
-              to="/account-settings"
+              to="/admin/account-settings"
             >
               Settings
             </nuxtLink>

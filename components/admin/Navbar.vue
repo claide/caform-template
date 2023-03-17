@@ -56,7 +56,7 @@
             :class="[
               item.link === currentPath
                 ? 'bg-[#404a5b] dark:bg-[#121A29] text-white'
-                : 'text-gray-900 hover:bg-gray-50',
+                : 'text-gray-900',
               'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium hover:bg-[#404a5b] dark:hover:bg-[#121A29] text-white',
             ]"
             :aria-current="item.current ? 'page' : undefined"
@@ -81,8 +81,8 @@
           @click="close()"
           :class="[
             item.link === currentPath
-              ? 'bg-[#f9f9f9] dark:bg-[#1a1a1e] text-slate-400 dark:text-[#6158CD]'
-              : 'text-slate-400 hover:bg-gray-50 hover:text-gray-300',
+              ? 'bg-[#f9f9f9] dark:bg-[#1a1a1e] text-black dark:text-[#6158CD]'
+              : 'text-slate-500 dark:text-slate-400 hover:bg-gray-50 hover:text-gray-300',
             'block rounded-md py-2 px-3 text-sm font-medium ',
           ]"
           :aria-current="item.current ? 'page' : undefined"
