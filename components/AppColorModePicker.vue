@@ -1,22 +1,22 @@
 <template>
-  <ColorScheme placeholder="" tag="span">
+  <ColorScheme placeholder="" tag="div">
     <button
-      class="p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset hover:bg-gray-100 hover:text-gray-500 text-slate-400"
+      class="text-slate-400 hover:bg-[#F9F9F9] dark:hover:bg-[#1a1a1e] hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mx-1 p-2 transition-all rounded-lg ease-in-out delay-75"
       v-if="colorMode.preference === 'system'"
       @click="$colorMode.preference = 'light'"
     >
       <ComputerDesktopIcon class="w-6 h-6 stroke-current" />
     </button>
     <button
-      class="p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset hover:bg-gray-100 hover:text-gray-500 text-slate-400"
-      v-if="colorMode.preference === 'light'"
+      class="text-slate-400 hover:bg-[#F9F9F9] dark:hover:bg-[#1a1a1e] hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mx-1 p-2 transition-all rounded-lg ease-in-out delay-75"
+      v-else-if="colorMode.preference === 'light'"
       @click="$colorMode.preference = 'dark'"
     >
       <SunIcon class="w-6 h-6 stroke-current" />
     </button>
     <button
-      class="p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset hover:bg-gray-100 hover:text-gray-500 text-slate-400"
-      v-if="colorMode.preference === 'dark'"
+      class="text-slate-400 hover:bg-[#F9F9F9] dark:hover:bg-[#1a1a1e] hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mx-1 p-2 transition-all rounded-lg ease-in-out delay-75"
+      v-else
       @click="$colorMode.preference = 'system'"
     >
       <MoonIcon class="w-6 h-6 stroke-current" />

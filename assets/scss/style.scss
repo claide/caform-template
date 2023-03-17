@@ -16,6 +16,11 @@ html {
     background-color: $black;
     color: #ffff;
   }
+
+  &.light {
+    background-color: #f7fafc;
+    color: #ffff;
+  }
 }
 
 a {
