@@ -288,7 +288,6 @@
           @click.prevent="addNewBreakdown"
           class="border border-gray-300 py-1 px-2 rounded text-sm"
         >
-          <AppSpinner v-if="isSubmitting" />
           Add new
         </button>
       </div>
@@ -303,8 +302,9 @@
     </div>
     <button
       type="submit"
-      class="bg-primary hover:bg-[#5045ca] text-white text-base font-medium py-3 px-6 rounded-full mr-3 w-full block mt-6"
+      class="bg-primary hover:bg-[#5045ca] text-white text-base font-medium py-3 px-6 rounded-full mr-3 w-full mt-6 flex justify-center items-center"
     >
+      <AppSpinner v-if="isSubmitting" />
       Send
     </button>
 
@@ -325,6 +325,8 @@ import { usePartnerStore } from "@/store/partners";
 import { useCostStore } from "@/store/cost";
 import includes from "lodash/includes";
 import find from "lodash/find";
+const { $toast } = useNuxtApp();
+import CloseIcon from "@/components/CloseIcon";
 
 const partnerStore = usePartnerStore();
 const costStore = useCostStore();
@@ -429,6 +431,10 @@ const submitCost = handleSubmit(async (values) => {
   isSubmitting.value = true;
   try {
     await costStore.updateOrCreateCost(values);
+    // show toast success
+    $toast.success("Cost application sent successfully!", {
+      closeButton: CloseIcon,
+    });
     resetForm();
     isSubmitting.value = false;
   } catch (e) {

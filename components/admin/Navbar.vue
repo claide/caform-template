@@ -1,7 +1,7 @@
 <template>
   <Disclosure
     as="header"
-    class="shadow w-full bg-[#04091B] dark:text-white"
+    class="shadow w-full bg-white dark:bg-[#04091B] dark:text-white border-b dark:border-b-[#38404C] md:border-none"
     v-slot="{ open }"
   >
     <div class="mx-auto px-2 lg:px-0">
@@ -11,6 +11,14 @@
         <div class="relative z-10 px-2 flex lg:px-0">
           <div class="flex-shrink-0 flex items-center">
             <nuxt-img
+              v-if="colorMode.preference === 'light'"
+              class="block w-[80px] sm:w-[120px]"
+              src="/img/caf-logo-black.svg"
+              sizes="sm:80px md:100w lg:120px"
+            />
+
+            <nuxt-img
+              v-else
               class="block w-[80px] sm:w-[120px]"
               src="/img/logo-admin.svg"
               sizes="sm:80px md:100w lg:120px"
@@ -19,6 +27,7 @@
         </div>
         <div class="relative z-10 flex items-center lg:hidden">
           <AppColorModePicker />
+          <AdminAccountMenu @logout="logout" />
           <!-- Mobile menu button -->
           <DisclosureButton
             class="rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
@@ -29,24 +38,14 @@
           </DisclosureButton>
         </div>
         <div class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
-          <div class="mr-3">
+          <div class="mx-1">
             <AppColorModePicker />
           </div>
-          <button
-            @click="logout"
-            type="button"
-            class="flex-shrink-0 bg-white rounded-full p-1 text-slate-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            <span class="sr-only">Logout</span>
-            <ArrowLeftOnRectangleIcon
-              class="h-6 w-6 rotate-180"
-              aria-hidden="true"
-            />
-          </button>
+          <AdminAccountMenu @logout="logout" />
         </div>
       </div>
       <nav
-        class="hidden lg:flex bg-white lg:border-t lg:border-t-gray-200 dark:bg-[#212737] dark:border-0"
+        class="hidden lg:flex lg:border-t lg:border-t-gray-200 bg-[#212737] dark:border-0"
         aria-label="Global"
       >
         <div class="container mx-auto lg:py-2 lg:space-x-8">
@@ -56,9 +55,9 @@
             :to="item.link"
             :class="[
               item.link === currentPath
-                ? 'bg-gray-100 text-gray-900 dark:bg-[#121A29] dark:text-white'
-                : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900',
-              'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium dark:hover:bg-[#121A29] dark:text-white',
+                ? 'bg-[#404a5b] dark:bg-[#121A29] text-white'
+                : 'text-gray-900 hover:bg-gray-50',
+              'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium hover:bg-[#404a5b] dark:hover:bg-[#121A29] text-white',
             ]"
             :aria-current="item.current ? 'page' : undefined"
           >
@@ -82,9 +81,9 @@
           @click="close()"
           :class="[
             item.link === currentPath
-              ? 'bg-[#121A29] text-gray-900'
-              : 'text-white hover:bg-gray-50 hover:text-gray-300',
-            'block rounded-md py-2 px-3 text-base font-medium ',
+              ? 'bg-[#f9f9f9] dark:bg-[#1a1a1e] text-slate-400 dark:text-[#6158CD]'
+              : 'text-slate-400 hover:bg-gray-50 hover:text-gray-300',
+            'block rounded-md py-2 px-3 text-sm font-medium ',
           ]"
           :aria-current="item.current ? 'page' : undefined"
           >{{ item.name }}</nuxt-link
@@ -114,6 +113,7 @@ import {
   ComputerDesktopIcon,
   SunIcon,
   MoonIcon,
+  UserIcon,
 } from "@heroicons/vue/24/outline";
 
 const colorMode = useColorMode();
