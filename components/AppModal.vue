@@ -10,7 +10,7 @@
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-black bg-opacity-70" />
+        <div class="fixed inset-0 bg-black bg-opacity-80" />
       </TransitionChild>
 
       <div id="container" class="fixed inset-0 overflow-y-auto">
@@ -27,17 +27,18 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-md transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all"
+              :class="size"
+              class="w-full transform overflow-hidden rounded-lg bg-white dark:bg-[#1a1c2c] text-left align-middle shadow-xl transition-all"
             >
               <DialogTitle
                 v-if="props.showTitle"
                 as="h3"
-                class="text-lg font-medium leading-6 flex items-center justify-between mb-6 px-6 pt-6 text-dark"
+                class="text-lg font-medium leading-6 flex items-center justify-between mb-6 px-6 pt-6 text-dark dark:text-white"
               >
                 <slot name="title" class=""></slot>
                 <button
                   type="button"
-                  class="bg-white rounded-md text-slate-400 hover:text-slate-500 focus:outline-none"
+                  class="bg-white dark:bg-inherit rounded-md text-slate-400 hover:text-slate-500 focus:outline-none"
                   @click="show(false)"
                 >
                   <span class="sr-only">Close</span>
@@ -71,9 +72,13 @@ const isOpen = ref(false);
 const props = defineProps({
   showTitle: {
     type: Boolean,
-    default: true
-  }
-})
+    default: true,
+  },
+  size: {
+    type: String,
+    default: "normal",
+  },
+});
 
 const show = (opened = true) => {
   isOpen.value = opened;
@@ -82,6 +87,14 @@ const show = (opened = true) => {
 const stopClickOutside = () => {
   return () => null;
 };
+
+const size = computed(() => {
+  return {
+    "max-w-md": props.size === "normal",
+    "max-w-xl": props.size === "medium",
+    "max-w-2xl": props.size === "large",
+  };
+});
 
 defineExpose({
   show,
