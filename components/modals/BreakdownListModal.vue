@@ -1,12 +1,14 @@
 <template>
-  <AppModal ref="modal">
+  <AppModal ref="modal" size="large">
     <template #title>Cost breakdowns</template>
     <div class="px-6 pb-6">
       <div
         class="-mx-4 mt-8 shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg"
       >
         <table v-if="cost" class="min-w-full text-sm divide-y text-dark">
-          <thead class="bg-gray-50">
+          <thead
+            class="min-w-full text-sm divide-y dark:divide-[#2B333F] text-dark dark:text-slate-400"
+          >
             <tr>
               <th
                 scope="col"
@@ -44,7 +46,7 @@
             <tr
               v-for="breakdown in cost.breakdowns"
               :key="breakdown.id"
-              class="bg-white border-b"
+              class="bg-white border-b dark:bg-[#252640] dark:border-[#2B333F]"
             >
               <td
                 class="hidden sm:table-cell p-2 text-sm text-gray-500 dark:text-[#818692]"
