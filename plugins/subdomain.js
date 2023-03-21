@@ -9,7 +9,7 @@ export default defineNuxtPlugin(() => {
           body: { domain },
         });
       } catch (e) {
-        window.location.replace('https://facebook.com')
+        // window.location.replace('https://facebook.com')
       }
     }
   })

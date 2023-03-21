@@ -431,15 +431,14 @@ const submitCost = handleSubmit(async (values) => {
   isSubmitting.value = true;
   try {
     await costStore.updateOrCreateCost(values);
-    // show toast success
     $toast.success("Cost application sent successfully!", {
       closeButton: CloseIcon,
     });
     resetForm();
     isSubmitting.value = false;
   } catch (e) {
-    setErrors(e.errors);
     isSubmitting.value = false;
+    setErrors(e.errors);
   }
 });
 
