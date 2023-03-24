@@ -46,27 +46,29 @@ export default defineNuxtConfig({
     configPath: './tailwind.config.js',
   },
 
-  // image: {
-  //   // The screen sizes predefined by `@nuxt/image`:
-  //   screens: {
-  //     xs: 320,
-  //     sm: 640,
-  //     md: 768,
-  //     lg: 1024,
-  //     xl: 1280,
-  //     xxl: 1536,
-  //     '2xl': 1536
-  //   },
-  //   presets: {
-  //     avatar: {
-  //       modifiers: {
-  //         format: 'jpg',
-  //         width: 50,
-  //         height: 50
-  //       }
-  //     }
-  //   }
-  // },
+  image: {
+    // options
+
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+      '2xl': 1536
+    },
+
+    presets: {
+      avatar: {
+        modifiers: {
+          format: 'jpg',
+          width: 50,
+          height: 50
+        }
+      }
+    }
+  },
 
   postcss: {
     plugins: {
