@@ -12,7 +12,7 @@ export const useCategoryStore = defineStore('category', {
     async getCategories() {
       this.categories = await CostCategory
         .params({
-          limit: 30,
+          limit: 100,
           page: this.categories.meta.current_page
         })
         .get()
