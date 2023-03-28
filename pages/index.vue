@@ -1,7 +1,7 @@
 <template>
   <div class="mt-0 md:mt-[34px]">
     <section class="relative hero">
-      <nuxt-img
+      <img
         class="hidden md:block w-full md:w-2/4 h-[32rem] md:h-screen"
         src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/home-bg.png"
         :style="{
@@ -13,19 +13,19 @@
         }"
         format="webp"
       />
-      <nuxt-img
+      <img
         src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/particle-yellow.png"
         alt="header particles"
         format="webp"
         class="hero-particle-yellow"
       />
-      <nuxt-img
+      <img
         src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/particle-blue.png"
         alt="header particles"
         format="webp"
         class="hero-particle-blue"
       />
-      <nuxt-img
+      <img
         src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/particle-red.png"
         alt="header particles"
         format="webp"
@@ -64,7 +64,7 @@
         class="grid container px-4 py-16 mx-auto gap-y-20 lg:gap-24 lg:py-24 lg:grid-cols-12"
       >
         <div class="mr-auto place-self-center lg:col-span-6">
-          <nuxt-img
+          <img
             class="block rounded-xl"
             src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/caf-dashboard.png"
             sizes="sm:100vw md:100vw lg:704px"
@@ -108,7 +108,7 @@
           :key="index"
           class="text-center lg:col-span-4"
         >
-          <nuxt-img
+          <img
             class="mx-auto mb-8"
             :src="item.img"
             sizes="sm:113px md:127px lg:137px"

@@ -7,7 +7,7 @@
         to="/"
         class="flex items-center mb-10 text-2xl font-semibold text-dark dark:text-white"
       >
-        <nuxt-img
+        <img
           src="/img/caf-logo-black.svg"
           sizes="sm:80px md:100w lg:120px"
           width="120"
@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { useCostStore } from '@/store/cost'
+import { useCostStore } from "@/store/cost";
 
 definePageMeta({
   colorMode: "light",
@@ -42,6 +42,6 @@ const costStore = useCostStore();
 const route = useRoute();
 
 onMounted(async () => {
-  await costStore.getCostInformation(route.params.id)
-})
+  await costStore.getCostInformation(route.params.id);
+});
 </script>

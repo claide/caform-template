@@ -10,14 +10,14 @@
       >
         <div class="relative z-10 px-2 flex lg:px-0">
           <div class="flex-shrink-0 flex items-center">
-            <nuxt-img
+            <img
               v-if="colorMode.preference === 'light'"
               class="block w-[80px] sm:w-[120px]"
               src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/caf-logo-black.svg"
               sizes="sm:80px md:100w lg:120px"
             />
 
-            <nuxt-img
+            <img
               v-else
               class="block w-[80px] sm:w-[120px]"
               src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/logo-admin.svg"
