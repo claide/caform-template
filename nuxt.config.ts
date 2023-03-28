@@ -48,7 +48,7 @@ export default defineNuxtConfig({
 
   image: {
     // options
-
+    domains: ['https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/'],
     screens: {
       xs: 320,
       sm: 640,
@@ -87,7 +87,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: '' // can be overridden by NUXT_PUBLIC_API_BASE environment variable
+      apiBase: '', // can be overridden by NUXT_PUBLIC_API_BASE environmen variable
+      BASE_URL: process.env.BASE_URL
     }
   },
 

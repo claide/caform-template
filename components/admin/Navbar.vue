@@ -13,14 +13,14 @@
             <nuxt-img
               v-if="colorMode.preference === 'light'"
               class="block w-[80px] sm:w-[120px]"
-              src="/img/caf-logo-black.svg"
+              src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/caf-logo-black.svg"
               sizes="sm:80px md:100w lg:120px"
             />
 
             <nuxt-img
               v-else
               class="block w-[80px] sm:w-[120px]"
-              src="/img/logo-admin.svg"
+              src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/logo-admin.svg"
               sizes="sm:80px md:100w lg:120px"
             />
           </div>

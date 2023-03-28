@@ -7,14 +7,14 @@
       >
         <nuxt-img
           v-show="colorMode === 'light'"
-          src="/img/caf-logo-black.svg"
+          src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/caf-logo-black.svg"
           sizes="sm:80px md:100w lg:120px"
           width="120"
           height="48"
         />
         <nuxt-img
           v-show="colorMode != 'light'"
-          src="/img/logo-admin.svg"
+          src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/logo-admin.svg"
           sizes="sm:80px md:100w lg:120px"
           width="120"
           height="48"
@@ -24,14 +24,14 @@
       <div class="w-full mx-auto sm:max-w-md md:max-w-6xl mt-2">
         <nuxt-img
           v-show="errorCode.statusCode === 404"
-          src="/img/404-error.png"
+          src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/404-error.png"
           sizes="sm:200px md:100w lg:380px"
           class="mx-auto mb-12 md:mb-20"
           format="webp"
         />
         <nuxt-img
           v-show="errorCode.statusCode != 404"
-          src="/img/401-error.png"
+          src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/401-error.png"
           sizes="sm:200px md:100w lg:380px"
           class="mx-auto mb-12 md:mb-20"
           format="webp"

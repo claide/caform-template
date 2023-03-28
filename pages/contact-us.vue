@@ -1,19 +1,19 @@
 <template>
   <div class="relative mt-10 md:mt-[5rem] page page-contact">
     <nuxt-img
-      src="/img/particle-yellow.png"
+      src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/particle-yellow.png"
       alt="header particles"
       format="webp"
       class="page-contact-particle-yellow"
     />
     <nuxt-img
-      src="/img/particle-blue.png"
+      src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/particle-blue.png"
       alt="header particles"
       format="webp"
       class="page-contact-particle-blue top-[22rem] md:top-[48%]"
     />
     <nuxt-img
-      src="/img/particle-red.png"
+      src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/particle-red.png"
       alt="header particles"
       format="webp"
       class="page-contact-particle-red"
