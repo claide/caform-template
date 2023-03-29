@@ -4,7 +4,7 @@
       <div class="grid mx-auto gap-y-10 lg:gap-24 lg:grid-cols-12">
         <div class="mb-6 md:mb-0 mr-auto lg:col-span-3">
           <nuxt-link to="/" class="flex items-center">
-            <nuxt-img
+            <img
               src="/img/caf-logo-all-white.svg"
               sizes="sm:100vw md:100w lg:120px"
               width="120"

@@ -292,6 +292,8 @@
         </button>
       </div>
 
+      <ErrorMessage class="text-red-700 text-sm" name="breakdowns" />
+
       <CostBreakdown
         @edit="onBreakdownEdit"
         v-if="breakdowns.length > 0"
@@ -350,6 +352,7 @@ const schema = yup.object({
   currency: yup.string().label("Currency").required(),
   cost_partner_id: yup.number().label("Partner").required(),
   payment_method: yup.number().label("Payment method").required(),
+  breakdowns: yup.array().label('Breakdowns').required(),
 });
 
 const costForm = useForm({
@@ -428,15 +431,14 @@ const submitCost = handleSubmit(async (values) => {
   isSubmitting.value = true;
   try {
     await costStore.updateOrCreateCost(values);
-    // show toast success
     $toast.success("Cost application sent successfully!", {
       closeButton: CloseIcon,
     });
     resetForm();
     isSubmitting.value = false;
   } catch (e) {
-    setErrors(e.errors);
     isSubmitting.value = false;
+    setErrors(e.errors);
   }
 });
 

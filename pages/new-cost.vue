@@ -7,8 +7,8 @@
         to="/"
         class="flex items-center mb-10 text-2xl font-semibold text-dark dark:text-white"
       >
-        <nuxt-img
-          src="/img/caf-logo-black.svg"
+        <img
+          src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/caf-logo-black.svg"
           sizes="sm:80px md:100w lg:120px"
           width="120"
           height="48"

@@ -12,7 +12,7 @@ export const usePartnerStore = defineStore('partner', {
     async getPartners() {
       this.partners = await Partner
         .params({
-          limit: 30,
+          limit: 100,
           page: this.partners.meta.current_page
         })
         .get()
