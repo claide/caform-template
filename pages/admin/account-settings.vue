@@ -28,10 +28,10 @@
                   <div class="font-bold mr-2 text-xl">Max Smith</div>
                 </div>
                 <div class="flex flex-wrap mb-4 text-sm">
-                  <div class="flex item-center text-slate-400 mr-5">
+                  <div class="flex item-center text-slate-500 mr-5">
                     <BriefcaseIcon class="w-5 h-5 mr-1" /> Aiveek
                   </div>
-                  <div class="flex item-center text-slate-400">
+                  <div class="flex item-center text-slate-500">
                     <EnvelopeIcon class="w-5 h-5 mr-1" /> maxsmith@yahue.com
                   </div>
                 </div>
@@ -57,9 +57,9 @@
                     :href="item.href"
                     :class="[
                       selected
-                        ? 'bg-gray-50 text-indigo-700 hover:text-indigo-700 hover:bg-white'
-                        : 'text-gray-900 hover:text-gray-900 hover:bg-gray-50 dark:text-slate-400',
-                      'group rounded-md px-3 py-2 flex items-center text-sm font-medium',
+                        ? 'bg-gray-50 dark:bg-[#1b273c] dark:text-white text-indigo-700 hover:text-indigo-700 hover:bg-white dark:hover:text-white'
+                        : 'text-gray-900 hover:text-gray-900 hover:bg-gray-50 dark:hover:bg-[#1b273c] dark:text-slate-500',
+                      'group rounded-md px-3 py-2 flex items-center text-sm font-medium cursor-pointer',
                     ]"
                     :aria-current="selected ? 'page' : undefined"
                   >
@@ -67,7 +67,7 @@
                       :is="item.icon"
                       :class="[
                         selected
-                          ? 'text-indigo-500 group-hover:text-indigo-500'
+                          ? 'text-indigo-500 group-hover:text-indigo-500 dark:text-white dark:group-hover:text-white'
                           : 'text-gray-400 group-hover:text-gray-500',
                         'flex-shrink-0 -ml-1 mr-3 h-6 w-6',
                       ]"
@@ -80,13 +80,19 @@
                 </Tab>
               </nav>
             </TabList>
-          </TabGroup>
 
-          <TabPanels class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
-            <TabPanel v-for="(item, idx) in Object.values(navigation)"
-              >hehe</TabPanel
-            >
-          </TabPanels>
+            <TabPanels class="md:px-6 lg:px-0 lg:col-span-9">
+              <TabPanel>
+                <AdminSettingsAccount />
+              </TabPanel>
+              <TabPanel>
+                <AdminSettingsSecurity />
+              </TabPanel>
+              <TabPanel>
+                <AdminSettingsBilling />
+              </TabPanel>
+            </TabPanels>
+          </TabGroup>
         </div>
       </AppCard>
     </section>
