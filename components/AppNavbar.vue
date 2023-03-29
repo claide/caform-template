@@ -26,7 +26,7 @@
           <div class="flex flex-shrink-0 items-center">
             <img
               class="block w-[80px] sm:w-[120px]"
-              src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/caf-logo-black.svg"
+              src="https://assets.costapplicationform.com/static/caf-logo-black.svg"
               sizes="sm:80px md:100w lg:120px"
             />
           </div>

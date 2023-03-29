@@ -48,7 +48,7 @@ export default defineNuxtConfig({
 
   image: {
     // options
-    domains: ['https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/'],
+    domains: ['https://assets.costapplicationform.com/static/'],
     screens: {
       xs: 320,
       sm: 640,

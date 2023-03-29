@@ -3,7 +3,7 @@
     <section class="relative hero">
       <img
         class="hidden md:block w-full md:w-2/4 h-[32rem] md:h-screen"
-        src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/home-bg.png"
+        src="https://assets.costapplicationform.com/static/home-bg.png"
         :style="{
           top: `-112px`,
           right: 0,
@@ -14,19 +14,19 @@
         format="webp"
       />
       <img
-        src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/particle-yellow.png"
+        src="https://assets.costapplicationform.com/static/particle-yellow.png"
         alt="header particles"
         format="webp"
         class="hero-particle-yellow"
       />
       <img
-        src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/particle-blue.png"
+        src="https://assets.costapplicationform.com/static/particle-blue.png"
         alt="header particles"
         format="webp"
         class="hero-particle-blue"
       />
       <img
-        src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/particle-red.png"
+        src="https://assets.costapplicationform.com/static/particle-red.png"
         alt="header particles"
         format="webp"
         class="hero-particle-red"
@@ -66,7 +66,7 @@
         <div class="mr-auto place-self-center lg:col-span-6">
           <img
             class="block rounded-xl"
-            src="https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/caf-dashboard.png"
+            src="https://assets.costapplicationform.com/static/caf-dashboard.png"
             sizes="sm:100vw md:100vw lg:704px"
             width="704"
             height="404"
@@ -164,19 +164,19 @@ const cafPoints = ref([
 
 const cafFeatures = ref([
   {
-    img: "https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/100.png",
+    img: "https://assets.costapplicationform.com/static/100.png",
     title: "100% All-in-one",
     desc: `Cost applications, approvals, status update
     emails, categories, partners and export files.
     All-in-one.`,
   },
   {
-    img: "https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/target.png",
+    img: "https://assets.costapplicationform.com/static/target.png",
     title: "Keeping it simple",
     desc: `The simplest solution for cost applications. No difficult accounting rules.`,
   },
   {
-    img: "https://costapplicationform.s3.ap-southeast-1.amazonaws.com/static/coin.png",
+    img: "https://assets.costapplicationform.com/static/coin.png",
     title: "Credit based",
     desc: `No monthly on-going subscriptions, just pay when you use the platform.`,
   },
