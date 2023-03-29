@@ -49,7 +49,7 @@
           >
           <nuxt-link
             to="/register"
-            class="border border-primary text-primary text-base font-medium py-4 px-6 rounded-full hidden md:inline-block"
+            class="border border-primary text-primary text-base font-medium py-4 px-6 rounded-full hidden md:inline-block bg-white"
             >Contact sales</nuxt-link
           >
         </div>

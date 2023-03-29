@@ -106,7 +106,7 @@ a {
         width: 44px;
         height: 44px;
         left: 25%;
-        bottom: 30%;
+        bottom: 15%;
       }
     }
   }
@@ -137,6 +137,7 @@ a {
       position: absolute;
       top: 15rem;
       left: 1rem;
+      z-index: -1;
 
       @media (min-width: 1025px) {
         width: 44px;
@@ -151,6 +152,7 @@ a {
       position: absolute;
       top: 17rem;
       right: 8rem;
+      z-index: -1;
 
       @media (min-width: 1025px) {
         width: 44px;

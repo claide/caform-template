@@ -31,14 +31,14 @@
             />
           </div>
           <div class="hidden ml-auto sm:block">
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-5">
               <nuxt-link
                 v-for="(item, index) in menu"
                 :key="item.index"
                 :to="item.link"
                 :class="[
                   item.current ? 'text-secondary' : 'text-primary',
-                  'px-3 py-2 rounded-md text-base font-medium',
+                  'px-3 py-2 rounded-md text-lg font-semibold',
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
               >
@@ -46,7 +46,7 @@
               </nuxt-link>
               <nuxt-link
                 to="/login"
-                class="bg-black hover:bg-[#5045ca] text-white block text-base py-4 px-7 rounded-full"
+                class="bg-black hover:bg-[#5045ca] text-white block text-lg py-4 px-7 rounded-full font-semibold"
                 >Login</nuxt-link
               >
             </div>
@@ -73,7 +73,7 @@
             item.current
               ? 'bg-gray-900 text-white'
               : 'text-primary hover:bg-gray-700 hover:text-white',
-            'block px-3 py-2 rounded-md text-base font-medium',
+            'block px-3 py-2 rounded-md text-lg font-semibold',
           ]"
           :aria-current="item.current ? 'page' : undefined"
           >{{ item.name }}</nuxt-link
@@ -81,7 +81,7 @@
         <DisclosureButton
           as="a"
           href="login"
-          class="text-primary hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+          class="text-primary hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-lg font-semibold"
           >Login</DisclosureButton
         >
       </div>
