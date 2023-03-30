@@ -11,7 +11,7 @@ export default class Cost extends Model {
     if (!this.created_at) {
       return ''
     }
-    return dayjs(this.created_at).format('MMMM d, YYYY')
+    return dayjs(this.created_at).format('MMMM D, YYYY')
   }
 
   get statusText() {
