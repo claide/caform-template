@@ -10,7 +10,7 @@
           <tr>
             <th
               scope="col"
-              class="hidden py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 lg:table-cell"
+              class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 w-12"
             ></th>
             <th
               scope="col"
@@ -20,20 +20,38 @@
             </th>
             <th
               scope="col"
-              class="px-3 py-3.5 text-left text-sm font-semibold lg:w-72"
+              class="px-3 py-3.5 text-left text-sm font-semibold md:w-72"
             >
-              <span class="hidden sm:block">Name</span>
-              <span class="sm:hidden">Details</span>
+              <span class="hidden lg:block">Name</span>
+              <span class="lg:hidden">Details</span>
             </th>
             <th
               scope="col"
-              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell lg:w-72"
+              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell md:w-72"
             >
               Parent
             </th>
             <th
               scope="col"
-              class="hidden px-3 py-3.5 text-left text-sm font-semibold sm:table-cell"
+              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
+            >
+              Total USD
+            </th>
+            <th
+              scope="col"
+              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
+            >
+              Total GBP
+            </th>
+            <th
+              scope="col"
+              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
+            >
+              Total EURO
+            </th>
+            <th
+              scope="col"
+              class="hidden px-3 py-3.5 text-left text-sm font-semibold md:table-cell"
             >
               Date Created
             </th>
@@ -49,7 +67,7 @@
             class="bg-white border-b dark:bg-[#121A29] dark:border-[#2B333F]"
           >
             <td
-              class="hidden w-full max-w-0 py-3 pl-4 pr-3 text-sm text-gray-500 dark:text-[#818692] sm:w-auto sm:max-w-none sm:pl-6 lg:table-cell"
+              class="w-12 max-w-0 py-3 pl-4 pr-3 text-sm text-gray-500 dark:text-[#818692] sm:w-auto sm:max-w-none sm:pl-6"
             >
               {{ category.id }}
             </td>
@@ -65,7 +83,34 @@
                 <dd
                   class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] md:hidden"
                 >
-                  {{ category.code }}
+                  Code: {{ category.code }}
+                </dd>
+                <dd
+                  class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] lg:hidden"
+                >
+                  Parent:
+                  <span v-if="category.parent">
+                    {{ category.parent.code }}
+                    <span v-if="category.parent.code && category.parent.name">
+                      -
+                    </span>
+                    {{ category.parent.name }}
+                  </span>
+                </dd>
+                <dd
+                  class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] lg:hidden"
+                >
+                  Total USD: 1,200
+                </dd>
+                <dd
+                  class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] lg:hidden"
+                >
+                  Total GBP: 1,200
+                </dd>
+                <dd
+                  class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] lg:hidden"
+                >
+                  Total EURO: 1,200
                 </dd>
               </dl>
             </td>
@@ -80,8 +125,12 @@
                 {{ category.parent.name }}
               </span>
             </td>
+            <td class="hidden lg:table-cell"></td>
+            <td class="hidden lg:table-cell"></td>
+            <td class="hidden lg:table-cell"></td>
+
             <td
-              class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] sm:table-cell"
+              class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] md:table-cell"
             >
               {{ category.createdAt }}
             </td>
@@ -94,6 +143,21 @@
             </td>
           </tr>
         </tbody>
+        <tfoot
+          class="bg-gray-50 dark:bg-[#212737] hidden lg:table-footer-group"
+        >
+          <tr class="font-semibold text-dark dark:text-slate-400">
+            <th scope="row" class="px-6 py-3 text-base">Total</th>
+            <td class="px-6 py-3"></td>
+            <td class="px-6 py-3"></td>
+            <td class="px-6 py-3"></td>
+            <td class="px-6 py-3">$21,000</td>
+            <td class="px-6 py-3">£21,000</td>
+            <td class="px-6 py-3">€21,000</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
       </table>
     </div>
 
