@@ -8,7 +8,12 @@ $black: #04091b;
 
 html,
 body {
+  height: 100%;
   font-size: 16px;
+}
+
+#__nuxt {
+  height: 100%;
 }
 
 html {
@@ -18,6 +23,19 @@ html {
   }
 
   &.light {
+    background-color: #f7fafc;
+  }
+}
+
+.dark {
+  body {
+    background-color: $black;
+    color: #ffff;
+  }
+}
+
+.light {
+  body {
     background-color: #f7fafc;
   }
 }

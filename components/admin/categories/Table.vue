@@ -18,13 +18,16 @@
             >
               Code
             </th>
-            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">
+            <th
+              scope="col"
+              class="px-3 py-3.5 text-left text-sm font-semibold lg:w-72"
+            >
               <span class="hidden sm:block">Name</span>
               <span class="sm:hidden">Details</span>
             </th>
             <th
               scope="col"
-              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
+              class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell lg:w-72"
             >
               Parent
             </th>

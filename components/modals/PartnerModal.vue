@@ -8,7 +8,10 @@
       <div class="px-6 pb-6">
         <div class="space-y-4">
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-700">
+            <label
+              for="name"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               Name
             </label>
             <div class="mt-1">
@@ -16,7 +19,7 @@
                 type="text"
                 v-model="name"
                 name="name"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               />
               <ErrorMessage class="text-red-700 text-sm" name="name" />
             </div>
@@ -25,7 +28,7 @@
           <div>
             <label
               for="pament_method"
-              class="block text-sm font-medium text-gray-700"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
             >
               Payment Method
             </label>
@@ -33,7 +36,7 @@
               <select
                 v-model="paymentMethod"
                 name="payment_method"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               >
                 <option value="" disabled>Select payment method</option>
                 <option
@@ -57,7 +60,7 @@
           >
             <label
               for="beneficiary"
-              class="block text-sm font-medium text-gray-700"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
             >
               Beneficiary name
             </label>
@@ -66,13 +69,16 @@
                 type="text"
                 name="payment_info.name"
                 v-model="paymentInfo.name"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               />
             </div>
           </div>
 
           <div v-if="showPaymentField(paymentMethod, [1])">
-            <label for="street" class="block text-sm font-medium text-gray-700">
+            <label
+              for="street"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               Street
             </label>
             <div class="mt-1">
@@ -80,13 +86,16 @@
                 type="text"
                 name="payment_info.street"
                 v-model="paymentInfo.street"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               />
             </div>
           </div>
 
           <div v-if="showPaymentField(paymentMethod, [1])">
-            <label for="city" class="block text-sm font-medium text-gray-700">
+            <label
+              for="city"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               City
             </label>
             <div class="mt-1">
@@ -94,13 +103,16 @@
                 type="text"
                 name="payment_info.city"
                 v-model="paymentInfo.city"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               />
             </div>
           </div>
 
           <div v-if="showPaymentField(paymentMethod, [1])">
-            <label for="postal" class="block text-sm font-medium text-gray-700">
+            <label
+              for="postal"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               Postal code
             </label>
             <div class="mt-1">
@@ -108,7 +120,7 @@
                 type="text"
                 name="payment_info.postal_code"
                 v-model="paymentInfo.postal_code"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               />
             </div>
           </div>
@@ -116,7 +128,7 @@
           <div v-if="showPaymentField(paymentMethod, [1])">
             <label
               for="country"
-              class="block text-sm font-medium text-gray-700"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
             >
               Country
             </label>
@@ -124,7 +136,7 @@
               <select
                 name="payment_info.country_code"
                 v-model="paymentInfo.country_code"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               >
                 <option
                   v-for="(country, code) in allCountries"
@@ -140,7 +152,7 @@
           <div v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])">
             <label
               for="account"
-              class="block text-sm font-medium text-gray-700"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
             >
               IBAN account number
             </label>
@@ -149,14 +161,14 @@
                 type="text"
                 name="payment_info.iban_account_number"
                 v-model="paymentInfo.iban_account_number"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               />
             </div>
           </div>
           <div v-if="showPaymentField(paymentMethod, [1])">
             <label
               for="swift-code"
-              class="block text-sm font-medium text-gray-700"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
             >
               Swift code
             </label>
@@ -165,14 +177,14 @@
                 type="text"
                 name="payment_info.swift_code"
                 v-model="paymentInfo.swift_code"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               />
             </div>
           </div>
           <div v-if="showPaymentField(paymentMethod, [4])">
             <label
               for="aba-routing-code"
-              class="block text-sm font-medium text-gray-700"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
             >
               ABA Routing Code
             </label>
@@ -181,12 +193,15 @@
                 type="text"
                 name="payment_info.aba_routing_code"
                 v-model="paymentInfo.aba_routing_code"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               />
             </div>
           </div>
           <div v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])">
-            <label for="notes" class="block text-sm font-medium text-gray-700">
+            <label
+              for="notes"
+              class="block text-sm font-medium text-gray-700 dark:text-white"
+            >
               Notes
             </label>
             <div class="mt-1">
@@ -194,14 +209,14 @@
                 type="text"
                 name="payment_info.notes"
                 v-model="paymentInfo.notes"
-                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded text-dark"
+                class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               />
             </div>
           </div>
         </div>
       </div>
       <div
-        class="bg-gray-200 px-4 py-3 sm:py-4 sm:flex sm:flex-row-reverse sm:px-6"
+        class="bg-gray-200 dark:bg-[#1A1B2D] px-4 py-3 sm:py-4 sm:flex sm:flex-row-reverse sm:px-6"
       >
         <button
           type="submit"

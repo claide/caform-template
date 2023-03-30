@@ -22,28 +22,19 @@
         class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-[#111A29] dark:border-[#38404C]"
       >
         <div class="px-1 py-1">
-          <MenuItem v-slot="{ active }">
+          <MenuItem v-slot="{ close }">
             <nuxtLink
-              :class="[
-                active
-                  ? 'bg-[#EBEAF4] text-primary dark:bg-black'
-                  : 'text-dark',
-                'group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark',
-              ]"
+              @click="close"
+              class="group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark"
               to="/admin/account-settings"
             >
               Settings
             </nuxtLink>
           </MenuItem>
-          <MenuItem v-slot="{ active }">
+          <MenuItem>
             <a
               @click="logout"
-              :class="[
-                active
-                  ? 'bg-[#EBEAF4] text-primary dark:bg-black'
-                  : 'text-dark',
-                'group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark',
-              ]"
+              class="group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark"
               href="javascript:;"
             >
               Logout

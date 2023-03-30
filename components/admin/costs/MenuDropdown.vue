@@ -22,7 +22,7 @@
         leave-to-class="transform scale-95 opacity-0"
       >
         <MenuItems
-          class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-[#121A29] dark:border-gray-600"
+          class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-[#121A29] dark:border-gray-600 z-10"
         >
           <div class="px-1 py-1">
             <MenuItem v-slot="{ active }">
@@ -93,5 +93,5 @@ import {
   DocumentArrowUpIcon,
 } from "@heroicons/vue/24/outline";
 
-const emit = defineEmits(['exportPayments', 'exportInvoices'])
+const emit = defineEmits(["exportPayments", "exportInvoices"]);
 </script>
