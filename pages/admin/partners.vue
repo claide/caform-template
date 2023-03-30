@@ -38,7 +38,7 @@ import { usePartnerStore } from "@/store/partners";
 
 definePageMeta({
   layout: "admin",
-  middleware: ["auth"],
+  middleware: ["tenant", "auth"],
 });
 
 useHead({

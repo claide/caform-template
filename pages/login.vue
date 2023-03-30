@@ -31,7 +31,7 @@
 definePageMeta({
   colorMode: "light",
   layout: "empty",
-  middleware: ["guest"],
+  middleware: ["guest", "tenant"],
 });
 
 useHead({

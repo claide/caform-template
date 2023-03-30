@@ -112,7 +112,7 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 
 definePageMeta({
   layout: "admin",
-  middleware: "auth",
+  middleware: ["tenant", "auth"],
 });
 
 useHead({

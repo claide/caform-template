@@ -39,7 +39,7 @@ import { useCategoryStore } from "@/store/categories";
 
 definePageMeta({
   layout: "admin",
-  middleware: ["auth"],
+  middleware: ["tenant", "auth"],
 });
 
 useHead({

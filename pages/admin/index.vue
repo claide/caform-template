@@ -71,7 +71,7 @@ import isEmpty from "lodash/isEmpty";
 
 definePageMeta({
   layout: "admin",
-  middleware: ["auth"],
+  middleware: ["tenant", "auth"],
 });
 
 useHead({
