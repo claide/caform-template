@@ -9,7 +9,7 @@
           right: 0,
           position: `absolute`,
           backgroundSize: `contain`,
-          zIndex: -1,
+          zIndex: 0,
         }"
         format="webp"
       />
@@ -32,7 +32,7 @@
         class="hero-particle-red"
       />
       <div
-        class="grid container px-4 py-8 mx-auto gap-y-20 lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
+        class="grid container px-4 py-8 mx-auto gap-y-20 lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-[1]"
       >
         <div class="mr-auto place-self-start lg:col-span-7 md:mt-12">
           <h1
