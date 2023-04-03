@@ -125,9 +125,21 @@
                 {{ category.parent.name }}
               </span>
             </td>
-            <td class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">{{ category.totalUsd }}</td>
-            <td class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">{{ category.totalGbp }}</td>
-            <td class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">{{ category.totalEur }}</td>
+            <td
+              class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]"
+            >
+              {{ category.totalUsd }}
+            </td>
+            <td
+              class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]"
+            >
+              {{ category.totalGbp }}
+            </td>
+            <td
+              class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]"
+            >
+              {{ category.totalEur }}
+            </td>
 
             <td
               class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] md:table-cell"
@@ -151,9 +163,15 @@
             <td class="px-6 py-3"></td>
             <td class="px-6 py-3"></td>
             <td class="px-6 py-3"></td>
-            <td class="px-6 py-3">$21,000</td>
-            <td class="px-6 py-3">£21,000</td>
-            <td class="px-6 py-3">€21,000</td>
+            <td class="px-3 py-3">
+              {{ readableCurrency(categoryStore.categories.usd_total, 'USD') }}
+            </td>
+            <td class="px-3 py-3">
+              {{ readableCurrency(categoryStore.categories.gbp_total, 'GBP') }}
+            </td>
+            <td class="px-3 py-3">
+              {{ readableCurrency(categoryStore.categories.eur_total, 'EUR') }}
+            </td>
             <td></td>
             <td></td>
           </tr>
@@ -168,6 +186,7 @@
 <script setup>
 import { useCategoryStore } from "@/store/categories";
 import ConfirmModal from "@/components/modals/ConfirmModal";
+import { readableCurrency } from "@/utils/currency";
 
 const categoryStore = useCategoryStore();
 const confirmModal = ref(null);
