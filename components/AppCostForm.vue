@@ -298,6 +298,7 @@
         @edit="onBreakdownEdit"
         v-if="breakdowns.length > 0"
         :breakdowns="breakdowns"
+        :currency="currency"
       />
     </div>
     <button

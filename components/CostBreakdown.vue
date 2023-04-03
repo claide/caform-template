@@ -39,7 +39,7 @@
             {{ item.title }}
           </td>
           <td class="p-2 text-sm font-medium">
-            {{ item.currency }}
+            {{ currency }}
           </td>
           <td class="p-2 text-sm font-medium">
             {{ item.amount }}
@@ -77,6 +77,10 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  currency: {
+    type: String,
+    default: 'GBP'
+  }
 });
 
 const emit = defineEmits(["edit"]);
