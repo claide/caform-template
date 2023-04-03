@@ -88,7 +88,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: '', // can be overridden by NUXT_PUBLIC_API_BASE environmen variable
-      BASE_URL: process.env.BASE_URL
+      BASE_URL: process.env.BASE_URL,
+      APP_VERSION: process.env.APP_VERSION || 0
     }
   },
 

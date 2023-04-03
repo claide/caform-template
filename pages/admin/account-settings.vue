@@ -32,7 +32,8 @@
                     <BriefcaseIcon class="w-5 h-5 mr-1" /> Aiveek
                   </div>
                   <div class="flex item-center text-slate-500">
-                    <EnvelopeIcon class="w-5 h-5 mr-1" /> maxsmith@yahue.com
+                    <EnvelopeIcon class="w-5 h-5 mr-1" />
+                    {{ userStore.user.data.email }}
                   </div>
                 </div>
               </div>
@@ -83,7 +84,7 @@
 
             <TabPanels class="md:px-6 lg:px-0 lg:col-span-9">
               <TabPanel>
-                <AdminSettingsAccount />
+                <AdminSettingsAccount :user="userStore.user.data" />
               </TabPanel>
               <TabPanel>
                 <AdminSettingsSecurity />
@@ -109,6 +110,7 @@ import {
 } from "@heroicons/vue/24/outline";
 
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
+import { useAuthStore } from "@/store/auth";
 
 definePageMeta({
   layout: "admin",
@@ -119,9 +121,15 @@ useHead({
   title: "Settings",
 });
 
+const userStore = useAuthStore();
+
 const navigation = [
   { name: "Account", icon: UserCircleIcon, current: true },
   { name: "Password", icon: KeyIcon, current: false },
   { name: "Billing", icon: CreditCardIcon, current: false },
 ];
+
+onMounted(() => {
+  userStore.getUser();
+});
 </script>
