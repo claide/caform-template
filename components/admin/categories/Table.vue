@@ -47,7 +47,7 @@
               scope="col"
               class="hidden px-3 py-3.5 text-left text-sm font-semibold lg:table-cell"
             >
-              Total EURO
+              Total EUR
             </th>
             <th
               scope="col"
@@ -100,17 +100,17 @@
                 <dd
                   class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] lg:hidden"
                 >
-                  Total USD: 1,200
+                  Total USD: {{ category.totalUsd }}
                 </dd>
                 <dd
                   class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] lg:hidden"
                 >
-                  Total GBP: 1,200
+                  Total GBP: {{ category.totalGbp }}
                 </dd>
                 <dd
                   class="mt-1 truncate text-xs text-gray-500 dark:text-[#818692] lg:hidden"
                 >
-                  Total EURO: 1,200
+                  Total EUR: {{ category.totalEur }}
                 </dd>
               </dl>
             </td>
@@ -125,9 +125,9 @@
                 {{ category.parent.name }}
               </span>
             </td>
-            <td class="hidden lg:table-cell"></td>
-            <td class="hidden lg:table-cell"></td>
-            <td class="hidden lg:table-cell"></td>
+            <td class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">{{ category.totalUsd }}</td>
+            <td class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">{{ category.totalGbp }}</td>
+            <td class="hidden sm:table-cell px-3 py-3 text-sm text-gray-500 dark:text-[#818692]">{{ category.totalEur }}</td>
 
             <td
               class="hidden px-3 py-3 text-sm text-gray-500 dark:text-[#818692] md:table-cell"
