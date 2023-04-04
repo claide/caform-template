@@ -313,6 +313,7 @@
       @submitted="onBreakdownSubmitted"
       @updated="onBreakdownUpdated"
       :breakdown="selectedBreakdown"
+      :currency="currency"
       ref="addBreakdown"
     />
   </form>

@@ -123,6 +123,10 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
+  currency: {
+    type: String,
+    default: 'GBP'
+  }
 });
 
 const validationSchema = yup.object({
@@ -149,7 +153,7 @@ const submit = handleSubmit((values) => {
     return category.id === values.cost_category_id;
   });
 
-  values.currency = "GBP";
+  values.currency = props.currency;
   values.category_text = `${category.code || ""} ${category.name || ""}`;
 
   if (values.date) {
