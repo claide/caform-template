@@ -78,7 +78,7 @@
         </div>
       </div>
       <div
-        class="bg-gray-200 px-4 py-3 sm:py-4 sm:flex sm:flex-row-reverse sm:px-6"
+        class="bg-gray-200 dark:bg-[#1A1B2D] px-4 py-3 sm:py-4 sm:flex sm:flex-row-reverse sm:px-6"
       >
         <button
           type="submit"

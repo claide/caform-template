@@ -45,12 +45,7 @@
           <nuxt-link
             to="/register"
             class="bg-primary hover:bg-[#5045ca] text-white text-base font-medium py-4 px-6 rounded-full mr-3 hidden md:inline-block"
-            >Get started</nuxt-link
-          >
-          <nuxt-link
-            to="/register"
-            class="border border-primary text-primary text-base font-medium py-4 px-6 rounded-full hidden md:inline-block bg-white"
-            >Contact sales</nuxt-link
+            >Book a demo</nuxt-link
           >
         </div>
         <div id="registration" class="lg:col-span-5 lg:flex mx-[-16px] md:mx-0">

@@ -3,9 +3,9 @@
     <AdminNavbar />
     <div class="container mx-auto min-h-full px-2 lg:px-0">
       <slot />
-      <small class="text-sm text-gray-600 dark:text-slate-500 py-3">
+      <!-- <small class="text-sm text-gray-600 dark:text-slate-500 py-3">
         Version: {{ config.APP_VERSION }}
-      </small>
+      </small> -->
     </div>
   </div>
 </template>

@@ -11,7 +11,7 @@
         </div>
       </div>
 
-      <div class="bg-white dark:bg-[#121A29] rounded-md mt-8 p-6">
+      <!-- <div class="bg-white dark:bg-[#121A29] rounded-md mt-8 p-6">
         <div class="flex flex-wrap sm:flex-nowrap mb-3">
           <div class="mr-5">
             <img
@@ -40,7 +40,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
     <section>
       <AppCard>

@@ -7,32 +7,38 @@
       <p class="mt-1 text-sm text-slate-500">Change your password</p>
     </div>
 
-    <form>
+    <Form @submit="onSubmit" :validation-schema="schema">
       <fieldset>
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-3 gap-6 gap-y-4">
           <div class="col-span-3 sm:col-span-2">
             <label
-              for="current-password"
+              for="password"
               class="block text-sm font-medium text-gray-700 dark:text-white"
               >Current password</label
             >
-            <input
+            <Field
               type="password"
               name="password"
               id="password"
               class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded mt-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
             />
+            <ErrorMessage name="password" class="text-red-700 text-sm" />
           </div>
           <div class="col-span-3 sm:col-span-2">
             <label
-              for="new-password"
+              for="passwordConfirmation"
               class="block text-sm font-medium text-gray-700 dark:text-white"
-              >New password</label
+              >Confirm password</label
             >
-            <input
+            <Field
               type="password"
-              name="new-password"
+              id="passwordConfirmation"
+              name="passwordConfirmation"
               class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-sm rounded mt-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+            />
+            <ErrorMessage
+              name="passwordConfirmation"
+              class="text-red-700 text-sm"
             />
           </div>
 
@@ -46,6 +52,29 @@
           </div>
         </div>
       </fieldset>
-    </form>
+    </Form>
   </div>
 </template>
+
+<script setup>
+import { Form, Field, ErrorMessage } from "vee-validate";
+import * as yup from "yup";
+
+const props = defineProps({
+  user: {
+    type: Object,
+    default() {
+      return {};
+    },
+  },
+});
+
+const schema = yup.object().shape({
+  password: yup.string().min(6).required().label("Password"),
+  passwordConfirmation: yup
+    .string()
+    .required()
+    .label("Confirm password")
+    .oneOf([yup.ref("password")], "Passwords do not match"),
+});
+</script>

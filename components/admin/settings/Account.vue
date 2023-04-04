@@ -12,7 +12,7 @@
       </div>
 
       <fieldset>
-        <div class="grid grid-cols-4 gap-6">
+        <div class="grid grid-cols-4 gap-6 gap-y-4">
           <div class="col-span-4 sm:col-span-2">
             <label
               for="first_name"
