@@ -35,6 +35,9 @@
                 calendar-cell-class-name="rounded-full"
                 :dark="colorMode.preference != 'light'"
               >
+                <template #input-icon>
+                  <CalendarIcon class="w-9 h-9 stroke-current p-2" />
+                </template>
                 <template #action-row="{ selectDate }">
                   <div class="w-full flex items-center justify-center">
                     <button
@@ -78,7 +81,7 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import dayjs from "dayjs";
 import isEmpty from "lodash/isEmpty";
-import { format } from "date-fns";
+import { CalendarIcon } from "@heroicons/vue/24/outline";
 
 definePageMeta({
   layout: "admin",

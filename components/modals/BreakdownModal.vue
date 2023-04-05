@@ -60,6 +60,9 @@
                 teleport-center
                 :enableTimePicker="false"
               >
+                <template #input-icon>
+                  <CalendarIcon class="w-9 h-9 stroke-current p-2" />
+                </template>
                 <template #action-row="{ selectDate }">
                   <div class="w-full flex items-center justify-center">
                     <button
@@ -123,6 +126,7 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 import find from "lodash/find";
 import isEmpty from "lodash/isEmpty";
+import { CalendarIcon } from "@heroicons/vue/24/outline";
 
 const modal = ref(null);
 const emit = defineEmits(["submitted", "updated"]);
