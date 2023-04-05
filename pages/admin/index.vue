@@ -35,6 +35,16 @@
                 calendar-cell-class-name="rounded-full"
                 :dark="colorMode.preference != 'light'"
               >
+                <template #action-row="{ selectDate }">
+                  <div class="w-full flex items-center justify-center">
+                    <button
+                      class="py-2 px-4 bg-[#7f7fdb] text-white rounded"
+                      @click="selectDate"
+                    >
+                      Select Date
+                    </button>
+                  </div>
+                </template>
               </VueDatePicker>
             </div>
           </div>
@@ -68,6 +78,7 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import dayjs from "dayjs";
 import isEmpty from "lodash/isEmpty";
+import { format } from "date-fns";
 
 definePageMeta({
   layout: "admin",

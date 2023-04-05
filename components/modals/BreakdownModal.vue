@@ -60,6 +60,16 @@
                 teleport-center
                 :enableTimePicker="false"
               >
+                <template #action-row="{ selectDate }">
+                  <div class="w-full flex items-center justify-center">
+                    <button
+                      class="py-2 px-4 bg-[#7f7fdb] text-white rounded"
+                      @click="selectDate"
+                    >
+                      Select Date
+                    </button>
+                  </div>
+                </template>
               </VueDatePicker>
               <ErrorMessage class="text-red-700 text-sm" name="date" />
             </div>
@@ -125,8 +135,8 @@ const props = defineProps({
   },
   currency: {
     type: String,
-    default: 'GBP'
-  }
+    default: "GBP",
+  },
 });
 
 const validationSchema = yup.object({
