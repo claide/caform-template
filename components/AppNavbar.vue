@@ -117,11 +117,11 @@ const menu = ref([
     link: "pricing",
     current: false,
   },
-  {
-    name: "FAQ",
-    link: "faq",
-    current: false,
-  },
+  // {
+  //   name: "FAQ",
+  //   link: "faq",
+  //   current: false,
+  // },
   {
     name: "Contact Us",
     link: "contact-us",

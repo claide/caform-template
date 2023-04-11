@@ -38,7 +38,7 @@
       </div>
     </section>
 
-    <AppCta />
+    <!-- <AppCta /> -->
   </div>
 </template>
 

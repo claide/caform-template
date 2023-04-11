@@ -2,6 +2,8 @@
   <div>
     <AppNavbar />
     <slot />
+    <!-- <AppFaq /> -->
+    <AppCta />
     <AppFooter />
   </div>
 </template>
