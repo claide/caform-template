@@ -61,7 +61,7 @@
         <div class="mr-auto place-self-center lg:col-span-6">
           <img
             class="block rounded-xl"
-            src="https://assets.costapplicationform.com/static/caf-dashboard.png"
+            src="https://assets.costapplicationform.com/static/caf-cost-dashboard.png"
             sizes="sm:100vw md:100vw lg:704px"
             width="704"
             height="404"
