@@ -5,10 +5,6 @@
         <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
           Personal Information
         </h3>
-        <!-- <p class="mt-1 text-sm text-slate-500">
-          This information will be displayed publicly so be careful what you
-          share.
-        </p> -->
       </div>
 
       <fieldset>

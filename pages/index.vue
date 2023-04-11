@@ -56,7 +56,7 @@
 
     <section class="relative bg-[#F9F4F1] text-dark">
       <div
-        class="grid container px-4 py-16 mx-auto gap-y-20 lg:gap-24 lg:py-24 lg:grid-cols-12"
+        class="grid container xl:max-w-[1200px] px-4 py-16 mx-auto gap-y-20 lg:gap-24 lg:py-24 lg:grid-cols-12"
       >
         <div class="mr-auto place-self-center lg:col-span-6">
           <img
@@ -97,7 +97,9 @@
       <h2 class="font-medium text-4xl md:text-5xl mb-16 md:mb-24 text-center">
         Why choose us?
       </h2>
-      <div class="grid container mx-auto gap-y-10 lg:gap-24 lg:grid-cols-12">
+      <div
+        class="grid container xl:max-w-[1200px] mx-auto gap-y-10 lg:gap-24 lg:grid-cols-12"
+      >
         <div
           v-for="(item, index) in cafFeatures"
           :key="index"

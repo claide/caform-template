@@ -17,9 +17,7 @@
           class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 lg:col-span-6"
         >
           <div>
-            <h2 class="mb-6 text-base font-bold uppercase text-indigo-100">
-              Pages
-            </h2>
+            <h2 class="mb-6 text-base font-medium uppercase">Pages</h2>
             <ul>
               <li v-for="(item, index) in pages" :key="index" class="mb-3">
                 <nuxt-link :to="item.link" class="hover:text-indigo-200">{{
@@ -29,9 +27,7 @@
             </ul>
           </div>
           <div>
-            <h2 class="mb-6 text-base font-bold uppercase text-indigo-100">
-              Helpful links
-            </h2>
+            <h2 class="mb-6 text-base font-medium uppercase">Helpful links</h2>
             <ul>
               <li
                 v-for="(item, index) in helpfulLinks"
