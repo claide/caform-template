@@ -66,10 +66,10 @@ const pages = ref([
     name: "Pricing",
     link: "pricing",
   },
-  {
-    name: "FAQ",
-    link: "faq",
-  },
+  // {
+  //   name: "FAQ",
+  //   link: "faq",
+  // },
   {
     name: "Contact Us",
     link: "contact-us",
