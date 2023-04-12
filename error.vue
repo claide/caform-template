@@ -6,14 +6,14 @@
         class="flex items-center mb-10 text-2xl font-semibold text-dark dark:text-white"
       >
         <img
-          v-show="colorMode === 'light'"
+          v-show="colorMode.preference === 'light'"
           src="https://assets.costapplicationform.com/static/caf-logo-black.svg"
           sizes="sm:80px md:100w lg:120px"
           width="120"
           height="48"
         />
         <img
-          v-show="colorMode != 'light'"
+          v-show="colorMode.preference != 'light'"
           src="https://assets.costapplicationform.com/static/logo-admin.svg"
           sizes="sm:80px md:100w lg:120px"
           width="120"
@@ -25,15 +25,13 @@
         <img
           v-show="errorCode.statusCode === 404"
           src="https://assets.costapplicationform.com/static/404-error.png"
-          sizes="sm:200px md:100w lg:380px"
-          class="mx-auto mb-12 md:mb-20"
+          class="mx-auto mb-12 md:mb-20 max-w-[16rem] lg:max-w-[23rem] w-auto"
           format="webp"
         />
         <img
           v-show="errorCode.statusCode != 404"
           src="https://assets.costapplicationform.com/static/401-error.png"
-          sizes="sm:200px md:100w lg:380px"
-          class="mx-auto mb-12 md:mb-20"
+          class="mx-auto mb-12 md:mb-20 max-w-[16rem] lg:max-w-[23rem] w-auto"
           format="webp"
         />
         <div class="text-2xl md:text-4xl font-medium text-center mb-6">

@@ -23,13 +23,22 @@
       >
         <div class="px-1 py-1">
           <MenuItem v-slot="{ close }">
-            <nuxtLink
+            <NuxtLink
+              @click="close"
+              class="group flex w-full items-center font-medium rounded-md px-2 py-2 text-sm text-red-500"
+              to="/admin/store"
+            >
+              Buy credits
+            </NuxtLink>
+          </MenuItem>
+          <MenuItem v-slot="{ close }">
+            <NuxtLink
               @click="close"
               class="group flex w-full items-center rounded-md px-2 py-2 text-sm dark:text-white text-dark"
               to="/admin/account-settings"
             >
               Settings
-            </nuxtLink>
+            </NuxtLink>
           </MenuItem>
           <MenuItem>
             <a
