@@ -85,9 +85,9 @@ const helpfulLinks = ref([
     name: "Terms of Use",
     link: "terms-of-use",
   },
-  {
-    name: "Accessibility",
-    link: "accessibility",
-  },
+  // {
+  //   name: "Accessibility",
+  //   link: "accessibility",
+  // },
 ]);
 </script>

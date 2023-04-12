@@ -24,11 +24,13 @@
           class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
         >
           <div class="flex flex-shrink-0 items-center">
-            <img
-              class="block w-[80px] sm:w-[120px]"
-              src="https://assets.costapplicationform.com/static/caf-logo-black.svg"
-              sizes="sm:80px md:100w lg:120px"
-            />
+            <nuxt-link to="/">
+              <img
+                class="block w-[80px] sm:w-[120px]"
+                src="https://assets.costapplicationform.com/static/caf-logo-black.svg"
+                sizes="sm:80px md:100w lg:120px"
+              />
+            </nuxt-link>
           </div>
           <div class="hidden ml-auto sm:block">
             <div class="flex items-center space-x-5">
@@ -102,11 +104,6 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 
 const menu = ref([
-  {
-    name: "Home",
-    link: "/",
-    current: false,
-  },
   {
     name: "Features",
     link: "features",
