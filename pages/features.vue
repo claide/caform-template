@@ -166,3 +166,13 @@
     </section>
   </div>
 </template>
+
+<script setup>
+definePageMeta({
+  colorMode: "light",
+});
+
+useHead({
+  title: "Features",
+});
+</script>
