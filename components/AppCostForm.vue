@@ -352,9 +352,8 @@ const schema = yup.object({
   email: yup.string().required().label("Email").email(),
   invoice_number: yup.string().label("Invoice number").required(),
   currency: yup.string().label("Currency").required(),
-  cost_partner_id: yup.number().label("Partner").required(),
   payment_method: yup.number().label("Payment method").required(),
-  breakdowns: yup.array().label('Breakdowns').required(),
+  breakdowns: yup.array().label("Breakdowns").required(),
 });
 
 const costForm = useForm({
