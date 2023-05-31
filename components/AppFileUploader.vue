@@ -25,7 +25,7 @@
       <span
         v-for="(file, index) in files"
         :key="file.name"
-        class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-indigo-800 bg-indigo-100 rounded dark:bg-indigo-900 dark:text-indigo-300"
+        class="inline-flex items-center px-2 py-1 mr-2 mb-2 text-sm font-medium text-indigo-800 bg-indigo-100 rounded dark:bg-indigo-900 dark:text-indigo-300"
       >
         {{ file.name || file.file_name }}
         <button

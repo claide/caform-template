@@ -1,21 +1,13 @@
 <template>
-  <form @submit.prevent="submitCost">
+  <form @submit.prevent>
     <div class="space-y-4 sm:space-y-5">
       <div>
-        <label
-          for="applicant-name"
-          class="block text-sm font-medium text-gray-700"
-        >
+        <label for="applicant-name" class="block text-sm font-medium text-gray-700">
           Applicant name
         </label>
         <div class="mt-1">
-          <input
-            type="text"
-            id="applicant_name"
-            name="applicant_name"
-            v-model="applicantName"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input type="text" id="applicant_name" name="applicant_name" v-model="applicantName"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
           <ErrorMessage class="text-red-700 text-sm" name="applicant_name" />
         </div>
       </div>
@@ -25,13 +17,8 @@
           Email
         </label>
         <div class="mt-1">
-          <input
-            id="email"
-            type="email"
-            name="email"
-            v-model="email"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input id="email" type="email" name="email" v-model="email"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
           <ErrorMessage class="text-red-700 text-sm" name="email" />
         </div>
       </div>
@@ -41,13 +28,8 @@
           Invoice number
         </label>
         <div class="mt-1">
-          <input
-            id="invoice_number"
-            type="text"
-            name="invoice_number"
-            v-model="invoiceNumber"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input id="invoice_number" type="text" name="invoice_number" v-model="invoiceNumber"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
           <ErrorMessage class="text-red-700 text-sm" name="invoice_number" />
         </div>
       </div>
@@ -57,18 +39,9 @@
           Currency
         </label>
         <div class="mt-1">
-          <select
-            id="currency"
-            as="select"
-            name="currency"
-            v-model="currency"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          >
-            <option
-              v-for="currency in currencies"
-              :value="currency"
-              :key="currency"
-            >
+          <select id="currency" as="select" name="currency" v-model="currency"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded">
+            <option v-for="currency in currencies" :value="currency" :key="currency">
               {{ currency }}
             </option>
           </select>
@@ -81,18 +54,9 @@
           Select partner
         </label>
         <div class="mt-1">
-          <select
-            id="cost_partner_id"
-            name="cost_partner_id"
-            v-model="costPartnerId"
-            @change="onPartnerChanged"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          >
-            <option
-              v-for="partner in partners"
-              :value="partner.id"
-              :key="partner.id"
-            >
+          <select id="cost_partner_id" name="cost_partner_id" v-model="costPartnerId" @change="onPartnerChanged"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded">
+            <option v-for="partner in partners" :value="partner.id" :key="partner.id">
               {{ partner.name }}
             </option>
           </select>
@@ -101,25 +65,13 @@
       </div>
 
       <div>
-        <label
-          for="payment-method"
-          class="block text-sm font-medium text-gray-700"
-        >
+        <label for="payment-method" class="block text-sm font-medium text-gray-700">
           Payment method
         </label>
         <div class="mt-1">
-          <select
-            as="select"
-            id="payment_method"
-            name="payment_method"
-            v-model="paymentMethod"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          >
-            <option
-              v-for="method in paymentMethods"
-              :value="method.value"
-              :key="method.value"
-            >
+          <select as="select" id="payment_method" name="payment_method" v-model="paymentMethod"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded">
+            <option v-for="method in paymentMethods" :value="method.value" :key="method.value">
               {{ method.label }}
             </option>
           </select>
@@ -128,8 +80,8 @@
       </div>
 
       <div
-        class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-6 after:flex-1 after:border-t after:border-gray-300 after:mt-6"
-      ></div>
+        class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-6 after:flex-1 after:border-t after:border-gray-300 after:mt-6">
+      </div>
 
       <div>
         <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -141,19 +93,12 @@
       </div>
 
       <div class="mt-6" v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])">
-        <label
-          for="beneficiary"
-          class="block text-sm font-medium text-gray-700"
-        >
+        <label for="beneficiary" class="block text-sm font-medium text-gray-700">
           Beneficiary name
         </label>
         <div class="mt-1">
-          <input
-            type="text"
-            name="payment_info.name"
-            v-model="paymentInfo.name"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input type="text" name="payment_info.name" v-model="paymentInfo.name"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
         </div>
       </div>
 
@@ -162,12 +107,8 @@
           Street
         </label>
         <div class="mt-1">
-          <input
-            type="text"
-            name="payment_info.street"
-            v-model="paymentInfo.street"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input type="text" name="payment_info.street" v-model="paymentInfo.street"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
         </div>
       </div>
 
@@ -176,12 +117,8 @@
           City
         </label>
         <div class="mt-1">
-          <input
-            type="text"
-            name="payment_info.city"
-            v-model="paymentInfo.city"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input type="text" name="payment_info.city" v-model="paymentInfo.city"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
         </div>
       </div>
 
@@ -190,12 +127,8 @@
           Postal code
         </label>
         <div class="mt-1">
-          <input
-            type="text"
-            name="payment_info.postal_code"
-            v-model="paymentInfo.postal_code"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input type="text" name="payment_info.postal_code" v-model="paymentInfo.postal_code"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
         </div>
       </div>
 
@@ -204,16 +137,9 @@
           Country
         </label>
         <div class="mt-1">
-          <select
-            name="payment_info.country_code"
-            v-model="paymentInfo.country_code"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          >
-            <option
-              v-for="(country, code) in countries"
-              :key="code"
-              :value="code"
-            >
+          <select name="payment_info.country_code" v-model="paymentInfo.country_code"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded">
+            <option v-for="(country, code) in countries" :key="code" :value="code">
               {{ country }}
             </option>
           </select>
@@ -225,12 +151,8 @@
           IBAN account number
         </label>
         <div class="mt-1">
-          <input
-            type="text"
-            name="payment_info.iban_account_number"
-            v-model="paymentInfo.iban_account_number"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input type="text" name="payment_info.iban_account_number" v-model="paymentInfo.iban_account_number"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
         </div>
       </div>
       <div v-if="showPaymentField(paymentMethod, [1])">
@@ -238,12 +160,8 @@
           Swift code
         </label>
         <div class="mt-1">
-          <input
-            type="text"
-            name="payment_info.swift_code"
-            v-model="paymentInfo.swift_code"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input type="text" name="payment_info.swift_code" v-model="paymentInfo.swift_code"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
         </div>
       </div>
 
@@ -252,12 +170,8 @@
           ABA Routing Code
         </label>
         <div class="mt-1">
-          <input
-            type="text"
-            name="payment_info.aba_routing_code"
-            v-model="paymentInfo.aba_routing_code"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input type="text" name="payment_info.aba_routing_code" v-model="paymentInfo.aba_routing_code"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
         </div>
       </div>
       <div v-if="showPaymentField(paymentMethod, [1, 2, 3, 4])">
@@ -265,12 +179,8 @@
           Notes
         </label>
         <div class="mt-1">
-          <input
-            name="payment_info.notes"
-            type="text"
-            v-model="paymentInfo.notes"
-            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded"
-          />
+          <input name="payment_info.notes" type="text" v-model="paymentInfo.notes"
+            class="bg-gray-50 border border-gray-300 focus:ring-primary focus:border-primary block w-full text-base rounded" />
         </div>
       </div>
 
@@ -279,43 +189,27 @@
       </AppFileUploader>
 
       <div
-        class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-6 after:flex-1 after:border-t after:border-gray-300 after:mt-6"
-      />
+        class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-6 after:flex-1 after:border-t after:border-gray-300 after:mt-6" />
 
       <div class="flex justify-between items-ceter w-full">
         <h3 class="text-lg font-medium text-gray-900">Breakdowns</h3>
-        <button
-          @click.prevent="addNewBreakdown"
-          class="border border-gray-300 py-1 px-2 rounded text-sm"
-        >
+        <button @click.prevent="addNewBreakdown" class="border border-gray-300 py-1 px-2 rounded text-sm">
           Add new
         </button>
       </div>
 
       <ErrorMessage class="text-red-700 text-sm" name="breakdowns" />
 
-      <CostBreakdown
-        @edit="onBreakdownEdit"
-        v-if="breakdowns.length > 0"
-        :breakdowns="breakdowns"
-        :currency="currency"
-      />
+      <CostBreakdown @edit="onBreakdownEdit" v-if="breakdowns.length > 0" :breakdowns="breakdowns" :currency="currency" />
     </div>
-    <button
-      type="submit"
-      class="bg-primary hover:bg-[#5045ca] text-white text-base font-medium py-3 px-6 rounded-full mr-3 w-full mt-6 flex justify-center items-center"
-    >
+    <button @click="submitCost"
+      class="bg-primary hover:bg-[#5045ca] text-white text-base font-medium py-3 px-6 rounded-full mr-3 w-full mt-6 flex justify-center items-center">
       <AppSpinner v-if="isSubmitting" />
       Send
     </button>
 
-    <ModalsBreakdownModal
-      @submitted="onBreakdownSubmitted"
-      @updated="onBreakdownUpdated"
-      :breakdown="selectedBreakdown"
-      :currency="currency"
-      ref="addBreakdown"
-    />
+    <ModalsBreakdownModal @submitted="onBreakdownSubmitted" @updated="onBreakdownUpdated" :breakdown="selectedBreakdown"
+      :currency="currency" ref="addBreakdown" />
   </form>
 </template>
 
@@ -327,8 +221,11 @@ import { usePartnerStore } from "@/store/partners";
 import { useCostStore } from "@/store/cost";
 import includes from "lodash/includes";
 import find from "lodash/find";
-const { $toast } = useNuxtApp();
+import cloneDeep from 'lodash/cloneDeep';
 import CloseIcon from "@/components/CloseIcon";
+import lodashRemove from 'lodash/remove';
+import { remove } from "@vue/shared";
+const { $toast } = useNuxtApp();
 
 const partnerStore = usePartnerStore();
 const costStore = useCostStore();
@@ -378,6 +275,8 @@ const { value: invoiceFiles } = useField("invoice_file");
 const { value: costPartnerId } = useField("cost_partner_id");
 const { value: breakdowns } = useField("breakdowns");
 
+const removedFiles = ref([]);
+
 const partners = computed(() => {
   return partnerStore.partners.data;
 });
@@ -390,6 +289,10 @@ const paymentMethods = [
 ];
 
 const removeFile = (index) => {
+  const file = invoiceFiles.value[index]
+  if (file.id) {
+    removedFiles.value.push(file.id);
+  }
   invoiceFiles.value.splice(index, 1);
 };
 
@@ -428,15 +331,29 @@ const onBreakdownUpdated = (value) => {
   breakdowns.value.splice(selectedBreakdownIndex.value, 1, value);
 };
 
+const sanitizeInvoiceFiles = (files) => {
+  const items = cloneDeep(files)
+  lodashRemove(items, (file) => {
+    return !!file.id
+  })
+
+  return items
+}
+
 const submitCost = handleSubmit(async (values) => {
   isSubmitting.value = true;
   try {
-    await costStore.updateOrCreateCost(values);
+    const files = sanitizeInvoiceFiles(values.invoice_file)
+    await costStore.updateOrCreateCost({
+      ...values,
+      invoice_file: files,
+      removed_invoice_file: removedFiles.value,
+    });
     $toast.success("Cost application sent successfully!", {
       closeButton: CloseIcon,
     });
-    resetForm();
     isSubmitting.value = false;
+    window.location.reload()
   } catch (e) {
     isSubmitting.value = false;
     setErrors(e.errors);
